@@ -1,21 +1,16 @@
-#include "../include/Player.h"
+#include "../../include/Player/Player.h"
+
+using namespace Whispers;
+using namespace Character;
 
 Player::Player(const sf::Vector2f pos, const sf::Vector2f size)
-    : shape(sf::RectangleShape(size)) {
+    : Character(pos, size) {
     shape.setPosition(pos);
     shape.setFillColor(sf::Color::Cyan);
     init();
 }
 
-Player::Player(const sf::RectangleShape shape) : shape(shape) { init(); }
-
-Player::Player() : shape() { init(); }
-
 Player::~Player() {}
-
-void Player::init() { speed = sf::Vector2f(0.1f, 0.1f); }
-
-const sf::RectangleShape Player::getShape() const { return shape; }
 
 void Player::move() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {

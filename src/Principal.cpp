@@ -1,8 +1,10 @@
 #include "../include/Principal.h"
 
+using namespace Whispers;
+
 Principal::Principal()
-    : window(sf::VideoMode(800, 600), "My window"),
-      player(sf::RectangleShape(sf::Vector2f(50.0f, 50.0f))) {
+    : pGraphic(pGraphic->getGraphicManager()),
+      player(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(50.0f, 50.0f)) {
     // std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     // sf::VideoMode fullscreenMode = modes[0];
     // // sf::RenderWindow window(fullscreenMode, "My window",
@@ -13,16 +15,16 @@ Principal::Principal()
 Principal::~Principal() {}
 
 void Principal::execute() {
-    while (window.isOpen()) {
+    while (pGraphic->isWindowOpen()) {
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (pGraphic->getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-                window.close();
+                pGraphic->closeWindow();
             }
         }
-        window.clear(sf::Color::Black);
+        pGraphic->clearWindow();
         player.move();
-        window.draw(player.getShape());
-        window.display();
+        pGraphic->drawElement(player.getShape());
+        pGraphic->showElement();
     }
 }
