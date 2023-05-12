@@ -1,5 +1,5 @@
 # Project Name
-PROJECT := main
+PROJECT := Whispers
 
 # Source, Objects and Binaries folder
 SRC_DIR := src
