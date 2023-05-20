@@ -1,8 +1,8 @@
 #pragma once
 
-#include "./Character/Enemy/Enemy.h"
-#include "./Character/Player/Player.h"
-#include "./Manager/GraphicManager/GraphicManager.h"
+#include ".\Character\Enemy\Enemy.h"
+#include ".\Character\Player\Player.h"
+#include ".\Manager\GraphicManager\GraphicManager.h"
 #include "stdafx.h"
 
 namespace Whispers {

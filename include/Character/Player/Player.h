@@ -1,6 +1,6 @@
 #pragma once
-#include "../../stdafx.h"
-#include "../Character.h"
+#include "..\..\stdafx.h"
+#include "..\Character.h"
 namespace Whispers {
 namespace Character {
 class Player : public Character {

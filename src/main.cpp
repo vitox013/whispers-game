@@ -1,7 +1,7 @@
-#include "../include/Principal.h"
+#include "..\include\Principal.h"
 #include "stdafx.h"
 
-#define TEXTURE_IMG "./assets/catapimbas.jpg"
+#define TEXTURE_IMG ".\assets\catapimbas.jpg"
 using namespace Whispers;
 
 int main() {

@@ -16,7 +16,7 @@ CC := g++
 # Flags
 CPPFLAGS := -Iinclude -O2
 CFLAGS   := -Wall
-LDFLAGS  := -Llib 
+LDFLAGS  := -LSFML\lib -Ldll
 LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 .PHONY: all clean build
@@ -24,7 +24,7 @@ LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 all: build $(PROJECT)
 
 $(PROJECT): $(OBJ)
-	@ $(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
+	@ $(CC) $(LDFLAGS) $^ $(LDLIBS) -mwindows -o $@
 	@ echo '============================ Finished building ============================'
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
@@ -46,7 +46,8 @@ rebuild: clean all
 # Abrir o arquivo executável após a compilação
 run: $(PROJECT)
 ifeq ($(OS),Windows_NT)
-	@ echo "Windows detected, cannot automatically open executable."
+	@ echo "Opening executable..."
+	@ .\Whispers.exe
 else ifeq ($(shell uname),Darwin)
 	@ echo "Opening executable..."
 	@ open $(PROJECT)
