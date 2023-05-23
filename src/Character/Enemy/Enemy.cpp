@@ -57,3 +57,14 @@ void Enemy::Enemy::move() {
         randomMovement();
     }
 }
+void Enemy::Enemy::colission(bool collide)
+{
+    if (collide == true)
+    {
+        shape.setFillColor(Color::Magenta);
+    }
+    else
+    {
+        shape.setFillColor(Color::Red);
+    }
+}

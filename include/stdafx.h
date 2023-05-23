@@ -1,5 +1,5 @@
 #pragma once
-#include <math.h>
+#include <cmath>
 #include <time.h>
 
 #include <SFML\Graphics.hpp>

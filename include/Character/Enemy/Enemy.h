@@ -23,6 +23,7 @@ class Enemy : public Character {
     void chasePlayer(Vector2f playerPos, Vector2f EnemyPos);
     void randomMovement();
     void move();
+    void colission(bool collide);
 };
 }  // namespace Enemy
 }  // namespace Character
