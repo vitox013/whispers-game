@@ -2,7 +2,7 @@
 
 using namespace Whispers;
 
-Principal::Principal() : pGraphic(pGraphic->getGraphicManager()), characters() {
+Principal::Principal() : pGraphic(pGraphic->getGraphicManager()), characters(), Collider(characters) {
     // std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     // sf::VideoMode fullscreenMode = modes[0];
     // // sf::RenderWindow window(fullscreenMode, "My window",
@@ -18,7 +18,6 @@ Principal::Principal() : pGraphic(pGraphic->getGraphicManager()), characters() {
 
     characters.push_back(p1);
     characters.push_back(p2);
-
     execute();
 }
 
@@ -35,6 +34,7 @@ void Principal::execute() {
         pGraphic->clearWindow();
         for (int i = 0; i < (int)characters.size(); i++) {
             characters[i]->move();
+            Collider.ColissionCheck();
             pGraphic->drawElement(characters[i]->getShape());
         }
         pGraphic->showElement();

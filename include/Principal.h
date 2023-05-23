@@ -3,17 +3,21 @@
 #include ".\Character\Enemy\Enemy.h"
 #include ".\Character\Player\Player.h"
 #include ".\Manager\GraphicManager\GraphicManager.h"
+#include ".\Manager\ColissionManager.h"
 #include "stdafx.h"
 
-namespace Whispers {
-class Principal {
-   private:
-    Whispers::Manager::GraphicManager* pGraphic;
-    vector<Character::Character*> characters;
+namespace Whispers
+{
+    class Principal
+    {
+    private:
+        Whispers::Manager::GraphicManager *pGraphic;
+        vector<Character::Character *> characters;
+        Manager::ColissionManager Collider;
 
-   public:
-    Principal();
-    ~Principal();
-    void execute();
-};
-}  // namespace Whispers
+    public:
+        Principal();
+        ~Principal();
+        void execute();
+    };
+} // namespace Whispers
