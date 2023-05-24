@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 #define TEXTURE_IMG ".\assets\catapimbas.jpg"
-using namespace Whispers;
+using namespace Whispers::Entity;
 
 int main() {
     Principal game;

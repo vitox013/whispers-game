@@ -1,6 +1,6 @@
 #include "..\include\Principal.h"
 
-using namespace Whispers;
+using namespace Whispers::Entity;
 
 Principal::Principal() : pGraphic(pGraphic->getGraphicManager()), characters() {
     // std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();

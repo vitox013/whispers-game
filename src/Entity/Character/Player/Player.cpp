@@ -1,7 +1,6 @@
-#include "..\..\..\include\Character\Player\Player.h"
+#include "..\..\..\..\include\Entity\Character\Player\Player.h"
 
-using namespace Whispers;
-using namespace Character;
+using namespace Whispers::Entity::Character;
 
 Player::Player(const Vector2f pos, const Vector2f size) : Character(pos, size) {
     shape.setPosition(pos);
@@ -22,3 +21,4 @@ void Player::move() {
         shape.move(0.0f, speed.y);
     }
 }
+void Player::update() {}

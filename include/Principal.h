@@ -1,11 +1,11 @@
 #pragma once
 
-#include ".\Character\Enemy\Enemy.h"
-#include ".\Character\Player\Player.h"
+#include ".\Entity\Character\Enemy\Enemy.h"
+#include ".\Entity\Character\Player\Player.h"
 #include ".\Manager\GraphicManager\GraphicManager.h"
 #include "stdafx.h"
 
-namespace Whispers {
+namespace Whispers::Entity {
 class Principal {
    private:
     Whispers::Manager::GraphicManager* pGraphic;
@@ -16,4 +16,4 @@ class Principal {
     ~Principal();
     void execute();
 };
-}  // namespace Whispers
+}  // namespace Whispers::Entity

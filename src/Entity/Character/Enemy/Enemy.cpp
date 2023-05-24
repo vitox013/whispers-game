@@ -1,7 +1,6 @@
-#include "..\..\..\include\Character\Enemy\Enemy.h"
+#include "..\..\..\..\include\Entity\Character\Enemy\Enemy.h"
 
-using namespace Whispers;
-using namespace Character;
+using namespace Whispers::Entity::Character;
 
 Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player* pP)
     : Character(pos, size), player(pP), clock() {
@@ -57,3 +56,5 @@ void Enemy::Enemy::move() {
         randomMovement();
     }
 }
+
+void Enemy::Enemy::update() {}

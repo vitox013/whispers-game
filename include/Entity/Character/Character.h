@@ -1,10 +1,11 @@
 #pragma once
-#include "..\stdafx.h"
-namespace Whispers {
-namespace Character {
-class Character {
+#include "..\..\stdafx.h"
+#include "..\Entity.h"
+
+namespace Whispers::Entity::Character {
+
+class Character : public Entity {
    protected:
-    sf::RectangleShape shape;
     sf::Vector2f speed;
     void init();
 
@@ -13,6 +14,6 @@ class Character {
     ~Character();
     const sf::RectangleShape getShape() const;
     virtual void move() = 0;
+    virtual void update() = 0;
 };
-}  // namespace Character
-}  // namespace Whispers
+}  // namespace Whispers::Entity::Character
