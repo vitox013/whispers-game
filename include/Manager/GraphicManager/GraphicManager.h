@@ -1,3 +1,4 @@
+#pragma once
 #include "..\..\stdafx.h"
 
 namespace Whispers {
@@ -5,7 +6,7 @@ namespace Manager {
 class GraphicManager {
    private:
     sf::RenderWindow* window;
-    static GraphicManager* pGM;
+    static GraphicManager* pGraphic;
     GraphicManager();
 
    public:
