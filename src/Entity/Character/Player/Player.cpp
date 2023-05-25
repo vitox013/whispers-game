@@ -2,23 +2,23 @@
 
 using namespace Whispers::Entity::Character;
 
-Player::Player(const Vector2f pos, const Vector2f size) : Character(pos, size) {
-    shape.setPosition(pos);
+Player::Player(const Vector2f pos, const Vector2f size)
+    : Character(pos, size, PLAYER_SPEED), onFloor(true) {
     shape.setFillColor(Color::Cyan);
     init();
 }
 
 Player::~Player() {}
 
-void Player::move() {
-    if (Keyboard::isKeyPressed(Keyboard::A)) {
-        shape.move(-speed.x, 0.0f);
-    } else if (Keyboard::isKeyPressed(Keyboard::D)) {
-        shape.move(speed.x, 0.0f);
-    } else if (Keyboard::isKeyPressed(Keyboard::W)) {
-        shape.move(0.0f, -speed.y);
-    } else if (Keyboard::isKeyPressed(Keyboard::S)) {
-        shape.move(0.0f, speed.y);
+void Player::Player::init() {}
+
+void Player::update() { updatePosition(); }
+
+void Player::jump() {
+    if (onFloor) {
+        speed.y = -sqrt(2.0f * GRAVITY * JUMP_SIZE);
+        // onFloor = false;
     }
 }
-void Player::update() {}
+
+void Player::canJump() { onFloor = true; }

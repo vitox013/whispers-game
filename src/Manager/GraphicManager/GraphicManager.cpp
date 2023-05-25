@@ -3,7 +3,7 @@
 using namespace Whispers;
 using namespace Manager;
 
-GraphicManager* GraphicManager::pGM = nullptr;
+GraphicManager* GraphicManager::pGraphic = nullptr;
 
 GraphicManager::GraphicManager()
     : window(new sf::RenderWindow(sf::VideoMode(800, 600), "Whispers")) {
@@ -15,16 +15,16 @@ GraphicManager::GraphicManager()
 
 GraphicManager::~GraphicManager() {
     if (window) {
-        delete window;
+        delete (window);
         window = nullptr;
     }
 }
 
 GraphicManager* GraphicManager::getGraphicManager() {
-    if (pGM == nullptr) {
-        return new GraphicManager();
+    if (pGraphic == nullptr) {
+        pGraphic = new GraphicManager();
     }
-    return pGM;
+    return pGraphic;
 }
 
 sf::RenderWindow* GraphicManager::getWindow() { return window; }

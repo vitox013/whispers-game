@@ -2,18 +2,22 @@
 
 #include ".\Entity\Character\Enemy\Enemy.h"
 #include ".\Entity\Character\Player\Player.h"
+#include ".\List\EntityList.h"
+#include ".\Manager\EventManager\EventManager.h"
 #include ".\Manager\GraphicManager\GraphicManager.h"
 #include "stdafx.h"
 
-namespace Whispers::Entity {
+namespace Whispers {
 class Principal {
    private:
-    Whispers::Manager::GraphicManager* pGraphic;
-    vector<Character::Character*> characters;
+    Manager::GraphicManager* pGraphic;
+    Manager::EventManager* pEvent;
+    List::EntityList charactersList;
 
    public:
     Principal();
     ~Principal();
     void execute();
+    void instantiateEntities();
 };
-}  // namespace Whispers::Entity
+}  // namespace Whispers
