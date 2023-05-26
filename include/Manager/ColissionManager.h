@@ -7,7 +7,8 @@ namespace Whispers{
         class ColissionManager
         {
         private:
-            List::EntityList *EntList;
+            List::EntityList *CharList;
+            List::EntityList *ObjList;
 
         public:
             ColissionManager(List::EntityList* List);

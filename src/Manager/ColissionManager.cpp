@@ -4,7 +4,8 @@ using namespace Manager;
 
 ColissionManager::ColissionManager(List::EntityList* List)
 {
-    EntList = List;
+    CharList = List;
+    ObjList = nullptr; //Temporário
 }
 ColissionManager::~ColissionManager()
 {
@@ -36,12 +37,12 @@ bool ColissionManager::ColissionCalc(Entity::Entity *ent1, Entity::Entity *ent2)
 void ColissionManager::ColissionCheck()
 {
     
-    for (int i = 0; i < (int)EntList->getSize() - 1; i++)
+    for (int i = 0; i < (int)CharList->getSize() - 1; i++)
     {
-        Entity::Entity *ent1 = EntList->operator[](i);
-        for (int j = i + 1; i < (int)EntList->getSize(); i++)
+        Entity::Entity *ent1 = CharList->operator[](i);
+        for (int j = i + 1; i < (int)CharList->getSize(); i++)
         {
-            Entity::Entity* ent2 = EntList->operator[](j);
+            Entity::Entity* ent2 = CharList->operator[](j);
             //if (ColissionCalc(ent1, ent2))
             //{
                 ent2->Colission(ColissionCalc(ent2, ent1));
