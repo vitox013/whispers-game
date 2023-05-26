@@ -17,5 +17,6 @@ class Entity : public Ente {
     const Vector2f getSize() const;
     virtual void update() = 0;
     void draw();
+    virtual void Colission(bool ent) = 0;
 };
 }  // namespace Whispers::Entity

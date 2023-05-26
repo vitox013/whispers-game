@@ -2,7 +2,7 @@
 
 using namespace Whispers::Entity::Character;
 
-Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player* pP)
+Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player *pP)
     : Character(pos, size, ENEMY_SPEED), player(pP), dtAux(0.0f) {
     shape.setFillColor(Color::Red);
     srand(time(NULL));
@@ -54,4 +54,11 @@ void Enemy::Enemy::update() {
     updatePosition();
     dtAux += clock.getElapsedTime().asSeconds() * 100;
     clock.restart();
+}
+void Enemy::Enemy::Colission(bool ent) {
+    if (ent) {
+        shape.setFillColor(Color::Magenta);
+    } else {
+        shape.setFillColor(Color::Cyan);
+    }
 }

@@ -23,5 +23,6 @@ class Enemy : public Character {
     ~Enemy();
 
     void update();
+    void Colission(bool ent);
 };
 }  // namespace Whispers::Entity::Character::Enemy
