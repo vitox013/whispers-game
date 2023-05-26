@@ -2,7 +2,7 @@
 #include "..\..\stdafx.h"
 #include "..\Entity.h"
 
-#define GRAVITY 1.0f
+#define GRAVITY 0.0f
 namespace Whispers::Entity::Character {
 
 class Character : public Entity {
@@ -29,5 +29,6 @@ class Character : public Entity {
     void updatePosition();
     // virtual void move() = 0;
     virtual void update() = 0;
+    virtual void Colission(bool ent) = 0;
 };
 }  // namespace Whispers::Entity::Character

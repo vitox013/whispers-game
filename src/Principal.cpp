@@ -5,7 +5,7 @@ using namespace Whispers;
 Principal::Principal()
     : pGraphic(pGraphic->getGraphicManager()),
       pEvent(pEvent->getEventManager()),
-      charactersList() {
+      charactersList(), Collider(&charactersList) {
     // std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     // sf::VideoMode fullscreenMode = modes[0];
     // // sf::RenderWindow window(fullscreenMode, "My window",
@@ -23,7 +23,7 @@ void Principal::instantiateEntities() {
     Entity::Character::Player* player = new Entity::Character::Player(
         Vector2f(100.0f, 400.0f), Vector2f(50.0f, 50.0f));
     Entity::Character::Enemy::Enemy* enemy =
-        new Entity::Character::Enemy::Enemy(Vector2f(0.0f, 10.0f),
+        new Entity::Character::Enemy::Enemy(Vector2f(0.0f, 400.0f),
                                             Vector2f(50.0f, 50.0f), player);
 
     Entity::Entity* p1 = static_cast<Entity::Character::Character*>(enemy);
@@ -40,6 +40,7 @@ void Principal::execute() {
         pEvent->execute();
         pGraphic->clearWindow();
         charactersList.execute();
+        Collider.ColissionCheck();
         pGraphic->showElement();
     }
 }

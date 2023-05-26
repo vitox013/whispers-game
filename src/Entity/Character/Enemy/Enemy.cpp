@@ -2,17 +2,23 @@
 
 using namespace Whispers::Entity::Character;
 
-Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player* pP)
-    : Character(pos, size, ENEMY_SPEED), player(pP), dtAux(0.0f) {
+Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player *pP)
+    : Character(pos, size, ENEMY_SPEED), player(pP), dtAux(0.0f)
+{
     shape.setFillColor(Color::Red);
     init();
     srand(time(NULL));
     randomMove = rand() % 3;
-    if (randomMove == 0) {
+    if (randomMove == 0)
+    {
         stop();
-    } else if (randomMove == 1) {
+    }
+    else if (randomMove == 1)
+    {
         walk(true);
-    } else {
+    }
+    else
+    {
         walk(false);
     }
 }
@@ -34,37 +40,61 @@ void Enemy::Enemy::init() {}
 //     }
 // }
 
-void Enemy::Enemy::randomMovement() {
+void Enemy::Enemy::randomMovement()
+{
     // dtAux = clock.getElapsedTime().asSeconds();
-    if (dtAux >= 3.0f) {
+    if (dtAux >= 3.0f)
+    {
         randomMove = rand() % 3;
-        if (randomMove == 0) {
+        if (randomMove == 0)
+        {
             stop();
-        } else if (randomMove == 1) {
+        }
+        else if (randomMove == 1)
+        {
             walk(true);
-
-        } else {
+        }
+        else
+        {
             walk(false);
         }
         dtAux = 0.0f;
     }
 }
 
-void Enemy::Enemy::update() {
+void Enemy::Enemy::update()
+{
     Vector2f playerPos = player->getPosition();
     Vector2f enemyPos = getPosition();
 
     if (fabs(playerPos.x - enemyPos.x) <= CHASE_RAY_X &&
-        fabs(playerPos.y - enemyPos.y) <= CHASE_RAY_Y) {
-        if (playerPos.x - enemyPos.x > 0.0f) {
+        fabs(playerPos.y - enemyPos.y) <= CHASE_RAY_Y)
+    {
+        if (playerPos.x - enemyPos.x > 0.0f)
+        {
             walk(false);
-        } else {
+        }
+        else
+        {
             walk(true);
         }
-    } else {
+    }
+    else
+    {
         randomMovement();
     }
     updatePosition();
     dtAux += clock.getElapsedTime().asSeconds();
     clock.restart();
+}
+void Enemy::Enemy::Colission(bool ent)
+{
+    if (ent)
+    {
+        shape.setFillColor(Color::Magenta);
+    }
+    else
+    {
+        shape.setFillColor(Color::Cyan);
+    }
 }

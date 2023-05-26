@@ -14,8 +14,9 @@ class Principal {
     Manager::GraphicManager* pGraphic;
     Manager::EventManager* pEvent;
     List::EntityList charactersList;
+    Manager::ColissionManager Collider;
 
-   public:
+public:
     Principal();
     ~Principal();
     void execute();

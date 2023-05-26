@@ -19,5 +19,6 @@ class Player : public Character {
     void update();
     void jump();
     void canJump();
+    void Colission(bool ent);
 };
 }  // namespace Whispers::Entity::Character

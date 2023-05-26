@@ -2,16 +2,16 @@
 using namespace Whispers;
 using namespace Manager;
 
-ColissionManager::ColissionManager()
+ColissionManager::ColissionManager(List::EntityList* List)
 {
-      
+    EntList = List;
 }
 ColissionManager::~ColissionManager()
 {
     
 }
 
-bool ColissionManager::ColissionCalc(Character::Character *ent1, Character::Character *ent2)
+bool ColissionManager::ColissionCalc(Entity::Entity *ent1, Entity::Entity *ent2)
 {
     Vector2f pos1 = ent1->getShape().getPosition();
     Vector2f pos2 = ent2->getShape().getPosition();
@@ -33,16 +33,21 @@ bool ColissionManager::ColissionCalc(Character::Character *ent1, Character::Char
         return false;
     }
 }
-void ColissionManager::ColissionCheck(vector<Character::Character *> &list)
+void ColissionManager::ColissionCheck()
 {
     
-    for (int i = 0; i < (int)list.size() - 1; i++)
+    for (int i = 0; i < (int)EntList->getSize() - 1; i++)
     {
-        Character::Character* ent1 = list[i];
-        for (int j = i + 1; i < (int)list.size(); i++)
+        Entity::Entity *ent1 = EntList->operator[](i);
+        for (int j = i + 1; i < (int)EntList->getSize(); i++)
         {
-            Character::Character* ent2 = list[j];
-            ent1->colission(ColissionCalc(ent1, ent2));
+            Entity::Entity* ent2 = EntList->operator[](j);
+            //if (ColissionCalc(ent1, ent2))
+            //{
+                ent2->Colission(ColissionCalc(ent2, ent1));
+            //}
+            
+            //ent1->colission(ColissionCalc(ent1, ent2));
         }     
     }
 }
