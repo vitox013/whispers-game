@@ -5,7 +5,6 @@ using namespace Whispers::Entity::Character;
 Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player* pP)
     : Character(pos, size, ENEMY_SPEED), player(pP), dtAux(0.0f) {
     shape.setFillColor(Color::Red);
-    init();
     srand(time(NULL));
     randomMove = rand() % 3;
     if (randomMove == 0) {
@@ -19,38 +18,22 @@ Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player* pP)
 
 Enemy::Enemy::~Enemy() {}
 
-void Enemy::Enemy::init() {}
-
-// void Enemy::Enemy::chasePlayer(Vector2f pP, Vector2f eP) {
-//     if (pP.x - eP.x > 0.0f) {
-//         shape.move(speed.x, 0.0f);
-//     } else {
-//         shape.move(-speed.x, 0.0f);
-//     }
-//     if (pP.y - eP.y > 0.0f) {
-//         shape.move(0.0f, speed.y);
-//     } else {
-//         shape.move(0.0f, -speed.y);
-//     }
-// }
-
 void Enemy::Enemy::randomMovement() {
-    // dtAux = clock.getElapsedTime().asSeconds();
-    if (dtAux >= 3.0f) {
-        randomMove = rand() % 3;
+    if (dtAux >= 1.0f) {
+        randomMove = rand() % 12;
         if (randomMove == 0) {
             stop();
         } else if (randomMove == 1) {
             walk(true);
 
-        } else {
+        } else if (randomMove == 2) {
             walk(false);
         }
         dtAux = 0.0f;
     }
 }
 
-void Enemy::Enemy::update() {
+void Enemy::Enemy::moveEnemy() {
     Vector2f playerPos = player->getPosition();
     Vector2f enemyPos = getPosition();
 
@@ -64,7 +47,11 @@ void Enemy::Enemy::update() {
     } else {
         randomMovement();
     }
+}
+
+void Enemy::Enemy::update() {
+    moveEnemy();
     updatePosition();
-    dtAux += clock.getElapsedTime().asSeconds();
+    dtAux += clock.getElapsedTime().asSeconds() * 100;
     clock.restart();
 }

@@ -17,36 +17,27 @@ void EventManager::setPlayer(Entity::Character::Player* pPlayer) {
     this->pPlayer = pPlayer;
 }
 
-void EventManager::handleKeyPress(Keyboard::Key key) {
-    if (key == Keyboard::A) {
+void EventManager::handleKeyPress() {
+    if (Keyboard::isKeyPressed(Keyboard::A)) {
         pPlayer->walk(true);
-    }
-    if (key == Keyboard::D) {
+    } else if (Keyboard::isKeyPressed(Keyboard::D)) {
         pPlayer->walk(false);
+    } else {
+        pPlayer->stop();
     }
-    if (key == Keyboard::W) {
+    if (Keyboard::isKeyPressed(Keyboard::Space)) {
         pPlayer->jump();
     }
-    if (key == Keyboard::Escape) {
-        pGraphic->clearWindow();
-    }
-}
-
-void EventManager::handleKeyRelease(Keyboard::Key key) {
-    if (key == Keyboard::A || key == Keyboard::D) {
-        pPlayer->stop();
+    if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+        pGraphic->closeWindow();
     }
 }
 
 void EventManager::execute() {
     Event event;
     while (pGraphic->getWindow()->pollEvent(event)) {
-        if (event.type == Event::KeyPressed) {
-            handleKeyPress(event.key.code);
-        }
-        if (event.type == Event::KeyReleased) {
-            handleKeyRelease(event.key.code);
-        }
+        handleKeyPress();
+
         if (event.type == Event::Closed) {
             pGraphic->closeWindow();
         }

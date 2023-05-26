@@ -8,7 +8,6 @@ class EventManager {
    private:
     GraphicManager* pGraphic;
     Entity::Character::Player* pPlayer;
-
     static EventManager* pEvent;
     EventManager();
 
@@ -16,8 +15,7 @@ class EventManager {
     ~EventManager();
     static EventManager* getEventManager();
     void setPlayer(Entity::Character::Player* pPlayer);
-    void handleKeyRelease(Keyboard::Key key);
-    void handleKeyPress(Keyboard::Key key);
+    void handleKeyPress();
     void execute();
 };
 }  // namespace Whispers::Manager
