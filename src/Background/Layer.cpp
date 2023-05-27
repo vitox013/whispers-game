@@ -11,23 +11,16 @@ Layer::Layer(const Vector2f windowSize, Texture texture, const float velocity)
         static_cast<int>(-abs(static_cast<int>(texture.getSize().x)));
 
     dimension.height = texture.getSize().y;
-    // dimension.left = texture.getSize().x;
+    dimension.left = texture.getSize().x;
 
     back.setSize(windowSize);
     back.setTexture(&this->texture);
     back.setPosition(0.0f, 0.0f);
-
-    // auxBack.setSize(windowSize);
-    // auxBack.setTexture(&this->texture);
-    // auxBack.setPosition(windowSize.x, 0.0f);
 }
 
 Layer::~Layer() {}
 
-void Layer::drawLayer(RenderWindow* window) {
-    window->draw(back);
-    window->draw(auxBack);
-}
+void Layer::drawLayer(RenderWindow* window) { window->draw(back); }
 
 void Layer::update(const Vector2f ds, const Vector2f actualCamPosition) {
     // Atualiza a posição do plano de fundo com base no deslocamento da câmera

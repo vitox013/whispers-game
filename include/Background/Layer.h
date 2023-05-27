@@ -9,7 +9,6 @@ class Layer {
     const float velocity;
     Texture texture;
     RectangleShape back;
-    RectangleShape auxBack;
 
     void changeTexture();
 
