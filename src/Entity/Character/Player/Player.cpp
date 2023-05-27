@@ -20,7 +20,7 @@ void Player::Player::init() {
                            Vector2f(2, 2));
     animation.addAnimation("assets/character/player/attack.png", "attack", 1,
                            0.1f, Vector2f(2, 2));
-    shape.setOrigin(Vector2f(size.x / 4.0f, size.y / 2.2f));
+    shape.setOrigin(Vector2f(size.x / 4.0f, size.y / 2.0f));
 }
 
 void Player::update() {

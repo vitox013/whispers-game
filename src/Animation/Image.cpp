@@ -12,7 +12,7 @@ Animation::Image::Image(const char* path, const unsigned int imgCount,
       currentImg(0),
       switchTime(switchTime),
       totalTime(0.0f) {
-    size.width = texture.getSize().x / imgCount;
+    size.width = texture.getSize().x / (float)imgCount;
     size.height = texture.getSize().y;
 }
 
@@ -29,7 +29,6 @@ void Animation::Image::update(const bool toLeft, const float deltaTime) {
         }
     }
 
-    size.left = currentImg * size.width;
     if (toLeft) {
         size.left = (currentImg + 1) * abs(size.width);
         size.width = -abs(size.width);

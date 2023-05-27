@@ -32,15 +32,15 @@ void Principal::createPlatform(Vector2f position) {
 }
 
 void Principal::createEnemy(Vector2f position, Player* player) {
-    Enemy::Enemy* enemy =
-        new Enemy::Enemy(position, Vector2f(50.0f, 50.0f), player);
+    Enemy::Enemy* enemy = new Enemy::Enemy(
+        position, Vector2f(PLAYER_SIZE_X, PLAYER_SIZE_Y), player);
     Entity::Entity* e1 = static_cast<Entity::Entity*>(enemy);
     charactersList.addEntity(e1);
 }
 
 void Principal::instantiateEntities() {
     Player* player =
-        new Player(Vector2f(700.0f, 400.0f), Vector2f(50.0f, 50.0f));
+        new Player(Vector2f(700.0f, 400.0f), Vector2f(50.0f, 60.0f));
     Entity::Entity* e1 = static_cast<Entity::Entity*>(player);
     charactersList.addEntity(e1);
     for (int i = 0; i < 10; i++) {
