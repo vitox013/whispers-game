@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\Animation\Animation.h"
 #include "..\..\stdafx.h"
 #include "..\Entity.h"
 
@@ -8,6 +9,7 @@ namespace Whispers::Entity::Character {
 class Character : public Entity {
    protected:
     sf::Vector2f speed;
+    Animation::Animation animation;
     const float maxSpeed;
     int life;
     int damage;
@@ -29,6 +31,7 @@ class Character : public Entity {
     void updatePosition();
     // virtual void move() = 0;
     virtual void update() = 0;
+    virtual void updateAnimation();
     virtual void collision(Entity* other,
                            Vector2f ds = Vector2f(0.0f, 0.0f)) = 0;
 };

@@ -11,7 +11,8 @@ Character::Character::Character(const Vector2f pos, const Vector2f size,
       dt(0.0f),
       speed(Vector2f(speed, 0.0f)),
       maxSpeed(speed),
-      isAttacking(false) {}
+      isAttacking(false),
+      animation(&shape) {}
 
 Character::Character::~Character() {}
 
@@ -53,3 +54,11 @@ void Character::Character::updatePosition() {
 void Character::Character::setSpeed(Vector2f speed) { this->speed = speed; }
 
 const Vector2f Character::Character::getSpeed() const { return speed; }
+
+void Character::Character::updateAnimation() {
+    if (canWalk) {
+        animation.update(faceLeft, "walk");
+    } else {
+        animation.update(faceLeft, "idle");
+    }
+}

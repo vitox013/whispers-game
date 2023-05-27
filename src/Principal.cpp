@@ -47,11 +47,11 @@ void Principal::instantiateEntities() {
         createPlatform(Vector2f(i * 300.0f, 680.0f));
     }
 
-    createPlatform(sf::Vector2f(500.0f, 400.0f));
-    createPlatform(sf::Vector2f(900.0f, 400.0f));
+    createPlatform(sf::Vector2f(500.0f, 500.0f));
+    createPlatform(sf::Vector2f(900.0f, 500.0f));
     createPlatform(sf::Vector2f(1200.0f, 400.0f));
 
-    createPlatform(sf::Vector2f(1100.0f, 250.0f));
+    createPlatform(sf::Vector2f(1100.0f, 350.0f));
 
     pEvent->setPlayer(player);
 }
