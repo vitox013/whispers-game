@@ -2,8 +2,11 @@
 
 using namespace Whispers::Entity::Obstacle;
 
-Obstacle::Obstacle(Vector2f pos, Vector2f size, ID::ID id)
-    : Entity(pos, size, id) {}
+Obstacle::Obstacle(Vector2f pos, Vector2f size, ID::ID id, const char* path)
+    : Entity(pos, size, id) {
+    texture = pGraphic->loadTexture(path);
+    shape.setTexture(&texture);
+}
 
 Obstacle::~Obstacle() {}
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include ".\Background\Background.h"
 #include ".\Entity\Character\Enemy\Enemy.h"
 #include ".\Entity\Character\Player\Player.h"
 #include ".\Entity\Obstacle\Platform.h"
@@ -17,11 +18,14 @@ class Principal {
     Manager::CollisionManager Collider;
     List::EntityList charactersList;
     List::EntityList obsList;
+    Background::Background background;
 
    public:
     Principal();
     ~Principal();
     void execute();
     void instantiateEntities();
+    void createPlatform(Vector2f position);
+    void createEnemy(Vector2f position, Entity::Character::Player* player);
 };
 }  // namespace Whispers

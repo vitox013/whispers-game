@@ -5,6 +5,8 @@
 #include "..\Character\Player\Player.h"
 #include ".\Obstacle.h"
 
+#define PLATFORM_TEXTURE_PATH "assets/platform.png"
+
 namespace Whispers::Entity::Obstacle {
 class Platform : public Obstacle {
    public:

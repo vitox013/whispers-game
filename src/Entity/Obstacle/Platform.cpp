@@ -3,9 +3,7 @@
 using namespace Whispers::Entity::Obstacle;
 
 Platform::Platform(Vector2f pos, Vector2f size)
-    : Obstacle(pos, size, ID::ID::platform) {
-    shape.setFillColor(Color::Green);
-}
+    : Obstacle(pos, size, ID::ID::platform, PLATFORM_TEXTURE_PATH) {}
 
 Platform::~Platform() {}
 

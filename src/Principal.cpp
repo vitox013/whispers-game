@@ -9,7 +9,8 @@ Principal::Principal()
       pEvent(pEvent->getEventManager()),
       charactersList(),
       obsList(),
-      Collider(&charactersList, &obsList) {
+      Collider(&charactersList, &obsList),
+      background() {
     // std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     // sf::VideoMode fullscreenMode = modes[0];
     // // sf::RenderWindow window(fullscreenMode, "My window",
@@ -23,37 +24,34 @@ Principal::Principal()
 
 Principal::~Principal() { charactersList.clearList(); }
 
+void Principal::createPlatform(Vector2f position) {
+    Obstacle::Platform* p1 =
+        new Obstacle::Platform(position, Vector2f(400.0f, 40.0f));
+    Entity::Entity* e1 = static_cast<Entity::Entity*>(p1);
+    obsList.addEntity(e1);
+}
+
+void Principal::createEnemy(Vector2f position, Player* player) {
+    Enemy::Enemy* enemy =
+        new Enemy::Enemy(position, Vector2f(50.0f, 50.0f), player);
+    Entity::Entity* e1 = static_cast<Entity::Entity*>(enemy);
+    charactersList.addEntity(e1);
+}
+
 void Principal::instantiateEntities() {
     Player* player =
-        new Player(Vector2f(100.0f, 400.0f), Vector2f(50.0f, 50.0f));
-    Enemy::Enemy* enemy = new Enemy::Enemy(Vector2f(0.0f, 400.0f),
-                                           Vector2f(50.0f, 50.0f), player);
-    Obstacle::Platform* p1 = new Obstacle::Platform(Vector2f(300.0f, 200.0f),
-                                                    Vector2f(400.0f, 40.0f));
-
-    Obstacle::Platform* p2 = new Obstacle::Platform(Vector2f(200.0f, 300.0f),
-                                                    Vector2f(400.0f, 40.0f));
-
-    Obstacle::Platform* p3 = new Obstacle::Platform(Vector2f(100.0f, 400.0f),
-                                                    Vector2f(400.0f, 40.0f));
-
-    Obstacle::Platform* p4 =
-        new Obstacle::Platform(Vector2f(0.0f, 560.0f), Vector2f(800.0f, 40.0f));
-
-    Entity::Entity* e1 = static_cast<Entity::Entity*>(enemy);
-    Entity::Entity* e2 = static_cast<Entity::Entity*>(player);
-    Entity::Entity* e3 = static_cast<Entity::Entity*>(p1);
-    Entity::Entity* e4 = static_cast<Entity::Entity*>(p2);
-    Entity::Entity* e5 = static_cast<Entity::Entity*>(p3);
-    Entity::Entity* e6 = static_cast<Entity::Entity*>(p4);
-
+        new Player(Vector2f(700.0f, 400.0f), Vector2f(50.0f, 50.0f));
+    Entity::Entity* e1 = static_cast<Entity::Entity*>(player);
     charactersList.addEntity(e1);
-    charactersList.addEntity(e2);
+    for (int i = 0; i < 10; i++) {
+        createPlatform(Vector2f(i * 300.0f, 680.0f));
+    }
 
-    obsList.addEntity(e3);
-    obsList.addEntity(e4);
-    obsList.addEntity(e5);
-    obsList.addEntity(e6);
+    createPlatform(sf::Vector2f(500.0f, 400.0f));
+    createPlatform(sf::Vector2f(900.0f, 400.0f));
+    createPlatform(sf::Vector2f(1200.0f, 400.0f));
+
+    createPlatform(sf::Vector2f(1100.0f, 250.0f));
 
     pEvent->setPlayer(player);
 }
@@ -62,6 +60,7 @@ void Principal::execute() {
     while (pGraphic->isWindowOpen()) {
         pEvent->execute();
         pGraphic->clearWindow();
+        background.execute();
         charactersList.execute();
         obsList.execute();
         Collider.CollisionCheck();
