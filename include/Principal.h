@@ -4,7 +4,7 @@
 #include ".\Entity\Character\Player\Player.h"
 #include ".\Entity\Obstacle\Platform.h"
 #include ".\List\EntityList.h"
-#include ".\Manager\ColissionManager.h"
+#include ".\Manager\CollisionManager.h"
 #include ".\Manager\EventManager\EventManager.h"
 #include ".\Manager\GraphicManager\GraphicManager.h"
 #include "stdafx.h"
@@ -14,7 +14,7 @@ class Principal {
    private:
     Manager::GraphicManager* pGraphic;
     Manager::EventManager* pEvent;
-    Manager::ColissionManager Collider;
+    Manager::CollisionManager Collider;
     List::EntityList charactersList;
     List::EntityList obsList;
 

@@ -9,7 +9,7 @@ Platform::Platform(Vector2f pos, Vector2f size)
 
 Platform::~Platform() {}
 
-void Platform::Colission(Entity* other, Vector2f ds) {
+void Platform::collision(Entity* other, Vector2f ds) {
     Vector2f otherPos = other->getPosition();
     Vector2f otherSize = other->getSize();
 

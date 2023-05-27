@@ -57,4 +57,4 @@ void Enemy::Enemy::update() {
     dtAux += clock.getElapsedTime().asSeconds() * 100;
     clock.restart();
 }
-void Enemy::Enemy::Colission(Entity* other, Vector2f ds) {}
+void Enemy::Enemy::collision(Entity* other, Vector2f ds) {}

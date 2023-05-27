@@ -22,4 +22,4 @@ void Player::jump() {
 }
 
 void Player::canJump() { onFloor = true; }
-void Player::Colission(Entity* other, Vector2f ds) {}
+void Player::collision(Entity* other, Vector2f ds) {}

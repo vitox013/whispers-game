@@ -19,6 +19,6 @@ class Player : public Character {
     void update();
     void jump();
     void canJump();
-    void Colission(Entity* other, Vector2f ds = Vector2f(0.0f, 0.0f));
+    void collision(Entity* other, Vector2f ds = Vector2f(0.0f, 0.0f));
 };
 }  // namespace Whispers::Entity::Character

@@ -29,7 +29,7 @@ class Character : public Entity {
     void updatePosition();
     // virtual void move() = 0;
     virtual void update() = 0;
-    virtual void Colission(Entity* other,
+    virtual void collision(Entity* other,
                            Vector2f ds = Vector2f(0.0f, 0.0f)) = 0;
 };
 }  // namespace Whispers::Entity::Character

@@ -64,7 +64,7 @@ void Principal::execute() {
         pGraphic->clearWindow();
         charactersList.execute();
         obsList.execute();
-        Collider.ColissionCheck();
+        Collider.CollisionCheck();
         pGraphic->showElement();
     }
 }

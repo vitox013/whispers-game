@@ -10,7 +10,7 @@ class Obstacle : public Entity {
    public:
     Obstacle(Vector2f pos, Vector2f size, ID::ID id);
     ~Obstacle();
-    virtual void Colission(Entity* otherEntity,
+    virtual void collision(Entity* otherEntity,
                            Vector2f ds = Vector2f(0.0f, 0.0f)) = 0;
     void update();
 };

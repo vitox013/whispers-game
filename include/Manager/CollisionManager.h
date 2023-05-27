@@ -4,16 +4,16 @@
 
 namespace Whispers {
 namespace Manager {
-class ColissionManager {
+class CollisionManager {
    private:
     List::EntityList* CharList;
     List::EntityList* ObjList;
 
    public:
-    ColissionManager(List::EntityList* List, List::EntityList* ObjList);
-    ~ColissionManager();
-    const Vector2f ColissionCalc(Entity::Entity* ent1, Entity::Entity* ent2);
-    void ColissionCheck();
+    CollisionManager(List::EntityList* charsList, List::EntityList* ObjList);
+    ~CollisionManager();
+    const Vector2f CollisionCalc(Entity::Entity* ent1, Entity::Entity* ent2);
+    void CollisionCheck();
 };
 }  // namespace Manager
 }  // namespace Whispers
