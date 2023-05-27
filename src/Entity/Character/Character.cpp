@@ -3,8 +3,8 @@
 using namespace Whispers::Entity;
 
 Character::Character::Character(const Vector2f pos, const Vector2f size,
-                                const float speed)
-    : Entity(pos, size),
+                                const float speed, const ID::ID ID)
+    : Entity(pos, size, ID),
       canWalk(false),
       faceLeft(false),
       clock(),
@@ -29,12 +29,12 @@ void Character::Character::attack(const bool isAttacking) {
 }
 
 void Character::Character::updatePosition() {
-    dt = clock.getElapsedTime().asSeconds();
-    clock.restart();
+    sf::Time deltaTime = clock.restart();
+    float dt = deltaTime.asSeconds();
     Vector2f ds(0.0f, 0.0f);
 
     if (canWalk) {
-        ds.x = speed.x * dt;
+        ds.x = speed.x * dt * 1.2;
         if (faceLeft) {
             ds.x *= -1;
         }

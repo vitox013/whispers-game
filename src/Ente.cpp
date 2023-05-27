@@ -3,6 +3,8 @@
 
 using namespace Whispers;
 
-Ente::Ente() : pGraphic(pGraphic->getGraphicManager()) {}
+Ente::Ente(const ID::ID id) : id(id), pGraphic(pGraphic->getGraphicManager()) {}
 
 Ente::~Ente() {}
+
+const ID::ID Ente::getId() const { return id; }

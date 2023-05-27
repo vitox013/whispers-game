@@ -3,8 +3,7 @@
 using namespace Whispers::Entity::Character;
 
 Player::Player(const Vector2f pos, const Vector2f size)
-    : Character(pos, size, PLAYER_SPEED), onFloor(true)
-{
+    : Character(pos, size, PLAYER_SPEED, ID::ID::player), onFloor(false) {
     shape.setFillColor(Color::Cyan);
     init();
 }
@@ -15,22 +14,12 @@ void Player::Player::init() {}
 
 void Player::update() { updatePosition(); }
 
-void Player::jump()
-{
-    if (onFloor)
-    {
+void Player::jump() {
+    if (onFloor) {
         speed.y = -sqrt(2.0f * GRAVITY * JUMP_SIZE);
-        // onFloor = false;
+        onFloor = false;
     }
 }
 
 void Player::canJump() { onFloor = true; }
-void Player::Colission(bool ent)
-{
-    if (ent)
-    {
-        shape.setFillColor(Color::Magenta);
-    }else{
-        shape.setFillColor(Color::Cyan);
-    }
-}
+void Player::Colission(Entity* other, Vector2f ds) {}

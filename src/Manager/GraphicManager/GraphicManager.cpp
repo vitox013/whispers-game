@@ -11,6 +11,7 @@ GraphicManager::GraphicManager()
         std::cout << "Warning: Cannot create a graphics manager" << std::endl;
         exit(1);
     }
+    window->setFramerateLimit(120);
 }
 
 GraphicManager::~GraphicManager() {

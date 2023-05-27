@@ -2,8 +2,8 @@
 
 using namespace Whispers;
 
-Entity::Entity::Entity(const Vector2f pos, const Vector2f size)
-    : shape(RectangleShape(size)), position(pos), size(size) {
+Entity::Entity::Entity(const Vector2f pos, const Vector2f size, const ID::ID id)
+    : Ente(id), shape(RectangleShape(size)), position(pos), size(size) {
     shape.setPosition(pos);
     shape.setFillColor(Color::Cyan);
 }

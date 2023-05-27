@@ -3,7 +3,7 @@
 #include "..\Character.h"
 
 #define PLAYER_SPEED 200.0f
-#define JUMP_SIZE 0.1f
+#define JUMP_SIZE 0.4f
 #define PLAYER_SIZE_X 50.0f
 #define PLAYER_SIZE_Y 90.0f
 namespace Whispers::Entity::Character {
@@ -19,6 +19,6 @@ class Player : public Character {
     void update();
     void jump();
     void canJump();
-    void Colission(bool ent);
+    void Colission(Entity* other, Vector2f ds = Vector2f(0.0f, 0.0f));
 };
 }  // namespace Whispers::Entity::Character

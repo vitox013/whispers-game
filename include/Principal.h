@@ -2,10 +2,11 @@
 
 #include ".\Entity\Character\Enemy\Enemy.h"
 #include ".\Entity\Character\Player\Player.h"
+#include ".\Entity\Obstacle\Platform.h"
 #include ".\List\EntityList.h"
+#include ".\Manager\ColissionManager.h"
 #include ".\Manager\EventManager\EventManager.h"
 #include ".\Manager\GraphicManager\GraphicManager.h"
-#include ".\Manager\ColissionManager.h"
 #include "stdafx.h"
 
 namespace Whispers {
@@ -13,10 +14,11 @@ class Principal {
    private:
     Manager::GraphicManager* pGraphic;
     Manager::EventManager* pEvent;
-    List::EntityList charactersList;
     Manager::ColissionManager Collider;
+    List::EntityList charactersList;
+    List::EntityList obsList;
 
-public:
+   public:
     Principal();
     ~Principal();
     void execute();
