@@ -8,7 +8,7 @@ class Obstacle : public Entity {
     Texture texture;
 
    public:
-    Obstacle(Vector2f pos, Vector2f size, ID::ID id);
+    Obstacle(Vector2f pos, Vector2f size, ID::ID id, const char* path);
     ~Obstacle();
     virtual void Colission(Entity* otherEntity,
                            Vector2f ds = Vector2f(0.0f, 0.0f)) = 0;

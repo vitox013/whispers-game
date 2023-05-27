@@ -12,7 +12,10 @@ Player::~Player() {}
 
 void Player::Player::init() {}
 
-void Player::update() { updatePosition(); }
+void Player::update() {
+    updatePosition();
+    pGraphic->updateCamera(position);
+}
 
 void Player::jump() {
     if (onFloor) {
