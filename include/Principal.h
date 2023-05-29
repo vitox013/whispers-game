@@ -1,11 +1,6 @@
 #pragma once
 
-#include ".\Entity\Character\Enemy\Enemy.h"
-#include ".\Entity\Projectile\Projectile.h"
-#include ".\Entity\Character\Player\Player.h"
-#include ".\Entity\Obstacle\Platform.h"
-#include ".\List\EntityList.h"
-#include ".\Manager\CollisionManager.h"
+#include ".\Level\Midnight.h"
 #include ".\Manager\EventManager\EventManager.h"
 #include ".\Manager\GraphicManager\GraphicManager.h"
 #include "stdafx.h"
@@ -15,15 +10,12 @@ class Principal {
    private:
     Manager::GraphicManager* pGraphic;
     Manager::EventManager* pEvent;
-    Manager::CollisionManager Collider;
-    List::EntityList charactersList;
-    List::EntityList obsList;
-    List::EntityList ProjectileList;
+    Level::Midnight* pLevel;
+    void createLevel();
 
 public:
     Principal();
     ~Principal();
     void execute();
-    void instantiateEntities();
 };
 }  // namespace Whispers

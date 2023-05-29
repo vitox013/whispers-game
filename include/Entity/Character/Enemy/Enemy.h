@@ -17,14 +17,14 @@ namespace Whispers::Entity::Character::Enemy
         short randomMove;
         float dtAux;
 
-        void moveEnemy();
-        void randomMovement();
+    void randomMovement();
 
-    public:
-        Enemy(const Vector2f pos, const Vector2f size, Player *pP);
-        ~Enemy();
-
-        virtual void update();
-        virtual void collision(Entity *other, Vector2f ds = Vector2f(0.0f, 0.0f));
-    };
-} // namespace Whispers::Entity::Character::Enemy
+   public:
+    Enemy(const Vector2f pos, const Vector2f size, Player* pP, ID::ID id);
+    ~Enemy();
+    Player* getPlayer();
+    virtual void moveEnemy();
+    virtual void update();
+    void collision(Entity* other, Vector2f ds = Vector2f(0.0f, 0.0f));
+};
+}  // namespace Whispers::Entity::Character::Enemy

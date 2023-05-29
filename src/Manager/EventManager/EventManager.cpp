@@ -1,6 +1,7 @@
 #include "..\..\..\include\Manager\EventManager\EventManager.h"
 
 using namespace Whispers::Manager;
+using namespace Whispers::Entity::Character;
 
 EventManager* EventManager::pEvent = nullptr;
 
@@ -16,6 +17,15 @@ EventManager* EventManager::getEventManager() {
 void EventManager::setPlayer(Entity::Character::Player* pPlayer) {
     this->pPlayer = pPlayer;
 }
+
+EventManager::~EventManager() {
+    if (pEvent) {
+        delete pEvent;
+        pEvent = nullptr;
+    }
+}
+
+Player* EventManager::getPlayer() { return pPlayer; }
 
 void EventManager::handleKeyPress() {
     if (Keyboard::isKeyPressed(Keyboard::A)) {

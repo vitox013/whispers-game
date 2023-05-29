@@ -14,6 +14,7 @@ class EventManager {
    public:
     ~EventManager();
     static EventManager* getEventManager();
+    Entity::Character::Player* getPlayer();
     void setPlayer(Entity::Character::Player* pPlayer);
     void handleKeyPress();
     void execute();
