@@ -15,14 +15,14 @@ class Enemy : public Character {
     short randomMove;
     float dtAux;
 
-    void moveEnemy();
     void randomMovement();
 
    public:
-    Enemy(const Vector2f pos, const Vector2f size, Player* pP);
+    Enemy(const Vector2f pos, const Vector2f size, Player* pP, ID::ID id);
     ~Enemy();
-
-    void update();
+    Player* getPlayer();
+    virtual void moveEnemy();
+    virtual void update();
     void collision(Entity* other, Vector2f ds = Vector2f(0.0f, 0.0f));
 };
 }  // namespace Whispers::Entity::Character::Enemy

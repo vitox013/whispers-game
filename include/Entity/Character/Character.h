@@ -16,8 +16,11 @@ class Character : public Entity {
     bool isAttacking;
     bool faceLeft;
     bool canWalk;
+    bool takeDamage;
+    bool idle;
     float dt;
     Clock clock;
+    virtual void updateAnimation();
 
    public:
     Character(const sf::Vector2f pos, const sf::Vector2f tam, const float speed,
@@ -28,10 +31,11 @@ class Character : public Entity {
     void walk(const bool toLeft);
     void stop();
     void attack(const bool isAttacking);
+    void setTakeDamage(bool takeDamage);
     void updatePosition();
     // virtual void move() = 0;
     virtual void update() = 0;
-    virtual void updateAnimation();
+
     virtual void collision(Entity* other,
                            Vector2f ds = Vector2f(0.0f, 0.0f)) = 0;
 };

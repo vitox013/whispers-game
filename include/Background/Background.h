@@ -11,7 +11,7 @@ class Background : public Ente {
     vector<Layer*> layers;
 
    public:
-    Background();
+    Background(const ID::ID id);
     ~Background();
     void draw();
     void addLayer(const char* path, const float velocity);

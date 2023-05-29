@@ -2,13 +2,17 @@
 
 using namespace Whispers::Background;
 
-Background::Background()
-    : Ente(ID::ID::background),
-      lastCamPosition(pGraphic->getCamera().getCenter()) {
-    addLayer("assets/background/layer1.png", 0.0f);
-}
+Background::Background(const ID::ID id)
+    : Ente(id), lastCamPosition(pGraphic->getCamera().getCenter()), layers() {}
 
-Background::~Background() {}
+Background::~Background() {
+    for (int i = 0; i < layers.size(); i++) {
+        Layer* layer = layers.at(i);
+        if (layer != nullptr) delete layer;
+        layer = nullptr;
+    }
+    layers.clear();
+}
 
 void Background::execute() { draw(); }
 

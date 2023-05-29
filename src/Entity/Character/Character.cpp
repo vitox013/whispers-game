@@ -12,14 +12,17 @@ Character::Character::Character(const Vector2f pos, const Vector2f size,
       speed(Vector2f(speed, 0.0f)),
       maxSpeed(speed),
       isAttacking(false),
-      animation(&shape) {}
+      animation(&shape),
+      takeDamage(false) {}
 
 Character::Character::~Character() {}
 
 void Character::Character::walk(const bool toLeft) {
     isAttacking = false;
     canWalk = true;
-    this->faceLeft = toLeft;
+    if (!takeDamage) {
+        this->faceLeft = toLeft;
+    }
 }
 
 void Character::Character::stop() { canWalk = false; }
@@ -34,7 +37,7 @@ void Character::Character::updatePosition() {
     float dt = deltaTime.asSeconds();
     Vector2f ds(0.0f, 0.0f);
 
-    if (canWalk) {
+    if (canWalk && !takeDamage) {
         ds.x = speed.x * dt * 1.2;
         if (faceLeft) {
             ds.x *= -1;
@@ -55,10 +58,17 @@ void Character::Character::setSpeed(Vector2f speed) { this->speed = speed; }
 
 const Vector2f Character::Character::getSpeed() const { return speed; }
 
+void Character::Character::setTakeDamage(bool takeDamage) {
+    this->takeDamage = takeDamage;
+}
+
 void Character::Character::updateAnimation() {
     if (canWalk) {
         animation.update(faceLeft, "walk");
     } else {
         animation.update(faceLeft, "idle");
     }
+    // if (takeDamage) {
+    //     animation.update(faceLeft, "hurt");
+    // }
 }

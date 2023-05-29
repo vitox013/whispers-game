@@ -3,9 +3,7 @@
 using namespace Whispers::Animation;
 
 Animation::Animation(RectangleShape* shape)
-    : shape(shape), images(), clock(), currentImage("") {
-    cout << shape->getSize().y << endl;
-}
+    : shape(shape), images(), clock(), currentImage("") {}
 
 Animation::~Animation() {
     map<string, Image*>::iterator it = images.begin();
@@ -33,7 +31,6 @@ void Animation::update(const bool toLeft, string actualImage) {
     Image* image = images[this->currentImage];
     Vector2f size = shape->getSize();
     Vector2f scale = image->getScale();
-    cout << scale.x << " " << scale.y << endl;
     image->update(toLeft, deltaTime);
     shape->setTextureRect(image->getSize());
     shape->setTexture(image->getTexture());
@@ -43,7 +40,6 @@ void Animation::update(const bool toLeft, string actualImage) {
 void Animation::addAnimation(const char* path, string nameAnimation,
                              const unsigned int imgCount,
                              const float switchTime, const Vector2f scale) {
-    // images[nameAnimation] = new Image(path, imgCount, switchTime, scale);
     Image* image = new Image(path, imgCount, switchTime, scale);
     images.insert(pair<string, Image*>(nameAnimation, image));
 }

@@ -1,4 +1,6 @@
 #pragma once
+#include <chrono>
+
 #include "..\..\..\stdafx.h"
 #include "..\Character.h"
 
@@ -12,6 +14,10 @@ class Player : public Character {
    private:
     void init();
     bool onFloor;
+    std::chrono::steady_clock::time_point damageStartTime;
+    const std::chrono::milliseconds damageDuration{
+        600};  // Duração da animação de dano (em milissegundos)
+    bool isDamageAnimationActive = false;
 
    public:
     Player(const sf::Vector2f pos, const sf::Vector2f size);

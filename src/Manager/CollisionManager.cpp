@@ -13,6 +13,10 @@ const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
     Vector2f pos2 = ent2->getPosition();
     Vector2f size1 = ent1->getSize();
     Vector2f size2 = ent2->getSize();
+    if (ent2->getId() == ID::ID::trap) {
+        pos2.y = pos2.y - 10.0f;
+        size2.x = size2.x - 20.0f;
+    }
     Vector2f distanceCenter(
         fabs((pos1.x + size1.x / 2.0f) - (pos2.x + size2.x / 2.0f)),
         fabs((pos1.y + size1.y / 2.0f) - (pos2.y + size2.y / 2.0f)));
@@ -42,8 +46,12 @@ void CollisionManager::CollisionCheck() {
             if (ds.x < 0.0f && ds.y < 0.0f) {
                 if (ent2->getId() == ID::ID::platform) {
                     ent2->collision(ent1, ds);
-                } else {
-                    // outro obstáculo
+                } else if (ent2->getId() == ID::ID::trap) {
+                    ent2->collision(ent1, ds);
+                } else if (ent2->getId() == ID::ID::ground) {
+                    ent2->collision(ent1, ds);
+                } else if (ent2->getId() == ID::ID::wall) {
+                    ent2->collision(ent1, ds);
                 }
             }
         }

@@ -6,8 +6,8 @@ using namespace Manager;
 GraphicManager* GraphicManager::pGraphic = nullptr;
 
 GraphicManager::GraphicManager()
-    : window(new sf::RenderWindow(sf::VideoMode(1280, 720), "Whispers")),
-      camera(Vector2f(1280 / 2.0f, 720 / 2.0f), Vector2f(1280, 720)) {
+    : window(new sf::RenderWindow(sf::VideoMode(1280, 760), "Whispers")),
+      camera(Vector2f(1280 / 2.0f, 760 / 2.0f), Vector2f(1280, 760)) {
     if (window == nullptr) {
         std::cout << "Warning: Cannot create a graphics manager" << std::endl;
         exit(1);
@@ -53,7 +53,13 @@ void GraphicManager::closeWindow() { window->close(); }
 const bool GraphicManager::isWindowOpen() { return window->isOpen(); }
 
 void GraphicManager::updateCamera(const Vector2f playerPosition) {
-    camera.setCenter(playerPosition.x, 350.0f);
+    if (playerPosition.x > 650 && playerPosition.x < 6396.14) {
+        camera.setCenter(playerPosition.x, 350.0f);
+    } else if (playerPosition.x > 6396.14) {
+        camera.setCenter(6396.14, 350.0f);
+    } else {
+        camera.setCenter(650.0f, 350.0f);
+    }
     window->setView(camera);
 }
 
