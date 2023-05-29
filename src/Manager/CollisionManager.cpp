@@ -114,7 +114,7 @@ void CollisionManager::CollisionCheck()
                 if (ent2->getId() == ID::ID::platform)
                 {
                     ent1->collision(ent2, ds);
-                    //ObjList->removeEntity(ent2);
+                    //ProjList->removeEntity(ent1);
                 }
             }
         }

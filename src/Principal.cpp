@@ -26,7 +26,7 @@ Principal::~Principal() {
 }
 
 void Principal::createLevel() {
-    Level::Midnight* pAux = new Level::Midnight();
+    Level::Midnight* pAux = new Level::Midnight(pGraphic);
     if (!pAux) {
         std::cout << "Error on creating level" << std::endl;
         exit(1);

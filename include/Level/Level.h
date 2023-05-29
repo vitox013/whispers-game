@@ -16,17 +16,19 @@
 #include "..\List\EntityList.h"
 #include "..\Manager\CollisionManager.h"
 #include "..\Manager\EventManager\EventManager.h"
+#include "..\Manager\GraphicManager\GraphicManager.h"
 
 namespace Whispers::Level {
 class Level : public Ente {
    protected:
     List::EntityList charactersList;
     List::EntityList obsList;
+    List::EntityList ProjList;
     Background::Background background;
     Manager::CollisionManager* pCollider;
 
    public:
-    Level(ID::ID level_id, const ID::ID background_id);
+    Level(ID::ID level_id, const ID::ID background_id, Manager::GraphicManager* pGraphic);
     ~Level();
     void createPlatform(const Vector2f position);
     void createWall(const Vector2f position);

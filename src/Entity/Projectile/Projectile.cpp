@@ -3,8 +3,8 @@
 
 using namespace Whispers::Entity::Projectile;
 
-Projectile::Projectile(Vector2f pos, Vector2f size, Vector2f target)
-    : Entity(pos, size, ID::ID::empty), Speed{PROJECTILE_SPEED}
+Projectile::Projectile(Vector2f pos, Vector2f target)
+    : Entity(pos, sf::Vector2f(PROJECTILE_SIZE_X, PROJECTILE_SIZE_Y), ID::ID::Projectile), Speed{PROJECTILE_SPEED}
 {
     shape.setFillColor(Color::Blue);
     postarget = target;

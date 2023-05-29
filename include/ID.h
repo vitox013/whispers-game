@@ -16,7 +16,8 @@ enum class ID {
     skeleton,
     bat,
     boss,
-    wall
+    wall,
+    Projectile
 };
 
 }

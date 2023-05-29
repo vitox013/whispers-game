@@ -2,6 +2,8 @@
 #include "..\..\stdafx.h"
 #include "..\Entity.h"
 #define PROJECTILE_SPEED 1.5f
+#define PROJECTILE_SIZE_X 10.0f
+#define PROJECTILE_SIZE_Y 10.0f
 namespace Whispers::Entity::Projectile
 {
     class Projectile : public Entity
@@ -15,7 +17,7 @@ namespace Whispers::Entity::Projectile
         Vector2f currentVel;
 
     public:
-        Projectile(Vector2f pos, Vector2f size, Vector2f target);
+        Projectile(Vector2f pos, Vector2f target);
         ~Projectile();
         void collision(Entity *otherEntity,
                                Vector2f ds = Vector2f(0.0f, 0.0f));

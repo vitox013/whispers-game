@@ -4,10 +4,10 @@ using namespace Whispers::Level;
 using namespace Whispers::Entity::Obstacle;
 using namespace Whispers::Entity::Character;
 
-Level::Level(const ID::ID level_id, const ID::ID background_id)
+Level::Level(const ID::ID level_id, const ID::ID background_id, Manager::GraphicManager* pGraphic)
     : Ente(level_id),
       background(background_id),
-      pCollider(new Manager::CollisionManager(&charactersList, &obsList)) {
+      pCollider(new Manager::CollisionManager(&charactersList, &obsList, &ProjList, pGraphic->getWindow())) {
     if (!pCollider) {
         std::cout << "Error on creating CollisionManager" << std::endl;
         exit(1);
@@ -70,7 +70,7 @@ void Level::createSkeleton(const Vector2f position) {
 void Level::createBat(const Vector2f position) {
     Manager::EventManager* pEvent = pEvent->getEventManager();
     Player* pPlayer = pEvent->getPlayer();
-    Enemy::Bat* bat = new Enemy::Bat(position, pPlayer);
+    Enemy::Bat* bat = new Enemy::Bat(position, pPlayer, &ProjList);
 
     if (!bat) {
         std::cout << "Error on creating Bat" << std::endl;
@@ -129,6 +129,7 @@ void Level::createEntities(char c, const Vector2i position) {
 void Level::draw() {
     obsList.execute();
     charactersList.execute();
+    ProjList.execute();
 }
 
 void Level::execute() {

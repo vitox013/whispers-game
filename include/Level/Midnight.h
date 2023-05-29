@@ -5,7 +5,7 @@
 namespace Whispers::Level {
 class Midnight : public Level {
    public:
-    Midnight();
+    Midnight(Manager::GraphicManager* pGraphic);
     ~Midnight();
     void createBackground();
     void createMap();

@@ -2,8 +2,8 @@
 
 using namespace Whispers::Level;
 
-Midnight::Midnight()
-    : Level(ID::ID::midnight_level, ID::ID::midnight_background) {}
+Midnight::Midnight(Manager::GraphicManager* pGraphic)
+    : Level(ID::ID::midnight_level, ID::ID::midnight_background, pGraphic) {}
 
 Midnight::~Midnight() {}
 

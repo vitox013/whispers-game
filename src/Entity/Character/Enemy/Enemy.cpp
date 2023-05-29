@@ -53,9 +53,12 @@ void Enemy::Enemy::moveEnemy() {
 
 void Enemy::Enemy::update() {
     moveEnemy();
-    updatePosition();
+    updatePosition();    
     dtAux += clock.getElapsedTime().asSeconds() * 100;
     clock.restart();
     updateAnimation();
 }
-void Enemy::Enemy::collision(Entity* other, Vector2f ds) {}
+void Enemy::Enemy::collision(Entity* other, Vector2f ds) 
+{
+    stop();
+}
