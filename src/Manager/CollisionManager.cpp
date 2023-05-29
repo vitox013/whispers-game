@@ -89,7 +89,7 @@ void CollisionManager::CollisionCheck()
                 if (ent1->getId() == ID::ID::player)
                 {
                     ent2->collision(ent1, ds);
-                    ProjList->removeEntity(ent2);
+                    //ProjList->removeEntity(ent2);
                 }
             }
         }
@@ -108,7 +108,7 @@ void CollisionManager::CollisionCheck()
                 if (ent2->getId() == ID::ID::platform)
                 {
                     ent1->collision(ent2, ds);
-                    ProjList->removeEntity(ent1);
+                    //ObjList->removeEntity(ent2);
                 }
             }
         }
@@ -119,7 +119,7 @@ void CollisionManager::CollisionCheck()
         ent1 = ProjList->operator[](j);
         if (outofbounds(ent1))
         {
-            ProjList->removeEntity(ent1);
+            //ProjList->removeEntity(j);
         }
     }
 }
