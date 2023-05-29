@@ -2,11 +2,8 @@
 
 using namespace Whispers::Background;
 
-Layer::Layer(const Vector2f windowSize, Texture texture, const float velocity)
-    : windowSize(windowSize),
-      texture(texture),
-      velocity(velocity),
-      dimension(0, 0, 0, 0) {
+Layer::Layer(const Vector2f windowSize, Texture texture)
+    : windowSize(windowSize), texture(texture), dimension(0, 0, 0, 0) {
     dimension.width =
         static_cast<int>(-abs(static_cast<int>(texture.getSize().x)));
 
@@ -25,8 +22,8 @@ void Layer::drawLayer(RenderWindow* window) { window->draw(back); }
 void Layer::update(const Vector2f ds, const Vector2f actualCamPosition) {
     // Atualiza a posição do plano de fundo com base no deslocamento da câmera
     // e na posição atual da câmera
-    dimension.left -= static_cast<int>(ds.x * velocity);
-    dimension.top -= static_cast<int>(ds.y * velocity);
+    dimension.left -= static_cast<int>(ds.x);
+    dimension.top -= static_cast<int>(ds.y);
 
     // Atualiza a posição do plano de fundo para ficar fixa em relação à câmera
     back.setPosition(actualCamPosition.x - windowSize.x / 2,

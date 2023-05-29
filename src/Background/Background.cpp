@@ -29,9 +29,9 @@ void Background::draw() {
     lastCamPosition = currentCamPosition;
 }
 
-void Background::addLayer(const char* path, const float velocity) {
+void Background::addLayer(const char* path) {
     Layer* layer = new Layer((Vector2f)pGraphic->getWindow()->getSize(),
-                             pGraphic->loadTexture(path), velocity);
+                             pGraphic->loadTexture(path));
 
     layers.push_back(layer);
 }

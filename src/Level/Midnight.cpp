@@ -8,7 +8,7 @@ Midnight::Midnight()
 Midnight::~Midnight() {}
 
 void Midnight::createBackground() {
-    background.addLayer("assets/background/midnight/midnight.png", 0.0f);
+    background.addLayer("assets/background/midnight/midnight.png");
 }
 
 void Midnight::createMap() {

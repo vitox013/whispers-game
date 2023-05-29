@@ -14,7 +14,7 @@ class Background : public Ente {
     Background(const ID::ID id);
     ~Background();
     void draw();
-    void addLayer(const char* path, const float velocity);
+    void addLayer(const char* path);
     void execute();
 };
 }  // namespace Whispers::Background
