@@ -7,22 +7,24 @@
 #define CHASE_RAY_Y 200.0f
 #define ENEMY_SPEED 60.0f
 
-namespace Whispers::Entity::Character::Enemy {
+namespace Whispers::Entity::Character::Enemy
+{
 
-class Enemy : public Character {
-   private:
-    Player* player;
-    short randomMove;
-    float dtAux;
+    class Enemy : public Character
+    {
+    protected:
+        Player *player;
+        short randomMove;
+        float dtAux;
 
-    void moveEnemy();
-    void randomMovement();
+        void moveEnemy();
+        void randomMovement();
 
-   public:
-    Enemy(const Vector2f pos, const Vector2f size, Player* pP);
-    ~Enemy();
+    public:
+        Enemy(const Vector2f pos, const Vector2f size, Player *pP);
+        ~Enemy();
 
-    void update();
-    void collision(Entity* other, Vector2f ds = Vector2f(0.0f, 0.0f));
-};
-}  // namespace Whispers::Entity::Character::Enemy
+        virtual void update();
+        virtual void collision(Entity *other, Vector2f ds = Vector2f(0.0f, 0.0f));
+    };
+} // namespace Whispers::Entity::Character::Enemy

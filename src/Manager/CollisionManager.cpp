@@ -3,12 +3,15 @@ using namespace Whispers;
 using namespace Manager;
 
 CollisionManager::CollisionManager(List::EntityList *charsList,
-                                   List::EntityList *obsList)
-    : CharList(charsList), ObjList(obsList) {}
+                                   List::EntityList *obsList, 
+                                   List::EntityList *ProjeList,
+                                   RenderWindow *Windowi)
+    : CharList(charsList), ObjList(obsList), ProjList(ProjeList), Window{Windowi} {}
 CollisionManager::~CollisionManager() {}
 
 const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
-                                               Entity::Entity *ent2) {
+                                               Entity::Entity *ent2)
+{
     Vector2f pos1 = ent1->getPosition();
     Vector2f pos2 = ent2->getPosition();
     Vector2f size1 = ent1->getSize();
@@ -21,31 +24,102 @@ const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
     return Vector2f((distanceCenter.x - rectangleSum.x),
                     (distanceCenter.y - rectangleSum.y));
 }
-void CollisionManager::CollisionCheck() {
-    for (int i = 0; i < (int)CharList->getSize() - 1; i++) {
-        Entity::Entity *ent1 = CharList->operator[](i);
-        for (int j = i + 1; i < (int)CharList->getSize(); i++) {
-            Entity::Entity *ent2 = CharList->operator[](j);
-
-            Vector2f ds = CollisionCalc(ent1, ent2);
-            if (ds.x < 0.0f && ds.y < 0.0f) {
+bool CollisionManager::outofbounds(Entity::Entity *ent)
+{
+    if (ent->getPosition().x > Window->getSize().x || ent->getPosition().x < 0.0f ||
+        ent->getPosition().y > Window->getSize().y || ent->getPosition().y < 0.0f)
+    {
+        return true;
+    }else
+    {
+        return false;
+    }
+    
+}
+void CollisionManager::CollisionCheck()
+{
+    Entity::Entity *ent1;
+    Entity::Entity *ent2;
+    Vector2f ds;
+    // Colissão entre personagens
+    for (int i = 0; i < (int)CharList->getSize() - 1; i++)
+    {
+        ent1 = CharList->operator[](i);
+        for (int j = i + 1; i < (int)CharList->getSize(); i++)
+        {
+            ent2 = CharList->operator[](j);
+            ds = CollisionCalc(ent1, ent2);
+            if (ds.x < 0.0f && ds.y < 0.0f)
+            {
                 ent1->collision(ent2);
             }
         }
     }
-
-    for (int i = 0; i < CharList->getSize(); i++) {
-        Entity::Entity *ent1 = CharList->operator[](i);
-        for (int j = 0; j < ObjList->getSize(); j++) {
-            Entity::Entity *ent2 = ObjList->operator[](j);
-            sf::Vector2f ds = CollisionCalc(ent1, ent2);
-            if (ds.x < 0.0f && ds.y < 0.0f) {
-                if (ent2->getId() == ID::ID::platform) {
+    // Colissão entre personagens e objetos
+    for (int i = 0; i < CharList->getSize(); i++)
+    {
+        ent1 = CharList->operator[](i);
+        for (int j = 0; j < ObjList->getSize(); j++)
+        {
+            ent2 = ObjList->operator[](j);
+            ds = CollisionCalc(ent1, ent2);
+            if (ds.x < 0.0f && ds.y < 0.0f)
+            {
+                if (ent2->getId() == ID::ID::platform)
+                {
                     ent2->collision(ent1, ds);
-                } else {
+                }
+                else
+                {
                     // outro obstáculo
                 }
             }
+        }
+    }
+    // Colissão entre personagens e projeteis
+    for (int i = 0; i < CharList->getSize(); i++)
+    {
+        ent1 = CharList->operator[](i);
+        for (int j = 0; j < ProjList->getSize(); j++)
+        {
+            ent2 = ProjList->operator[](j);
+            ds = CollisionCalc(ent1, ent2);
+            if (ds.x < 0.0f && ds.y < 0.0f)
+            {
+                if (ent1->getId() == ID::ID::player)
+                {
+                    ent2->collision(ent1, ds);
+                    ProjList->removeEntity(ent2);
+                }
+            }
+        }
+    }
+    // Colissão entre objetos e projeteis
+    for (int i = 0; i < ProjList->getSize(); i++)
+    {
+        ent1 = ProjList->operator[](i);
+       
+        for (int j = 0; j < ObjList->getSize(); j++)
+        {
+            ent2 = ObjList->operator[](j);
+            ds = CollisionCalc(ent1, ent2);
+            if (ds.x < 0.0f && ds.y < 0.0f)
+            {
+                if (ent2->getId() == ID::ID::platform)
+                {
+                    ent1->collision(ent2, ds);
+                    ProjList->removeEntity(ent1);
+                }
+            }
+        }
+    }
+    //Verifica se está fora da tela
+    for (int j = 0; j < ProjList->getSize(); j++)
+    {
+        ent1 = ProjList->operator[](j);
+        if (outofbounds(ent1))
+        {
+            ProjList->removeEntity(ent1);
         }
     }
 }

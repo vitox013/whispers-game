@@ -1,6 +1,7 @@
 #pragma once
 
 #include ".\Entity\Character\Enemy\Enemy.h"
+#include ".\Entity\Projectile\Projectile.h"
 #include ".\Entity\Character\Player\Player.h"
 #include ".\Entity\Obstacle\Platform.h"
 #include ".\List\EntityList.h"
@@ -17,8 +18,9 @@ class Principal {
     Manager::CollisionManager Collider;
     List::EntityList charactersList;
     List::EntityList obsList;
+    List::EntityList ProjectileList;
 
-   public:
+public:
     Principal();
     ~Principal();
     void execute();
