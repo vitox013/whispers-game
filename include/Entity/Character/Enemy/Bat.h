@@ -6,6 +6,8 @@
 
 #define BAT_SIZE_X 50.0f
 #define BAT_SIZE_Y 70.0f
+#define BAT_LIFE 1
+#define BAT_DAMAGE 1
 
 #define SHOOT_RAY_X 400.0f
 #define SHOOT_RAY_Y 400.0f

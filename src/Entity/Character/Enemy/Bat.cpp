@@ -2,8 +2,9 @@
 
 using namespace Whispers::Entity::Character::Enemy;
 
-Bat::Bat(const sf::Vector2f pos, Player *player, List::EntityList *projelist)
-    : Enemy(pos, sf::Vector2f(BAT_SIZE_X, BAT_SIZE_Y), player, ID::ID::bat), projlist{projelist}, cooldown{clock.getElapsedTime()}
+Bat::Bat(const sf::Vector2f pos, Player* player, List::EntityList * projelist)
+    : Enemy(pos, sf::Vector2f(BAT_SIZE_X, BAT_SIZE_Y), BAT_LIFE, BAT_DAMAGE,
+            player, ID::ID::bat), projlist{projelist}, cooldown{clock.getElapsedTime()}
 {
     init();
 }

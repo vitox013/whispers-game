@@ -20,9 +20,9 @@ namespace Whispers::Entity::Character::Enemy
     void randomMovement();
 
    public:
-    Enemy(const Vector2f pos, const Vector2f size, Player* pP, ID::ID id);
+    Enemy(const Vector2f pos, const Vector2f size, const int life,
+          const int damage, Player* pP, ID::ID id);
     ~Enemy();
-    Player* getPlayer();
     virtual void moveEnemy();
     virtual void update();
     void collision(Entity* other, Vector2f ds = Vector2f(0.0f, 0.0f));
