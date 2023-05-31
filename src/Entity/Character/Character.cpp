@@ -3,7 +3,8 @@
 using namespace Whispers::Entity;
 
 Character::Character::Character(const Vector2f pos, const Vector2f size,
-                                const float speed, const ID::ID ID)
+                                const float speed, const int life,
+                                const int damage, const ID::ID ID)
     : Entity(pos, size, ID),
       canWalk(false),
       faceLeft(false),
@@ -13,12 +14,15 @@ Character::Character::Character(const Vector2f pos, const Vector2f size,
       maxSpeed(speed),
       isAttacking(false),
       animation(&shape),
-      takeDamage(false) {}
+      takeDamage(false),
+      life(life),
+      damage(damage),
+      isAlive(true) {}
 
 Character::Character::~Character() {}
 
 void Character::Character::walk(const bool toLeft) {
-    isAttacking = false;
+    // isAttacking = false;
     canWalk = true;
     if (!takeDamage) {
         this->faceLeft = toLeft;
@@ -42,6 +46,9 @@ void Character::Character::updatePosition() {
         if (faceLeft) {
             ds.x *= -1;
         }
+    } else if (takeDamage) {
+        // knockback
+        ds.x = speed.x * dt * 1.2;
     }
 
     speed.y += GRAVITY * dt;
@@ -53,6 +60,8 @@ void Character::Character::updatePosition() {
 
     draw();
 }
+
+const int Character::Character::getDamage() const { return damage; }
 
 void Character::Character::setSpeed(Vector2f speed) { this->speed = speed; }
 

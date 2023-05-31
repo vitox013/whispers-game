@@ -3,8 +3,8 @@
 using namespace Whispers::Entity::Character::Enemy;
 
 Skeleton::Skeleton(const sf::Vector2f pos, Player* player)
-    : Enemy(pos, sf::Vector2f(SKELETON_SIZE_X, SKELETON_SIZE_Y), player,
-            ID::ID::skeleton) {
+    : Enemy(pos, sf::Vector2f(SKELETON_SIZE_X, SKELETON_SIZE_Y), SKELETON_LIFE,
+            SKELETON_DAMAGE, player, ID::ID::skeleton) {
     init();
 }
 

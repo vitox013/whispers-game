@@ -4,6 +4,8 @@
 
 #define SKELETON_SIZE_X 50.0f
 #define SKELETON_SIZE_Y 70.0f
+#define SKELETON_LIFE 3
+#define SKELETON_DAMAGE 1
 
 namespace Whispers::Entity::Character::Enemy {
 class Skeleton : public Enemy {

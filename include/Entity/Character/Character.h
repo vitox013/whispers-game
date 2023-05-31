@@ -18,21 +18,23 @@ class Character : public Entity {
     bool canWalk;
     bool takeDamage;
     bool idle;
+    bool isAlive;
     float dt;
     Clock clock;
     virtual void updateAnimation();
 
    public:
     Character(const sf::Vector2f pos, const sf::Vector2f tam, const float speed,
-              const ID::ID id);
+              const int life, const int damage, const ID::ID id);
     ~Character();
     void setSpeed(Vector2f speed);
     const Vector2f getSpeed() const;
     void walk(const bool toLeft);
     void stop();
-    void attack(const bool isAttacking);
+    virtual void attack(const bool isAttacking);
     void setTakeDamage(bool takeDamage);
     void updatePosition();
+    const int getDamage() const;
     // virtual void move() = 0;
     virtual void update() = 0;
 

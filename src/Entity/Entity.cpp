@@ -17,7 +17,7 @@ void Entity::Entity::setPosition(Vector2f pos) {
     this->position = pos;
 }
 
-const Vector2f Entity::Entity::getPosition() const { return position; }
+Vector2f Entity::Entity::getPosition() { return position; }
 
 const Vector2f Entity::Entity::getSize() const { return size; }
 

@@ -13,7 +13,7 @@ class Entity : public Ente {
     virtual ~Entity();
     const RectangleShape getShape() const;
     void setPosition(Vector2f pos);
-    const Vector2f getPosition() const;
+    Vector2f getPosition();
     const Vector2f getSize() const;
     virtual void update() = 0;
     void draw();

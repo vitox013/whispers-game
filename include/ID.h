@@ -12,6 +12,7 @@ enum class ID {
     background,
     trap,
     midnight_level,
+    play_midnight,
     midnight_background,
     skeleton,
     bat,

@@ -1,21 +1,20 @@
 #pragma once
 #include "..\..\Entity\Character\Player\Player.h"
 #include "..\GraphicManager\GraphicManager.h"
+#include "..\StateManager.h"
 #include "stdafx.h"
 
 namespace Whispers::Manager {
 class EventManager {
    private:
     GraphicManager* pGraphic;
-    Entity::Character::Player* pPlayer;
+    StateManager* pState;
     static EventManager* pEvent;
     EventManager();
 
    public:
     ~EventManager();
     static EventManager* getEventManager();
-    Entity::Character::Player* getPlayer();
-    void setPlayer(Entity::Character::Player* pPlayer);
     void handleKeyPress();
     void execute();
 };

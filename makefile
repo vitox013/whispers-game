@@ -14,7 +14,7 @@ OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 CC := g++
 
 # Flags
-CPPFLAGS := -Iinclude -O2
+CPPFLAGS := -Iinclude -O2 -g
 CFLAGS   := -Wall
 LDFLAGS  := -LSFML\lib -Ldll
 LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio

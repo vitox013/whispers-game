@@ -7,40 +7,37 @@ using namespace Character;
 Principal::Principal()
     : pGraphic(pGraphic->getGraphicManager()),
       pEvent(pEvent->getEventManager()),
-      pLevel(nullptr) {
+      pState(pState->getStateManager()) {
     // std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     // sf::VideoMode fullscreenMode = modes[0];
     // // sf::RenderWindow window(fullscreenMode, "My window",
     // // sf::Style::Fullscreen);
     // player(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(50.0f, 50.0f))
-
-    createLevel();
-    execute();
-}
-
-Principal::~Principal() {
-    if (pLevel) {
-        delete pLevel;
-        pLevel = nullptr;
-    }
-}
-
-void Principal::createLevel() {
-    Level::Midnight* pAux = new Level::Midnight();
-    if (!pAux) {
-        std::cout << "Error on creating level" << std::endl;
+    if (pGraphic == nullptr) {
+        std::cout << "pGraphic is null" << std::endl;
         exit(1);
     }
-    pLevel = static_cast<Level::Midnight*>(pAux);
-    pLevel->createBackground();
-    pLevel->createMap();
+    if (pEvent == nullptr) {
+        std::cout << "pEvent is null" << std::endl;
+        exit(1);
+    }
+    if (pState == nullptr) {
+        std::cout << "pState is null" << std::endl;
+        exit(1);
+    }
+
+    init();
 }
+
+Principal::~Principal() {}
+
+void Principal::init() { pState->pushState(ID::ID::play_midnight); }
 
 void Principal::execute() {
     while (pGraphic->isWindowOpen()) {
         pEvent->execute();
         pGraphic->clearWindow();
-        pLevel->execute();
+        pState->execute();
         pGraphic->showElement();
     }
 }

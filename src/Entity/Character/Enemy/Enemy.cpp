@@ -2,9 +2,11 @@
 
 using namespace Whispers::Entity::Character;
 
-Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player* pP,
-                    ID::ID id)
-    : Character(pos, size, ENEMY_SPEED, id), player(pP), dtAux(0.0f) {
+Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, const int life,
+                    const int damage, Player* pP, ID::ID id)
+    : Character(pos, size, ENEMY_SPEED, life, damage, id),
+      player(pP),
+      dtAux(0.0f) {
     srand(time(NULL));
     randomMove = rand() % 3;
     if (randomMove == 0) {
@@ -17,8 +19,6 @@ Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, Player* pP,
 }
 
 Enemy::Enemy::~Enemy() {}
-
-Player* Enemy::Enemy::getPlayer() { return player; }
 
 void Enemy::Enemy::randomMovement() {
     if (dtAux >= 1.0f) {
