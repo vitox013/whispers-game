@@ -19,7 +19,7 @@ class Level : public Ente {
     Builder::EntityBuilder entityBuilder;
 
    public:
-    Level(ID::ID level_id, const ID::ID background_id, Manager::GraphicManager* pGraphic);
+    Level(ID::ID level_id, const ID::ID background_id);
     ~Level();
     virtual void createBackground() = 0;
     virtual void createMap() = 0;

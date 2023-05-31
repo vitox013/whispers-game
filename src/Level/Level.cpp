@@ -4,12 +4,12 @@ using namespace Whispers::Level;
 using namespace Whispers::Entity::Obstacle;
 using namespace Whispers::Entity::Character;
 
-Level::Level(const ID::ID level_id, const ID::ID background_id, Manager::GraphicManager* pGraphic)
+Level::Level(const ID::ID level_id, const ID::ID background_id)
     : Ente(level_id),
       charactersList(),
       obsList(),
       background(background_id),
-      pCollider(new Manager::CollisionManager(&charactersList, &obsList, &ProjList, pGraphic->getWindow())),
+      pCollider(new Manager::CollisionManager(&charactersList, &obsList, &ProjList)),
       entityBuilder() {
     if (!pCollider) {
         std::cout << "Error on creating CollisionManager" << std::endl;

@@ -35,7 +35,7 @@ void Bat::update()
         if (fabs(player->getPosition().x - getPosition().x) <= SHOOT_RAY_X &&
             fabs(player->getPosition().y - getPosition().y) <= SHOOT_RAY_Y)
         {
-            CreatePojectile(player->getPosition());
+            //CreatePojectile(player->getPosition());
             cooldown = clock.restart();
         }
     }else

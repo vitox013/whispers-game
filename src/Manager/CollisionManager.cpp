@@ -4,9 +4,8 @@ using namespace Manager;
 
 CollisionManager::CollisionManager(List::EntityList *charsList,
                                    List::EntityList *obsList, 
-                                   List::EntityList *ProjeList,
-                                   RenderWindow *Windowi)
-    : CharList(charsList), ObjList(obsList), ProjList(ProjeList), Window{Windowi} {}
+                                   List::EntityList *ProjeList)
+    : CharList(charsList), ObjList(obsList), ProjList(ProjeList){}
 CollisionManager::~CollisionManager() {}
 
 const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
@@ -30,14 +29,14 @@ const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
 }
 bool CollisionManager::outofbounds(Entity::Entity *ent)
 {
-    if (ent->getPosition().x > Window->getSize().x || ent->getPosition().x < 0.0f ||
+    /*if (ent->getPosition().x > Window->getSize().x || ent->getPosition().x < 0.0f ||
         ent->getPosition().y > Window->getSize().y || ent->getPosition().y < 0.0f)
     {
         return true;
     }else
     {
         return false;
-    }
+    }*/
     
 }
 void CollisionManager::CollisionCheck()
@@ -120,12 +119,12 @@ void CollisionManager::CollisionCheck()
         }
     }
     //Verifica se está fora da tela
-    for (int j = 0; j < ProjList->getSize(); j++)
+    /*for (int j = 0; j < ProjList->getSize(); j++)
     {
         ent1 = ProjList->operator[](j);
         if (outofbounds(ent1))
         {
             //ProjList->removeEntity(j);
         }
-    }
+    }*/
 }

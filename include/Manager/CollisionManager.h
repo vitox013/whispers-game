@@ -13,13 +13,12 @@ namespace Whispers
             List::EntityList *CharList;
             List::EntityList *ObjList;
             List::EntityList *ProjList;
-            RenderWindow *Window;
+
 
         public:
             CollisionManager(List::EntityList *charsList,
                              List::EntityList *ObjList,
-                             List::EntityList *ProjeList,
-                             RenderWindow *Windowi);
+                             List::EntityList *ProjeList);
             ~CollisionManager();
             const Vector2f CollisionCalc(Entity::Entity *ent1, Entity::Entity *ent2);
             void CollisionCheck();
