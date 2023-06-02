@@ -19,7 +19,8 @@ void EntityBuilder::verifyPlayer() {
     }
 }
 
-Entity* EntityBuilder::createEntity(const ID::ID id, const Vector2f pos, List::EntityList* projelist) {
+Entity* EntityBuilder::createEntity(const ID::ID id, const Vector2f pos,
+                                    List::EntityList* projelist) {
     Entity::Entity* entity = nullptr;
 
     // Verificar o ID da entidade e criar a entidade correspondente
@@ -39,7 +40,8 @@ Entity* EntityBuilder::createEntity(const ID::ID id, const Vector2f pos, List::E
 
             break;
         case ID::ID::bat:
-            entity = static_cast<Entity::Entity*>(new Bat(pos, pPlayer, projelist));
+            entity =
+                static_cast<Entity::Entity*>(new Bat(pos, pPlayer, projelist));
 
             break;
         case ID::ID::boss:
@@ -64,7 +66,10 @@ Entity* EntityBuilder::createEntity(const ID::ID id, const Vector2f pos, List::E
         case ID::ID::wall:
             entity = static_cast<Entity::Entity*>(
                 new Wall(pos, Vector2f(40.0f, 400.0f)));
-
+            break;
+        case ID::ID::web:
+            entity = static_cast<Entity::Entity*>(
+                new Web(pos, Vector2f(150.0f, 50.0f)));
             break;
         default:
             break;

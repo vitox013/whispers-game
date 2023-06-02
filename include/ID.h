@@ -18,7 +18,8 @@ enum class ID {
     bat,
     boss,
     wall,
-    Projectile
+    Projectile,
+    web
 };
 
 }

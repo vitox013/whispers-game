@@ -3,26 +3,21 @@
 #include ".\Ente.h"
 #include "GraphicManager\GraphicManager.h"
 
-namespace Whispers
-{
-    namespace Manager
-    {
-        class CollisionManager
-        {
-        private:
-            List::EntityList *CharList;
-            List::EntityList *ObjList;
-            List::EntityList *ProjList;
+namespace Whispers {
+namespace Manager {
+class CollisionManager {
+   private:
+    List::EntityList *CharList;
+    List::EntityList *ObjList;
+    List::EntityList *ProjList;
 
-
-        public:
-            CollisionManager(List::EntityList *charsList,
-                             List::EntityList *ObjList,
-                             List::EntityList *ProjeList);
-            ~CollisionManager();
-            const Vector2f CollisionCalc(Entity::Entity *ent1, Entity::Entity *ent2);
-            void CollisionCheck();
-            bool outofbounds(Entity::Entity *ent);
-        };
-    } // namespace Manager
-} // namespace Whispers
+   public:
+    CollisionManager(List::EntityList *charsList, List::EntityList *ObjList,
+                     List::EntityList *ProjeList);
+    ~CollisionManager();
+    const Vector2f CollisionCalc(Entity::Entity *ent1, Entity::Entity *ent2);
+    void CollisionCheck();
+    bool outofbounds(Entity::Entity *ent);
+};
+}  // namespace Manager
+}  // namespace Whispers

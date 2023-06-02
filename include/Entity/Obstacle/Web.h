@@ -1,19 +1,19 @@
 #pragma once
-#include "..\..\stdafx.h"
-#include "..\Character\Character.h"
+
 #include ".\Obstacle.h"
 
-#define PLATFORM_TEXTURE_PATH "assets/obstacle/platform.png"
+#define WEB_TEXTURE_PATH "assets/obstacle/web.png"
 
 namespace Whispers::Entity::Obstacle {
-class Platform : public Obstacle {
+class Web : public Obstacle {
    private:
-    float additionalPlayerSpeed;
+    const int slowness;
 
    public:
-    Platform(Vector2f pos, Vector2f size);
-    ~Platform();
+    Web(Vector2f pos, Vector2f size);
+    ~Web();
     void collision(Entity* entity, Vector2f ds = Vector2f(0.0f, 0.0f));
     void collideObstacle(Vector2f ds, Character::Character* pChar);
+    const int getSlowness() const { return slowness; }
 };
 }  // namespace Whispers::Entity::Obstacle

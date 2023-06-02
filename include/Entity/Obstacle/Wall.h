@@ -3,7 +3,7 @@
 #include "..\Character\Character.h"
 #include ".\Obstacle.h"
 
-#define WALL_TEXTURE_PATH "assets/wall.png"
+#define WALL_TEXTURE_PATH "assets/obstacle/wall.png"
 
 namespace Whispers::Entity::Obstacle {
 class Wall : public Obstacle {

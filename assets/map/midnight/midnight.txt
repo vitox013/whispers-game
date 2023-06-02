@@ -1,14 +1,14 @@
-W        p     S          S                             S                                                                                   W
+M        p     S          S                             S                                                                                   M
                                                                  B                        
 
 
     B                           #    
                                      B
-W        
-                       #               #                                                                                            b       W
+M        
+                       #               #                                                                                            b       M
                   
                                                           
-              #             #               #               #
+              #                           #               #
 
                                   
-G  GT  G  G  G  G  GT  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G G  G  G    
+G  G  G  G  GW  G  G  GT  G  G  G  G  G  GW  G  G  GT  G  G  G  G  G  G  G  G  G  G  GT  G  G  G  G  G  G  G  G  G  G  G  G  G  G  G G  G  G    

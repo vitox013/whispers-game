@@ -43,31 +43,42 @@ void Player::jump() {
 }
 
 void Player::canJump() { onFloor = true; }
+
 void Player::collision(Entity* other, Vector2f ds) {
-    Character* character = dynamic_cast<Character*>(other);
-    if (character->getId() == ID::ID::skeleton) {
-        if (!takeDamage) {
-            // Player is not currently taking damage and either the player or
-            // the skeleton is in the air
-            takeDamage = true;
-            cout << "Player: " << life << endl;
-            life -= character->getDamage();
-            if (life <= 0) {
-                life = 0;
-                isAlive = false;
-            }
+    Character* character = character = static_cast<Character*>(other);
+    if (!isInvincible) {
+        switch (character->getId()) {
+            case ID::ID::skeleton:
+
+                speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
+                // Player is not currently taking damage and either the player
+                // or the skeleton is in the air
+                takeDamage = true;
+                life -= character->getDamage();
+                if (life <= 0) {
+                    life = 0;
+                    isAlive = false;
+                }
+
+                break;
+            case ID::ID::bat:
+
+                speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
+                onFloor = false;
+                takeDamage = true;
+                life -= character->getDamage();
+
+                break;
+
+            default:
+                break;
         }
+        setInvincible(true);
     }
 }
 
 void Player::updateAnimation() {
     if (isAlive) {
-        if (!onFloor && speed.y > 0.0f) {
-            animation.update(faceLeft, "fall");
-            if (isAttacking) animation.update(faceLeft, "attack");
-        } else if (!onFloor) {
-            animation.update(faceLeft, "jump");
-        }
         if (isAttacking) {
             animation.update(faceLeft, "attack");
             if (!isAttackingAnimationActive) {
@@ -81,12 +92,7 @@ void Player::updateAnimation() {
                     isAttackingAnimationActive = false;
                 }
             }
-        } else if (canWalk && !takeDamage) {
-            animation.update(faceLeft, "walk");
-        } else if (!takeDamage) {
-            animation.update(faceLeft, "idle");
-        }
-        if (takeDamage) {
+        } else if (takeDamage) {
             animation.update(faceLeft, "hurt");
             canWalk = false;
 
@@ -108,10 +114,66 @@ void Player::updateAnimation() {
                     isDamageAnimationActive = false;
                 }
             }
+        } else {
+            if (!onFloor && speed.y > 0.0f) {
+                animation.update(faceLeft, "fall");
+                if (isAttacking) {
+                    animation.update(faceLeft, "attack");
+                }
+            } else if (!onFloor) {
+                animation.update(faceLeft, "jump");
+            } else if (canWalk && !takeDamage) {
+                animation.update(faceLeft, "walk");
+            } else if (!takeDamage && !isAttacking) {
+                animation.update(faceLeft, "idle");
+            }
         }
     } else {
         animation.update(faceLeft, "death");
     }
+    auto elapsedTime =
+        std::chrono::steady_clock::now() - invincibilityStartTime;
+    if (elapsedTime >= invincibilityDuration) {
+        // Set invincibility to false
+        isInvincible = false;
+    }
+}
+
+void Player::updatePosition() {
+    sf::Time deltaTime = clock.restart();
+    float dt = deltaTime.asSeconds();
+    Vector2f ds(0.0f, 0.0f);
+
+    if (canWalk && !takeDamage) {
+        ds.x = speed.x * dt * 1.2;
+
+        if (faceLeft) {
+            ds.x *= -1;
+        }
+    } else if (takeDamage) {
+        // knockback
+        if (faceLeft) {
+            ds.x = speed.x * dt;
+        } else {
+            ds.x = -speed.x * dt;
+        }
+    }
+
+    speed.y += GRAVITY * dt;
+    ds.y = speed.y * GRAVITY;
+
+    setPosition(Vector2f(position.x + ds.x, position.y + ds.y));
+
+    speed.x = maxSpeed;
+
+    draw();
 }
 
 void Player::attack(const bool isAttacking) { this->isAttacking = isAttacking; }
+
+const bool Player::getIsInvincible() const { return isInvincible; }
+
+void Player::setInvincible(const bool isInvincible) {
+    invincibilityStartTime = std::chrono::steady_clock::now();
+    this->isInvincible = isInvincible;
+}

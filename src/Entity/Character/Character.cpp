@@ -48,7 +48,11 @@ void Character::Character::updatePosition() {
         }
     } else if (takeDamage) {
         // knockback
-        ds.x = speed.x * dt * 1.2;
+        if (faceLeft) {
+            ds.x = speed.x * dt;
+        } else {
+            ds.x = -speed.x * dt;
+        }
     }
 
     speed.y += GRAVITY * dt;
