@@ -14,5 +14,6 @@ class Trap : public Obstacle {
     ~Trap();
     void collision(Entity* entity, Vector2f ds = Vector2f(0.0f, 0.0f));
     void collideObstacle(Vector2f ds, Character::Character* pChar);
+    const int getDamage() const { return damage; }
 };
 }  // namespace Whispers::Entity::Obstacle

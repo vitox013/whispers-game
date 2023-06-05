@@ -9,7 +9,8 @@ Level::Level(const ID::ID level_id, const ID::ID background_id)
       charactersList(),
       obsList(),
       background(background_id),
-      pCollider(new Manager::CollisionManager(&charactersList, &obsList, &ProjList)),
+      pCollider(
+          new Manager::CollisionManager(&charactersList, &obsList, &ProjList)),
       entityBuilder() {
     if (!pCollider) {
         std::cout << "Error on creating CollisionManager" << std::endl;
@@ -29,7 +30,7 @@ Level::~Level() {
 void Level::createEntities(char c, const Vector2i position) {
     Vector2f pos = Vector2f(position.x * 50.0f, position.y * 50.0f);
     switch (c) {
-        case 'W':
+        case 'M':
             obsList.addEntity(entityBuilder.createEntity(ID::ID::wall, pos));
             break;
         case '#':
@@ -58,7 +59,9 @@ void Level::createEntities(char c, const Vector2i position) {
             charactersList.addEntity(
                 entityBuilder.createEntity(ID::ID::boss, pos));
             break;
-
+        case 'W':
+            obsList.addEntity(entityBuilder.createEntity(ID::ID::web, pos));
+            break;
         default:
             break;
     }

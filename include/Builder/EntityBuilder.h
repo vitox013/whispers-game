@@ -9,6 +9,7 @@
 #include "..\Entity\Obstacle\Platform.h"
 #include "..\Entity\Obstacle\Trap.h"
 #include "..\Entity\Obstacle\Wall.h"
+#include "..\Entity\Obstacle\Web.h"
 #include "..\List\EntityList.h"
 
 using namespace Whispers::Entity::Character;
@@ -23,6 +24,7 @@ class EntityBuilder {
     EntityBuilder(Player* pPlayer);
     EntityBuilder();
     ~EntityBuilder();
-    Entity::Entity* createEntity(const ID::ID id, const Vector2f pos, List::EntityList* projelist = nullptr);
+    Entity::Entity* createEntity(const ID::ID id, const Vector2f pos,
+                                 List::EntityList* projelist = nullptr);
 };
 }  // namespace Whispers::Builder
