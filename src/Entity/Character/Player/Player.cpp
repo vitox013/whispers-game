@@ -1,11 +1,20 @@
 #include "..\..\..\..\include\Entity\Character\Player\Player.h"
+#include "..\..\..\..\include\Observer\PlayerObserver.h"
+
 
 using namespace Whispers::Entity::Character;
 
 Player::Player(const Vector2f pos, const Vector2f size)
     : Character(pos, size, PLAYER_SPEED, PLAYER_LIFE, PLAYER_DAMAGE,
                 ID::ID::player),
-      onFloor(false) {
+      onFloor(false),
+      pPlayerObs(new Observer::PlayerObserver(this)) 
+{
+    if (pPlayerObs == nullptr)
+    {
+        std::cout << "Nao foi possivel criar PlayerObserver" << std::endl;
+    }
+    
     init();
 }
 
@@ -115,3 +124,7 @@ void Player::updateAnimation() {
 }
 
 void Player::attack(const bool isAttacking) { this->isAttacking = isAttacking; }
+void Whispers::Entity::Character::Player::ChangeObserverStatus()
+{
+    pPlayerObs->changeActiveState();
+}

@@ -2,20 +2,27 @@
 #include "..\..\Entity\Character\Player\Player.h"
 #include "..\GraphicManager\GraphicManager.h"
 #include "..\StateManager.h"
+#include "..\..\List\ObserverList.h"
 #include "stdafx.h"
 
-namespace Whispers::Manager {
-class EventManager {
-   private:
-    GraphicManager* pGraphic;
-    StateManager* pState;
-    static EventManager* pEvent;
-    EventManager();
+namespace Whispers::Manager
+{
+    class EventManager
+    {
+    private:
+        GraphicManager *pGraphic;
+        StateManager *pState;
+        static EventManager *pEvent;
+        List::ObserverList* pObsList;
+        EventManager();
 
-   public:
-    ~EventManager();
-    static EventManager* getEventManager();
-    void handleKeyPress();
-    void execute();
-};
-}  // namespace Whispers::Manager
+    public:
+        ~EventManager();
+        static EventManager *getEventManager();
+        void AddObserver(Observer::Observer *pObserver);
+        void RemoveObserver(Observer::Observer *pObserver);
+        void RemoveObserver(int pos);
+        void handleKeyPress(); // Mudar para observer
+        void execute();
+    };
+} // namespace Whispers::Manager

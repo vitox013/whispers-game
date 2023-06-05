@@ -61,7 +61,7 @@ void List<TL>::removeElement(TL* element) {
     Element<TL>* pAux = pFirst;
     while (pAux != nullptr) {
         if (pAux->getElement() == element) {
-            delete pAux;
+            delete (pAux);
         }
         pAux = pAux->getNext();
     }
