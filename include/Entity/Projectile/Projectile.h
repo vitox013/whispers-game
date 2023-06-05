@@ -5,6 +5,7 @@
 #define PROJECTILE_SPEED 1.5f
 #define PROJECTILE_SIZE_X 10.0f
 #define PROJECTILE_SIZE_Y 10.0f
+#define GRAVITY -1.2f
 namespace Whispers::Entity::Projectile
 {
     class Projectile : public Entity

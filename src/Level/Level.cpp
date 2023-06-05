@@ -25,6 +25,7 @@ Level::~Level() {
     }
     charactersList.clearList();
     obsList.clearList();
+    ProjList.clearList();
 }
 
 void Level::createEntities(char c, const Vector2i position) {
@@ -53,7 +54,7 @@ void Level::createEntities(char c, const Vector2i position) {
             break;
         case 'B':
             charactersList.addEntity(
-                entityBuilder.createEntity(ID::ID::bat, pos));
+                entityBuilder.createEntity(ID::ID::bat, pos, &ProjList));
             break;
         case 'b':
             charactersList.addEntity(

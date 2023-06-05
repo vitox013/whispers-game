@@ -23,21 +23,21 @@ void Bat::CreatePojectile(Vector2f target) {
     Projectile::Projectile *nProj =
         new Projectile::Projectile(getPosition(), target, faceLeft);
     projlist->addEntity(static_cast<Entity *>(nProj));
-    // std::cout << (int)projlist->getSize() << endl;
+    std::cout << (int)projlist->getSize() << endl;
 }
 void Bat::update() {
     moveEnemy();
     updatePosition();
-    if ((cooldown.asSeconds() * 100) > 0.5f) {
+    if ((cooldown.asSeconds() * 100) > 1.5f) {
         if (fabs(player->getPosition().x - getPosition().x) <= SHOOT_RAY_X &&
             fabs(player->getPosition().y - getPosition().y) <= SHOOT_RAY_Y) {
-            // CreatePojectile(player->getPosition());
+            CreatePojectile(player->getPosition());
             cooldown = clock.restart();
         }
     } else {
         cooldown += clock.getElapsedTime();
     }
-    // std::cout << (cooldown.asSeconds() * 100) << endl;
+    std::cout << (cooldown.asSeconds() * 100) << endl;
     dtAux += clock.getElapsedTime().asSeconds() * 100;
     clock.restart();
     updateAnimation();

@@ -34,7 +34,8 @@ Projectile::~Projectile()
 
 void Projectile::update()
 {
-    currentVel = nordir * Speed;
+    currentVel.x = nordir.x * Speed;
+    currentVel.y = nordir.y * Speed;// * GRAVITY;
     setPosition(Vector2f(currentVel.x + position.x, currentVel.y + position.y));
     updateanimation();
     draw();
