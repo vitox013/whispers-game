@@ -1,27 +1,17 @@
 #include "..\..\..\..\include\Entity\Character\Player\Player.h"
 
-#include "..\..\..\..\include\Observer\PlayerObserver.h"
-
 using namespace Whispers::Entity::Character;
 
 Player::Player(const Vector2f pos, const Vector2f size)
     : Character(pos, size, PLAYER_SPEED, PLAYER_LIFE, PLAYER_DAMAGE,
                 ID::ID::player),
-      onFloor(false),
-      pPlayerObs(new Observer::PlayerObserver(this))
-{
-    if (pPlayerObs == nullptr)
-    {
-        std::cout << "Nao foi possivel criar PlayerObserver" << std::endl;
-    }
-
+      onFloor(false) {
     init();
 }
 
 Player::~Player() {}
 
-void Player::Player::init()
-{
+void Player::Player::init() {
     animation.addAnimation("assets/character/player/idle.png", "idle", 8, 0.15f,
                            Vector2f(6, 6));
     animation.addAnimation("assets/character/player/walk.png", "walk", 8, 0.1f,
@@ -39,17 +29,14 @@ void Player::Player::init()
     shape.setOrigin(Vector2f(size.x / 2.5f, size.y / 2.5f));
 }
 
-void Player::update()
-{
+void Player::update() {
     updatePosition();
     updateAnimation();
     pGraphic->updateCamera(position);
 }
 
-void Player::jump()
-{
-    if (onFloor && !takeDamage)
-    {
+void Player::jump() {
+    if (onFloor && !takeDamage) {
         speed.y = -sqrt(2.0f * GRAVITY * JUMP_SIZE);
         onFloor = false;
     }
@@ -57,162 +44,124 @@ void Player::jump()
 
 void Player::canJump() { onFloor = true; }
 
-void Player::collision(Entity *other, Vector2f ds)
-{
+void Player::collision(Entity *other, Vector2f ds) {
     Character *character = character = static_cast<Character *>(other);
-    if (!isInvincible)
-    {
-        switch (character->getId())
-        {
-        case ID::ID::skeleton:
+    if (!isInvincible) {
+        switch (character->getId()) {
+            case ID::ID::skeleton:
 
-            speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
-            // Player is not currently taking damage and either the player
-            // or the skeleton is in the air
-            takeDamage = true;
-            life -= character->getDamage();
-            if (life <= 0)
-            {
-                life = 0;
-                isAlive = false;
-            }
+                speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
+                // Player is not currently taking damage and either the player
+                // or the skeleton is in the air
+                takeDamage = true;
+                life -= character->getDamage();
+                if (life <= 0) {
+                    life = 0;
+                    isAlive = false;
+                }
 
-            break;
-        case ID::ID::bat:
+                break;
+            case ID::ID::bat:
 
-            speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
-            onFloor = false;
-            takeDamage = true;
-            life -= character->getDamage();
+                speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
+                onFloor = false;
+                takeDamage = true;
+                life -= character->getDamage();
 
-            break;
-        case ID::ID::Projectile:
+                break;
+            case ID::ID::Projectile:
 
-            speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
-            onFloor = false;
-            takeDamage = true;
-            //life -= character->getDamage();
+                speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
+                onFloor = false;
+                takeDamage = true;
+                // life -= character->getDamage();
 
-            break;
-        default:
-            break;
+                break;
+            default:
+                break;
         }
         setInvincible(true);
     }
 }
 
-void Player::updateAnimation()
-{
-    if (isAlive)
-    {
-        if (isAttacking)
-        {
+void Player::updateAnimation() {
+    if (isAlive) {
+        if (isAttacking) {
             animation.update(faceLeft, "attack");
-            if (!isAttackingAnimationActive)
-            {
+            if (!isAttackingAnimationActive) {
                 attackStartTime = std::chrono::steady_clock::now();
                 isAttackingAnimationActive = true;
-            }
-            else
-            {
+            } else {
                 auto elapsedTime =
                     std::chrono::steady_clock::now() - attackStartTime;
-                if (elapsedTime >= attackDuration)
-                {
+                if (elapsedTime >= attackDuration) {
                     isAttacking = false;
                     isAttackingAnimationActive = false;
                 }
             }
-        }
-        else if (takeDamage)
-        {
+        } else if (takeDamage) {
             animation.update(faceLeft, "hurt");
             canWalk = false;
 
-            if (!isDamageAnimationActive)
-            {
+            if (!isDamageAnimationActive) {
                 damageStartTime =
-                    std::chrono::steady_clock::now(); // Inicia o temporizador
-                                                      // quando a animação de
-                                                      // dano começa
+                    std::chrono::steady_clock::now();  // Inicia o temporizador
+                                                       // quando a animação de
+                                                       // dano começa
                 isDamageAnimationActive = true;
-            }
-            else
-            {
+            } else {
                 auto elapsedTime =
                     std::chrono::steady_clock::now() -
-                    damageStartTime; // Calcula o tempo decorrido desde o
-                                     // início da animação de dano
+                    damageStartTime;  // Calcula o tempo decorrido desde o
+                                      // início da animação de dano
 
-                if (elapsedTime >= damageDuration)
-                {
-                    takeDamage = false; // Restaura a capacidade de andar após
-                                        // a conclusão da animação de dano
+                if (elapsedTime >= damageDuration) {
+                    takeDamage = false;  // Restaura a capacidade de andar após
+                                         // a conclusão da animação de dano
                     isDamageAnimationActive = false;
                 }
             }
-        }
-        else
-        {
-            if (!onFloor && speed.y > 0.0f)
-            {
+        } else {
+            if (!onFloor && speed.y > 0.0f) {
                 animation.update(faceLeft, "fall");
-                if (isAttacking)
-                {
+                if (isAttacking) {
                     animation.update(faceLeft, "attack");
                 }
-            }
-            else if (!onFloor)
-            {
+            } else if (!onFloor) {
                 animation.update(faceLeft, "jump");
-            }
-            else if (canWalk && !takeDamage)
-            {
+            } else if (canWalk && !takeDamage) {
                 animation.update(faceLeft, "walk");
-            }
-            else if (!takeDamage && !isAttacking)
-            {
+            } else if (!takeDamage && !isAttacking) {
                 animation.update(faceLeft, "idle");
             }
         }
-    }
-    else
-    {
+    } else {
         animation.update(faceLeft, "death");
     }
     auto elapsedTime =
         std::chrono::steady_clock::now() - invincibilityStartTime;
-    if (elapsedTime >= invincibilityDuration)
-    {
+    if (elapsedTime >= invincibilityDuration) {
         // Set invincibility to false
         isInvincible = false;
     }
 }
 
-void Player::updatePosition()
-{
+void Player::updatePosition() {
     sf::Time deltaTime = clock.restart();
     float dt = deltaTime.asSeconds();
     Vector2f ds(0.0f, 0.0f);
 
-    if (canWalk && !takeDamage)
-    {
+    if (canWalk && !takeDamage) {
         ds.x = speed.x * dt * 1.2;
 
-        if (faceLeft)
-        {
+        if (faceLeft) {
             ds.x *= -1;
         }
-    }
-    else if (takeDamage)
-    {
+    } else if (takeDamage) {
         // knockback
-        if (faceLeft)
-        {
+        if (faceLeft) {
             ds.x = speed.x * dt;
-        }
-        else
-        {
+        } else {
             ds.x = -speed.x * dt;
         }
     }
@@ -228,14 +177,10 @@ void Player::updatePosition()
 }
 
 void Player::attack(const bool isAttacking) { this->isAttacking = isAttacking; }
-void Whispers::Entity::Character::Player::ChangeObserverStatus()
-{
-    pPlayerObs->changeActiveState();
-}
+
 const bool Player::getIsInvincible() const { return isInvincible; }
 
-void Player::setInvincible(const bool isInvincible)
-{
+void Player::setInvincible(const bool isInvincible) {
     invincibilityStartTime = std::chrono::steady_clock::now();
     this->isInvincible = isInvincible;
 }
