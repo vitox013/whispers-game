@@ -13,12 +13,14 @@ class StateManager {
 
     static StateManager* pStateManager;
     StateManager();
+    void DeactivateObserver();
+    void ActivateObserver();
 
-   public:
+public:
     ~StateManager();
     static StateManager* getStateManager();
-    void pushState(const ID::ID id);
-    void popState();
+    void pushState(const ID::ID id); //adicionar estado
+    void popState(); //remover estado
     State::State* getCurrentState();
     void execute();
 };

@@ -4,7 +4,10 @@ using namespace Whispers::Manager;
 
 StateManager* StateManager::pStateManager = nullptr;
 
-StateManager::StateManager() : states(), stateBuilder() {}
+StateManager::StateManager() : states(), stateBuilder()
+{
+
+}
 
 StateManager::~StateManager() {
     while (!states.empty()) {
@@ -52,4 +55,12 @@ void StateManager::execute() {
     if (!states.empty()) {
         states.top()->execute();
     }
+}
+
+void Whispers::Manager::StateManager::DeactivateObserver()
+{
+}
+
+void Whispers::Manager::StateManager::ActivateObserver()
+{
 }

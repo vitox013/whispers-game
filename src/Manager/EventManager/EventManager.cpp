@@ -62,7 +62,7 @@ void EventManager::handleKeyPress()
     {
         State::StatePlay *pStatePlay =
             dynamic_cast<State::StatePlay *>(pState->getCurrentState());
-        Entity::Character::Player *pPlayer = pStatePlay->getPlayer();
+        //Entity::Character::Player *pPlayer = pStatePlay->getPlayer();
         
         if (Keyboard::isKeyPressed(Keyboard::Escape))
         {
@@ -80,7 +80,7 @@ void EventManager::execute()
     sf::Event event;
     while (pGraphic->getWindow()->pollEvent(event))
     {
-        handleKeyPress();
+        //handleKeyPress();
         if (event.type == sf::Event::KeyPressed)
         {
             pObsList->NotifyKeyPressed(event.key.code);

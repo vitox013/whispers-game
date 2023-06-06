@@ -19,7 +19,14 @@ enum class ID {
     boss,
     wall,
     Projectile,
-    web
+    web,
+    Pause_Menu,
+    Main_Menu,
+    Pause_state,
+    Main_Menu_state,
+    continue_button,
+    exit_button,
+    reload_button
 };
 
 }
