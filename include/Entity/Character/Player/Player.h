@@ -10,9 +10,7 @@
 #define PLAYER_SIZE_Y 70.0f
 #define PLAYER_LIFE 3
 #define PLAYER_DAMAGE 2
-namespace Whispers::Observer {
-class PlayerObserver;
-}
+
 namespace Whispers::Entity::Character {
 
 class Player : public Character {
@@ -27,7 +25,6 @@ class Player : public Character {
         600};  // Duração da animação de dano (em milissegundos)
     bool isDamageAnimationActive = false;
     bool isAttackingAnimationActive = false;
-    Observer::PlayerObserver *pPlayerObs;
     std::chrono::steady_clock::time_point invincibilityStartTime;
     bool isInvincible = false;
     const std::chrono::milliseconds invincibilityDuration{3000};
@@ -42,7 +39,6 @@ class Player : public Character {
     void updateAnimation();
     void updatePosition();
     void attack(const bool isAttacking);
-    void ChangeObserverStatus();
     const bool getIsInvincible() const;
     void setInvincible(const bool isInvincible);
 };
