@@ -31,7 +31,17 @@ GraphicManager* GraphicManager::getGraphicManager() {
 
 sf::RenderWindow* GraphicManager::getWindow() { return window; }
 
-Texture GraphicManager::loadTexture(const char* path) {
+sf::Font    Whispers::Manager::GraphicManager::LoadFont(const char *FontPath)
+{
+    sf::Font font;
+    if (!font.loadFromFile(FontPath))
+    {
+        throw("erro ao carregar fonte");
+    }
+    return font;
+}
+Texture GraphicManager::loadTexture(const char *path)
+{
     Texture texture;
     if (!texture.loadFromFile(path)) {
         std::cout << "Warning: Cannot load texture from " << path << std::endl;
@@ -44,6 +54,9 @@ void GraphicManager::clearWindow() { window->clear(sf::Color::Black); }
 
 void GraphicManager::drawElement(sf::RectangleShape shape) {
     window->draw(shape);
+}
+void GraphicManager::drawElement(sf::Text text) {
+    window->draw(text);
 }
 
 void GraphicManager::showElement() { window->display(); }
@@ -64,3 +77,9 @@ void GraphicManager::updateCamera(const Vector2f playerPosition) {
 }
 
 const View GraphicManager::getCamera() { return camera; }
+
+void Whispers::Manager::GraphicManager::ResetWindow()
+{
+    camera.setCenter(1280.0f / 2.0f, 720.0f / 2.0f);
+    window->setView(camera);
+}

@@ -16,5 +16,6 @@ class StatePlay : public State {
     ~StatePlay();
     void execute();
     Entity::Character::Player* getPlayer();
+    void ChangeObserverState();
 };
 }  // namespace Whispers::State

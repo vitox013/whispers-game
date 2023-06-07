@@ -10,3 +10,8 @@ StatePlay::~StatePlay() {}
 void StatePlay::execute() { level->execute(); }
 
 Player* StatePlay::getPlayer() { return level->getPlayer(); }
+
+void Whispers::State::StatePlay::ChangeObserverState()
+{
+    level->ChangeObserverState();
+}

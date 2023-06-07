@@ -2,14 +2,16 @@
 
 #include "..\State\State.h"
 #include "..\State\StatePlay.h"
+#include "..\State\StateMainMenu.h"
 #include ".\LevelBuilder.h"
 
 namespace Whispers::Builder {
 class StateBuilder {
    private:
     Whispers::State::State* createStatePlay(const ID::ID id);
+    State::State *CreateMainMenu();
 
-   public:
+public:
     StateBuilder();
     ~StateBuilder();
 

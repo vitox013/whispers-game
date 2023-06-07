@@ -6,7 +6,8 @@ State::State(const ID::ID id) : Ente(id), remove(false) {}
 
 State::~State() {}
 
-void State::draw() {
+void State::draw()
+{
     // Desenhar o background
     // Desenhar o mapa
     // Desenhar os inimigos
@@ -18,5 +19,15 @@ void State::draw() {
     // Desenhar o cursor
     // Desenhar o fade
     // Desenhar o texto
+
     // Desenhar
+}
+void Whispers::State::State::SetRemove(const bool remove)
+{
+    this->remove = remove;
+}
+
+const bool Whispers::State::State::getRemove() const
+{
+    return remove;
 }

@@ -1,4 +1,5 @@
 #include "..\..\include\Level\Level.h"
+#include "..\..\include\Observer\LevelObserver.h"
 
 using namespace Whispers::Level;
 using namespace Whispers::Entity::Obstacle;
@@ -87,4 +88,9 @@ Player* Level::getPlayer() {
         }
     }
     return nullptr;
+}
+
+void Level::ChangeObserverState()
+{
+    levelObserver->changeActiveState();
 }

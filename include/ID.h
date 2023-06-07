@@ -22,10 +22,13 @@ enum class ID {
     web,
     Pause_Menu,
     Main_Menu,
-    Pause_state,
+    option_menu,
+    Pause_menu_state,
     Main_Menu_state,
     continue_button,
     exit_button,
+    newgame_button,
+    option_button,
     reload_button
 };
 
