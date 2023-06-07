@@ -149,27 +149,29 @@ void Player::updatePosition() {
     float dt = deltaTime.asSeconds();
     Vector2f ds(0.0f, 0.0f);
 
-    if (canWalk && !takeDamage) {
-        ds.x = speed.x * dt * 1.2;
+    if (isAlive) {
+        if (canWalk && !takeDamage) {
+            ds.x = speed.x * dt * 1.2;
 
-        if (faceLeft) {
-            ds.x *= -1;
+            if (faceLeft) {
+                ds.x *= -1;
+            }
+        } else if (takeDamage) {
+            // knockback
+            if (faceLeft) {
+                ds.x = speed.x * dt;
+            } else {
+                ds.x = -speed.x * dt;
+            }
         }
-    } else if (takeDamage) {
-        // knockback
-        if (faceLeft) {
-            ds.x = speed.x * dt;
-        } else {
-            ds.x = -speed.x * dt;
-        }
+
+        speed.y += GRAVITY * dt;
+        ds.y = speed.y * GRAVITY;
+
+        setPosition(Vector2f(position.x + ds.x, position.y + ds.y));
+
+        speed.x = maxSpeed;
     }
-
-    speed.y += GRAVITY * dt;
-    ds.y = speed.y * GRAVITY;
-
-    setPosition(Vector2f(position.x + ds.x, position.y + ds.y));
-
-    speed.x = maxSpeed;
 
     draw();
 }

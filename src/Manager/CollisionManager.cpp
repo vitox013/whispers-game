@@ -90,20 +90,20 @@ void CollisionManager::CollisionCheck() {
         }
     }
     // Colissão entre objetos e projeteis
-    for (int i = 0; i < ProjList->getSize(); i++) {
-        ent1 = ProjList->operator[](i);
+    // for (int i = 0; i < ProjList->getSize(); i++) {
+    //     ent1 = ProjList->operator[](i);
 
-        for (int j = 0; j < ObjList->getSize(); j++) {
-            ent2 = ObjList->operator[](j);
-            ds = CollisionCalc(ent1, ent2);
-            if (ds.x < 0.0f && ds.y < 0.0f) {
-                if (ent2->getId() == ID::ID::platform ) {
-                    ent1->collision(ent2, ds);
-                    ProjList->removeEntity(i);
-                }
-            }
-        }
-    }
+    //     for (int j = 0; j < ObjList->getSize(); j++) {
+    //         ent2 = ObjList->operator[](j);
+    //         ds = CollisionCalc(ent1, ent2);
+    //         if (ds.x < 0.0f && ds.y < 0.0f) {
+    //             if (ent2->getId() == ID::ID::platform ) {
+    //                 ent1->collision(ent2, ds);
+    //                 ProjList->removeEntity(i);
+    //             }
+    //         }
+    //     }
+    // }
     // Verifica se está fora da tela
     /*for (int j = 0; j < ProjList->getSize(); j++)
     {
