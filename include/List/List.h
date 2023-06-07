@@ -37,13 +37,13 @@ namespace Whispers::List
     {
         if (element == nullptr)
         {
-            std::cout << "Error" << std::endl;
+            std::cout << "Error, element is NULL" << std::endl;
             exit(1);
         }
         Element<TL> *newElement = new Element<TL>();
         if (newElement == nullptr)
         {
-            std::cout << "Error" << std::endl;
+            std::cout << "Error, newElement is NULL" << std::endl;
             exit(1);
         }
 

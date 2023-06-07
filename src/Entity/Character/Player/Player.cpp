@@ -45,9 +45,9 @@ void Player::jump() {
 void Player::canJump() { onFloor = true; }
 
 void Player::collision(Entity *other, Vector2f ds) {
-    Character *character = character = static_cast<Character *>(other);
+    Character *character = static_cast<Character *>(other);
     if (!isInvincible) {
-        switch (character->getId()) {
+        switch (other->getId()) {
             case ID::ID::skeleton:
 
                 speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
@@ -61,26 +61,24 @@ void Player::collision(Entity *other, Vector2f ds) {
                 }
 
                 break;
-            case ID::ID::bat:
-
-                speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
-                onFloor = false;
-                takeDamage = true;
-                life -= character->getDamage();
-
-                break;
             case ID::ID::Projectile:
-
+                cout << "Player life: " << life << endl;
                 speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
                 onFloor = false;
                 takeDamage = true;
-                // life -= character->getDamage();
+                life -= 1;
 
                 break;
             default:
                 break;
         }
-        setInvincible(true);
+
+        if (life <= 0) {
+            life = 0;
+            isAlive = false;
+        } else {
+            setInvincible(true);
+        }
     }
 }
 

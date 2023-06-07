@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\Level\Midnight.h"
-
+#include "..\Level\Graveyard.h"
 namespace Whispers::Builder {
 class LevelBuilder {
    public:
@@ -12,5 +12,6 @@ class LevelBuilder {
 
    private:
     Level::Level* createMidnight();
+    Level::Level* createGraveyard();
 };
 }  // namespace Whispers::Builder

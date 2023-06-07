@@ -19,12 +19,16 @@ class Player : public Character {
     bool onFloor;
     std::chrono::steady_clock::time_point damageStartTime;
     std::chrono::steady_clock::time_point attackStartTime;
+    std::chrono::steady_clock::time_point deathStartTime;
     const std::chrono::milliseconds attackDuration{
         300};  // Duração da animação de ataque (em milissegundos)
     const std::chrono::milliseconds damageDuration{
         600};  // Duração da animação de dano (em milissegundos)
+    const std::chrono::milliseconds deathDuration{
+       300};  // Duração da animação de morte (em milissegundos)
     bool isDamageAnimationActive = false;
     bool isAttackingAnimationActive = false;
+    bool isDeadAnimationActive = false;
     std::chrono::steady_clock::time_point invincibilityStartTime;
     bool isInvincible = false;
     const std::chrono::milliseconds invincibilityDuration{3000};

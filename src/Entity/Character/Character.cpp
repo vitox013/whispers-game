@@ -71,6 +71,8 @@ void Character::Character::setSpeed(Vector2f speed) { this->speed = speed; }
 
 const Vector2f Character::Character::getSpeed() const { return speed; }
 
+const bool Character::Character::getIsAlive() const { return isAlive; }
+
 void Character::Character::setTakeDamage(bool takeDamage) {
     this->takeDamage = takeDamage;
 }

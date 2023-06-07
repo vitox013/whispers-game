@@ -31,7 +31,10 @@ Principal::Principal()
 
 Principal::~Principal() {}
 
-void Principal::init() { pState->pushState(ID::ID::play_midnight); }
+void Principal::init() {
+    pState->pushState(ID::ID::play_midnight);
+    // pState->pushState(ID::ID::play_graveyard);
+}
 
 void Principal::execute() {
     while (pGraphic->isWindowOpen()) {

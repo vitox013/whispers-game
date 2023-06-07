@@ -58,7 +58,12 @@ Entity *EntityBuilder::createEntity(const ID::ID id, const Vector2f pos,
         break;
     case ID::ID::ground:
         entity = static_cast<Entity::Entity *>(
-            new Ground(pos, Vector2f(200.0f, 80.0f)));
+            new Ground(pos, Vector2f(200.0f, 80.0f), 1));
+
+        break;
+    case ID::ID::ground_gv:
+        entity = static_cast<Entity::Entity *>(
+            new Ground(pos, Vector2f(200.0f, 80.0f), 0));
 
         break;
     case ID::ID::platform:
@@ -73,7 +78,11 @@ Entity *EntityBuilder::createEntity(const ID::ID id, const Vector2f pos,
         break;
     case ID::ID::wall:
         entity = static_cast<Entity::Entity *>(
-            new Wall(pos, Vector2f(40.0f, 400.0f)));
+            new Wall(pos, Vector2f(40.0f, 400.0f), 0));
+        break;
+    case ID::ID::wall_gv:
+        entity = static_cast<Entity::Entity *>(
+            new Wall(pos, Vector2f(40.0f, 1000.0f), 1));
         break;
     case ID::ID::web:
         entity = static_cast<Entity::Entity *>(

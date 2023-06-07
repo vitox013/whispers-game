@@ -1,7 +1,7 @@
 #pragma once
 
 #include <fstream>
-
+#include <time.h>
 #include "..\Background\Background.h"
 #include "..\Builder\EntityBuilder.h"
 #include "..\Ente.h"
@@ -24,8 +24,10 @@ class Level : public Ente {
     virtual void createBackground() = 0;
     virtual void createMap() = 0;
     void createEntities(char c, const Vector2i position);
+    void randomCreateEntities();
     void execute();
     void draw();
     Entity::Character::Player* getPlayer();
+    bool getIsRunning();
 };
 }  // namespace Whispers::Level
