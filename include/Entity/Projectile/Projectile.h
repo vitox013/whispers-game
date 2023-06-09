@@ -5,7 +5,8 @@
 #define PROJECTILE_SPEED 1.5f
 #define PROJECTILE_SIZE_X 10.0f
 #define PROJECTILE_SIZE_Y 10.0f
-#define GRAVITY -1.2f
+#define PROJECTILE_GRAVITY -1.2f
+#define PROJECTILE_DAMAGE 1
 namespace Whispers::Entity::Projectile
 {
     class Projectile : public Entity
@@ -18,7 +19,7 @@ namespace Whispers::Entity::Projectile
         Vector2f direction;
         Vector2f currentVel;
         bool side;
-
+        int damage;
     public:
         Projectile(Vector2f pos, Vector2f target, bool sidei);
         ~Projectile();
@@ -27,5 +28,6 @@ namespace Whispers::Entity::Projectile
         void update();
         void updateanimation();
         void DirectionCalc();
+        int getDamage();
     };
 }

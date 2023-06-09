@@ -2,8 +2,10 @@
 
 using namespace Whispers::Entity::Obstacle;
 
-Ground::Ground(Vector2f pos, Vector2f size)
-    : Obstacle(pos, size, ID::ID::ground, GROUND_TEXTURE_PATH) {}
+Ground::Ground(Vector2f pos, Vector2f size, int type)
+    : Obstacle(pos, size, ID::ID::ground,
+               type == 1 ? GROUND_TEXTURE_MIDNIGHT : GROUND_TEXTURE_GRAVEYARD) {
+}
 
 Ground::~Ground() {}
 

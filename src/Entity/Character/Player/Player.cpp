@@ -45,9 +45,9 @@ void Player::jump() {
 void Player::canJump() { onFloor = true; }
 
 void Player::collision(Entity *other, Vector2f ds) {
-    Character *character = character = static_cast<Character *>(other);
+    Character *character = static_cast<Character *>(other);
     if (!isInvincible) {
-        switch (character->getId()) {
+        switch (other->getId()) {
             case ID::ID::skeleton:
 
                 speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
@@ -61,26 +61,24 @@ void Player::collision(Entity *other, Vector2f ds) {
                 }
 
                 break;
-            case ID::ID::bat:
-
-                speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
-                onFloor = false;
-                takeDamage = true;
-                life -= character->getDamage();
-
-                break;
             case ID::ID::Projectile:
-
+                cout << "Player life: " << life << endl;
                 speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
                 onFloor = false;
                 takeDamage = true;
-                // life -= character->getDamage();
+                life -= 1;
 
                 break;
             default:
                 break;
         }
-        setInvincible(true);
+
+        if (life <= 0) {
+            life = 0;
+            isAlive = false;
+        } else {
+            setInvincible(true);
+        }
     }
 }
 
@@ -151,27 +149,29 @@ void Player::updatePosition() {
     float dt = deltaTime.asSeconds();
     Vector2f ds(0.0f, 0.0f);
 
-    if (canWalk && !takeDamage) {
-        ds.x = speed.x * dt * 1.2;
+    if (isAlive) {
+        if (canWalk && !takeDamage) {
+            ds.x = speed.x * dt * 1.2;
 
-        if (faceLeft) {
-            ds.x *= -1;
+            if (faceLeft) {
+                ds.x *= -1;
+            }
+        } else if (takeDamage) {
+            // knockback
+            if (faceLeft) {
+                ds.x = speed.x * dt;
+            } else {
+                ds.x = -speed.x * dt;
+            }
         }
-    } else if (takeDamage) {
-        // knockback
-        if (faceLeft) {
-            ds.x = speed.x * dt;
-        } else {
-            ds.x = -speed.x * dt;
-        }
+
+        speed.y += GRAVITY * dt;
+        ds.y = speed.y * GRAVITY;
+
+        setPosition(Vector2f(position.x + ds.x, position.y + ds.y));
+
+        speed.x = maxSpeed;
     }
-
-    speed.y += GRAVITY * dt;
-    ds.y = speed.y * GRAVITY;
-
-    setPosition(Vector2f(position.x + ds.x, position.y + ds.y));
-
-    speed.x = maxSpeed;
 
     draw();
 }

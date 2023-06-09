@@ -57,10 +57,11 @@ void Whispers::Manager::EventManager::RemoveObserver(int pos)
     pObsList->RemoveObserver(pos);
 }
 
-void EventManager::handleKeyPress()
+void EventManager::handleKeyPress() 
 {
-    if (pState->getCurrentState()->getId() == ID::ID::play_midnight)
-    {
+    if (pState->getCurrentState()->getId() == ID::ID::play_midnight ||
+        pState->getCurrentState()->getId() == ID::ID::play_graveyard) 
+        {
         State::StatePlay *pStatePlay =
             dynamic_cast<State::StatePlay *>(pState->getCurrentState());
         Entity::Character::Player *pPlayer = pStatePlay->getPlayer();

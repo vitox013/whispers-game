@@ -11,6 +11,8 @@ Whispers::State::State *StateBuilder::createState(const ID::ID id)
     if (id == ID::ID::play_midnight)
     {
         return createStatePlay(id);
+    } else if (id == ID::ID::play_graveyard) {
+        return createStatePlay(id);
     }
     if (id == ID::ID::Main_Menu_state)
     {

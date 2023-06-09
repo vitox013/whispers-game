@@ -14,6 +14,9 @@ enum class ID {
     midnight_level,
     play_midnight,
     midnight_background,
+    graveyard_level,
+    play_graveyard,
+    graveyard_background,
     skeleton,
     bat,
     boss,
@@ -29,7 +32,10 @@ enum class ID {
     exit_button,
     newgame_button,
     option_button,
-    reload_button
+    reload_button,
+    ground_gv,
+    platform_gv,
+    wall_gv,
 };
 
 }

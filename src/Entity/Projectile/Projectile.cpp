@@ -9,13 +9,14 @@ Projectile::Projectile(Vector2f pos, Vector2f target, const bool sidei)
     Speed(PROJECTILE_SPEED),
     animation(&shape),
     postarget (target),
-    side(sidei)
+    side(sidei),
+    damage(PROJECTILE_DAMAGE)
 {
     
     //shape.setFillColor(Color::Blue);
-    animation.addAnimation("assets/projectile/9_2.png", "Angle", 4,
+    animation.addAnimation("assets/projectile/9_2.png", "Angle", 6,
                            0.1f, sf::Vector2f(6.0, 4.0));
-    animation.addAnimation("assets/projectile/9_1.png", "straight", 4,
+    animation.addAnimation("assets/projectile/9_1.png", "straight", 6,
                            0.1f, sf::Vector2f(6.0, 4.0));
     DirectionCalc();
     if (side == true)
@@ -61,4 +62,9 @@ void Projectile::updateanimation()
     {
         animation.update(side, "Angle");
     }
+}
+
+int Projectile::getDamage()
+{
+    return damage;
 }

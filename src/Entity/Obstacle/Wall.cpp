@@ -2,8 +2,9 @@
 
 using namespace Whispers::Entity::Obstacle;
 
-Wall::Wall(Vector2f pos, Vector2f size)
-    : Obstacle(pos, size, ID::ID::wall, WALL_TEXTURE_PATH) {}
+Wall::Wall(Vector2f pos, Vector2f size, int type)
+    : Obstacle(pos, size, ID::ID::wall,
+               type == 1 ? WALL_TEXTURE_GRAVEYARD : WALL_TEXTURE_MIDNIGHT) {}
 
 Wall::~Wall() {}
 

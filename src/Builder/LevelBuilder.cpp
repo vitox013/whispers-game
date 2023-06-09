@@ -15,6 +15,9 @@ Level* LevelBuilder::createLevel(const ID::ID id) {
         case (ID::ID::play_midnight): {
             level = createMidnight();
         } break;
+        case (ID::ID::play_graveyard): {
+            level = createGraveyard();
+        } break;
         default: {
             std::cout << "Error creating level" << std::endl;
             exit(1);
@@ -32,4 +35,13 @@ Level* LevelBuilder::createMidnight() {
         exit(1);
     }
     return midnight;
+}
+
+Level* LevelBuilder::createGraveyard() {
+    Level::Level* graveyard = static_cast<Level::Level*>(new Graveyard());
+    if (!graveyard) {
+        std::cout << "Error creating graveyard" << std::endl;
+        exit(1);
+    }
+    return graveyard;
 }

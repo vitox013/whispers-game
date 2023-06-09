@@ -1,7 +1,7 @@
 #pragma once
 
 #include <fstream>
-
+#include <time.h>
 #include "..\Background\Background.h"
 #include "..\Builder\EntityBuilder.h"
 #include "..\Ente.h"
@@ -39,7 +39,9 @@ namespace Whispers
             void draw();
             Entity::Character::Player *getPlayer();
             void ChangeObserverState();
+            void randomCreateEntities();
+            bool getIsRunning();
         };
     }
 
-} // namespace Whispers::Level
+}

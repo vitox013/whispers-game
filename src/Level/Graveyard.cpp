@@ -1,20 +1,20 @@
-#include "..\..\include\Level\Midnight.h"
+#include "..\..\include\Level\Graveyard.h"
 
 using namespace Whispers::Level;
 
-Midnight::Midnight()
-    : Level(ID::ID::midnight_level, ID::ID::midnight_background) {}
+Graveyard::Graveyard()
+    : Level(ID::ID::graveyard_level, ID::ID::graveyard_background) {}
 
-Midnight::~Midnight() {}
+Graveyard::~Graveyard() {}
 
-void Midnight::createBackground() {
-    background.addLayer("assets/background/midnight/midnight.png");
+void Graveyard::createBackground() {
+    background.addLayer("assets/background/graveyard/graveyard1.png");
 }
 
-void Midnight::createMap() {
+void Graveyard::createMap() {
     std::ifstream mapFile;
     std::string line;
-    mapFile.open("assets/map/midnight/midnight.txt");
+    mapFile.open("assets/map/graveyard/graveyard.txt");
     if (!mapFile) {
         std::cout << "Error on opening map file" << std::endl;
         exit(1);

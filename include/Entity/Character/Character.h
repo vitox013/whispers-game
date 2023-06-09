@@ -33,6 +33,7 @@ class Character : public Entity {
     void stop();
     virtual void attack(const bool isAttacking);
     void setTakeDamage(bool takeDamage);
+    const bool getIsAlive() const;
     void updatePosition();
     const int getDamage() const;
     // virtual void move() = 0;

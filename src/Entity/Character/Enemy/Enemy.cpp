@@ -41,7 +41,9 @@ void Enemy::Enemy::moveEnemy() {
 
     if (fabs(playerPos.x - enemyPos.x) <= CHASE_RAY_X &&
         fabs(playerPos.y - enemyPos.y) <= CHASE_RAY_Y) {
-        if (playerPos.x - enemyPos.x > 0.0f) {
+        if ((playerPos.x - enemyPos.x < 10.0f) && (playerPos.x - enemyPos.x > -10.0f)) {
+            stop();
+        } else if (playerPos.x - enemyPos.x > 0.0f) {
             walk(false);
         } else {
             walk(true);
@@ -53,12 +55,9 @@ void Enemy::Enemy::moveEnemy() {
 
 void Enemy::Enemy::update() {
     moveEnemy();
-    updatePosition();    
+    updatePosition();
     dtAux += clock.getElapsedTime().asSeconds() * 100;
     clock.restart();
     updateAnimation();
 }
-void Enemy::Enemy::collision(Entity* other, Vector2f ds) 
-{
-    stop();
-}
+void Enemy::Enemy::collision(Entity* other, Vector2f ds) { stop(); }
