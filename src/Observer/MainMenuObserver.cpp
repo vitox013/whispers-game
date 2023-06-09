@@ -21,8 +21,11 @@ void MainMenuObserver::PressedKey(const sf::Keyboard::Key key)
     case sf::Keyboard::Enter:
         switch (mainmenu->GetIDSelectedButton())
         {
-        case (ID::ID::newgame_button):
+        case (ID::ID::play_midnight):
             pStateMa->pushState(ID::ID::play_midnight);
+            break;
+        case (ID::ID::play_graveyard):
+            pStateMa->pushState(ID::ID::play_graveyard);
             break;
         case (ID::ID::exit_button):
             pStateMa->popState();
@@ -66,8 +69,11 @@ void Whispers::Observer::MainMenuObserver::ReleaseMouseButton(const sf::Mouse::B
         case sf::Mouse::Left:
             switch (mainmenu->GetIDSelectedButton())
             {
-            case (ID::ID::newgame_button):
+            case (ID::ID::play_midnight):
                 pStateMa->pushState(ID::ID::play_midnight);
+                break;
+            case (ID::ID::play_graveyard):
+                pStateMa->pushState(ID::ID::play_graveyard);
                 break;
             case (ID::ID::exit_button):
                 pStateMa->popState();
