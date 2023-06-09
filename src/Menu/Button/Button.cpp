@@ -19,7 +19,7 @@ Button::Button(const std::string info, const sf::Vector2f size, const sf::Vector
     sf::Vector2f textpos(pos.x + size.x / 2.0f - textsize.x / 2.05f,
                          pos.y + size.y / 2.0f - textsize.y * 1.2f);
     this->text.SetPos(textpos);
-    textbox.setFillColor(sf::Color::Black);
+    textbox.setFillColor(sf::Color::Transparent);
 }
 
 Button::~Button()

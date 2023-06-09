@@ -8,8 +8,7 @@ Menu::Menu(const ID::ID id, const sf::Vector2f buttonsize, const std::string nam
     buttonlist(),
     it(),
     buttonsize(buttonsize),
-    //windowsize((Vector2f)pGraphic->getWindow()->getSize()),
-    windowsize(sf::Vector2f(1280.0f,720.0f)),
+    windowsize(sf::Vector2f(pGraphic->getWindow()->getSize().x,pGraphic->getWindow()->getSize().y)),
     backgroundpos(sf::Vector2f(0.0f,0.0f)),
     menuname(pGraphic->LoadFont(FONT_PATH), name, fontsize)
 {

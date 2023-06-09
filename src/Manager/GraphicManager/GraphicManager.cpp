@@ -50,7 +50,7 @@ Texture GraphicManager::loadTexture(const char *path)
     return texture;
 }
 
-void GraphicManager::clearWindow() { window->clear(sf::Color::Black); }
+void GraphicManager::clearWindow() { window->clear(); }
 
 void GraphicManager::drawElement(sf::RectangleShape shape) {
     window->draw(shape);
@@ -80,6 +80,6 @@ const View GraphicManager::getCamera() { return camera; }
 
 void Whispers::Manager::GraphicManager::ResetWindow()
 {
-    camera.setCenter(1280.0f / 2.0f, 720.0f / 2.0f);
+    camera.setCenter(window->getSize().x / 2.0f, window->getSize().y / 2.0f);
     window->setView(camera);
 }

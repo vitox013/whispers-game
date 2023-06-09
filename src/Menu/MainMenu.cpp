@@ -13,7 +13,7 @@ MainMenu::MainMenu()
         std::cout << "Erro observer menu" << std::endl;
     }
     menuname.SetPos(sf::Vector2f(windowsize.x / 2.0f - menuname.GetSize().x / 2.0f, 25.0f));
-    menuname.SetColorText(sf::Color {0,255,0});
+    menuname.SetColorText(sf::Color::White);
     CreateBackground();
     CreateButtons();
 }
@@ -34,8 +34,8 @@ void Whispers::Menu::MainMenu::CreateBackground()
 void Whispers::Menu::MainMenu::CreateButtons()
 {
     const float posbuttonX = windowsize.x / 2.0f - buttonsize.x / 2.0f;
-    AddButton("New Game", sf::Vector2f(posbuttonX, windowsize.y / 2.0f), ID::ID::newgame_button, sf::Color::Green);
-    AddButton("Exit", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 2.0f), ID::ID::exit_button, sf::Color::Green);
+    AddButton("New Game", sf::Vector2f(posbuttonX, windowsize.y / 2.0f), ID::ID::newgame_button, sf::Color::White);
+    AddButton("Exit", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 2.0f), ID::ID::exit_button, sf::Color::White);
     it = buttonlist.begin();
     (*it)->SetSelected(true);
 }

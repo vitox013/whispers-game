@@ -6,7 +6,7 @@ using namespace Whispers::Menu::Button;
 Text::Text(const sf::Font font, const std::string info, const unsigned int fontsize)
     :font(font),
     text(),
-    info(),
+    info(info),
     textcolor(sf::Color::White),
     bordercolor(sf::Color::Black),
     fontsize(fontsize)
@@ -17,10 +17,11 @@ Text::Text(const sf::Font font, const std::string info, const unsigned int fonts
 Text::~Text()
 {
 }
-void Whispers::Menu::Button::Text::initialize()
+void Text::initialize()
 {
     text.setString(info);
     text.setCharacterSize(fontsize);
+    
     text.setFont(font);
     text.setOutlineThickness(3);
     text.setOutlineColor(bordercolor);
