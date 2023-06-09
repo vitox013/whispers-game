@@ -8,26 +8,40 @@
 #include "..\List\EntityList.h"
 #include "..\Manager\CollisionManager.h"
 // using namespace Whispers::Entity::Character;
-namespace Whispers::Level {
-class Level : public Ente {
-   protected:
-    List::EntityList charactersList;
-    List::EntityList obsList;
-    List::EntityList ProjList;
-    Background::Background background;
-    Manager::CollisionManager* pCollider;
-    Builder::EntityBuilder entityBuilder;
+namespace Whispers
+{
+    namespace Observer
+    {
+        class LevelObserver;
+    }
+    namespace Level
+    {
+        class Level : public Ente
+        {
+        private:
+            Observer::LevelObserver *levelObserver;
 
-   public:
-    Level(ID::ID level_id, const ID::ID background_id);
-    ~Level();
-    virtual void createBackground() = 0;
-    virtual void createMap() = 0;
-    void createEntities(char c, const Vector2i position);
-    void randomCreateEntities();
-    void execute();
-    void draw();
-    Entity::Character::Player* getPlayer();
-    bool getIsRunning();
-};
-}  // namespace Whispers::Level
+        protected:
+            List::EntityList charactersList;
+            List::EntityList obsList;
+            List::EntityList ProjList;
+            Background::Background background;
+            Manager::CollisionManager *pCollider;
+            Builder::EntityBuilder entityBuilder;
+
+        public:
+            Level(ID::ID level_id, const ID::ID background_id);
+            ~Level();
+            virtual void createBackground() = 0;
+            virtual void createMap() = 0;
+            void createEntities(char c, const Vector2i position);
+            void execute();
+            void draw();
+            Entity::Character::Player *getPlayer();
+            void ChangeObserverState();
+            void randomCreateEntities();
+            bool getIsRunning();
+        };
+    }
+
+}
