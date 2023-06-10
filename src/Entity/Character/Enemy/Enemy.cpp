@@ -3,8 +3,8 @@
 using namespace Whispers::Entity::Character;
 
 Enemy::Enemy::Enemy(const Vector2f pos, const Vector2f size, const int life,
-                    const int damage, Player* pP, ID::ID id)
-    : Character(pos, size, ENEMY_SPEED, life, damage, id),
+                    const bool canFly, const int damage, Player* pP, ID::ID id)
+    : Character(pos, size, ENEMY_SPEED, life, canFly, damage, id),
       player(pP),
       dtAux(0.0f) {
     srand(time(NULL));
@@ -41,7 +41,8 @@ void Enemy::Enemy::moveEnemy() {
 
     if (fabs(playerPos.x - enemyPos.x) <= CHASE_RAY_X &&
         fabs(playerPos.y - enemyPos.y) <= CHASE_RAY_Y) {
-        if ((playerPos.x - enemyPos.x < 10.0f) && (playerPos.x - enemyPos.x > -10.0f)) {
+        if ((playerPos.x - enemyPos.x < 10.0f) &&
+            (playerPos.x - enemyPos.x > -10.0f)) {
             stop();
         } else if (playerPos.x - enemyPos.x > 0.0f) {
             walk(false);

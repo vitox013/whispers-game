@@ -3,6 +3,7 @@
 #include ".\Ente.h"
 #include "GraphicManager\GraphicManager.h"
 
+
 namespace Whispers {
 namespace Manager {
 class CollisionManager {

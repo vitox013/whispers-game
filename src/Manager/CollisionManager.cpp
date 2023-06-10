@@ -1,13 +1,13 @@
 #include "..\..\include\Manager\CollisionManager.h"
 using namespace Whispers;
-using namespace Manager;
 
-CollisionManager::CollisionManager(List::EntityList *charsList,
+
+Manager::CollisionManager::CollisionManager(List::EntityList *charsList,
                                    List::EntityList *obsList,
                                    List::EntityList *ProjeList)
     : CharList(charsList), ObjList(obsList), ProjList(ProjeList),
     pGraphic(pGraphic->getGraphicManager()) {}
-CollisionManager::~CollisionManager() 
+Manager::CollisionManager::~CollisionManager() 
 {
     if (CharList)
     {
@@ -24,7 +24,7 @@ CollisionManager::~CollisionManager()
     
 }
 
-const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
+const Vector2f Manager::CollisionManager::CollisionCalc(Entity::Entity *ent1,
                                                Entity::Entity *ent2) {
     Vector2f pos1 = ent1->getPosition();
     Vector2f pos2 = ent2->getPosition();
@@ -42,7 +42,7 @@ const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
     return Vector2f((distanceCenter.x - rectangleSum.x),
                     (distanceCenter.y - rectangleSum.y));
 }
-bool CollisionManager::outofbounds(Entity::Entity *ent) {
+bool Manager::CollisionManager::outofbounds(Entity::Entity *ent) {
     sf::Vector2f window = sf::Vector2f(pGraphic->getWindow()->getSize().x,pGraphic->getWindow()->getSize().y);
     if (ent->getPosition().x > window.x || ent->getPosition().x <
     0.0f || ent->getPosition().y > window.y || ent->getPosition().y <
@@ -54,17 +54,16 @@ bool CollisionManager::outofbounds(Entity::Entity *ent) {
         return false;
     }
 }
-void CollisionManager::CollisionCheck() {
+void Manager::CollisionManager::CollisionCheck() {
     Entity::Entity *ent1;
     Entity::Entity *ent2;
     Vector2f ds;
 
     // Colissão entre personagens
-    for (int i = 0; i < (int)CharList->getSize() - 1; i++) {
+    for (int i = 0; i < (int)CharList->getSize(); i++) {  
         ent1 = CharList->operator[](i);
-        for (int j = 1; j < (int)CharList->getSize() - 1; j++) {
+        for (int j = 0; j < (int)CharList->getSize(); j++) {
             ent2 = CharList->operator[](j);
-
             ds = CollisionCalc(ent1, ent2);
             if (ds.x < 0.0f && ds.y < 0.0f) {
                 ent1->collision(ent2);
@@ -106,28 +105,28 @@ void CollisionManager::CollisionCheck() {
             }
         }
     }
-    // Colissão entre objetos e projeteis
-     for (int i = 0; i < ProjList->getSize(); i++) {
-         ent1 = ProjList->operator[](i);
+    // // Colissão entre objetos e projeteis
+    //  for (int i = 0; i < ProjList->getSize(); i++) {
+    //      ent1 = ProjList->operator[](i);
 
-         for (int j = 0; j < ObjList->getSize(); j++) {
-             ent2 = ObjList->operator[](j);
-             ds = CollisionCalc(ent1, ent2);
-             if (ds.x < 0.0f && ds.y < 0.0f) {
-                 if (ent2->getId() == ID::ID::platform ) {
-                     ent1->collision(ent2, ds);
-                     ProjList->removeEntity(i);
-                 }
-             }
-         }
-     }
-    // Verifica se está fora da tela
-    for (int j = 0; j < ProjList->getSize(); j++)
-    {
-        ent1 = ProjList->operator[](j);
-        if (outofbounds(ent1))
-        {
-            ProjList->removeEntity(j);
-        }
-    }
+    //      for (int j = 0; j < ObjList->getSize(); j++) {
+    //          ent2 = ObjList->operator[](j);
+    //          ds = CollisionCalc(ent1, ent2);
+    //          if (ds.x < 0.0f && ds.y < 0.0f) {
+    //              if (ent2->getId() == ID::ID::platform ) {
+    //                  ent1->collision(ent2, ds);
+    //                  ProjList->removeEntity(i);
+    //              }
+    //          }
+    //      }
+    //  }
+    // // Verifica se está fora da tela
+    // for (int j = 0; j < ProjList->getSize(); j++)
+    // {
+    //     ent1 = ProjList->operator[](j);
+    //     if (outofbounds(ent1))
+    //     {
+    //         ProjList->removeEntity(j);
+    //     }
+    // }
 }

@@ -3,7 +3,7 @@
 using namespace Whispers::Entity::Character;
 
 Player::Player(const Vector2f pos, const Vector2f size)
-    : Character(pos, size, PLAYER_SPEED, PLAYER_LIFE, PLAYER_DAMAGE,
+    : Character(pos, size, PLAYER_SPEED, PLAYER_LIFE, false, PLAYER_DAMAGE,
                 ID::ID::player),
       onFloor(false) {
     init();
@@ -32,6 +32,10 @@ void Player::Player::init() {
 void Player::update() {
     updatePosition();
     updateAnimation();
+    if (life <= 0) {
+        life = 0;
+        isAlive = false;
+    }
     pGraphic->updateCamera(position);
 }
 
@@ -46,39 +50,46 @@ void Player::canJump() { onFloor = true; }
 
 void Player::collision(Entity *other, Vector2f ds) {
     Character *character = static_cast<Character *>(other);
-    if (!isInvincible) {
-        switch (other->getId()) {
-            case ID::ID::skeleton:
 
-                speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
-                // Player is not currently taking damage and either the player
-                // or the skeleton is in the air
-                takeDamage = true;
-                life -= character->getDamage();
-                if (life <= 0) {
-                    life = 0;
-                    isAlive = false;
-                }
+    switch (other->getId()) {
+        case ID::ID::skeleton:
 
-                break;
-            case ID::ID::Projectile:
-                cout << "Player life: " << life << endl;
+            if (isAttacking && character->getIsInvincible() == false) {
+                character->setTakeDamage(true);
+                character->setLife(character->getLife() - damage);
+                character->setInvincible(true);
+                cout << "Skeleton life: " << character->getLife() << endl;
+            }
+
+            break;
+        case ID::ID::ghost:
+            if (isAttacking && character->getIsInvincible() == false) {
+                character->setTakeDamage(true);
+                character->setLife(character->getLife() - damage);
+                character->setInvincible(true);
+                cout << "Ghost life: " << character->getLife() << endl;
+            }
+            break;
+        case ID::ID::boss:{
+            if (isAttacking && character->getIsInvincible() == false) {
+                character->setTakeDamage(true);
+                character->setLife(character->getLife() - damage);
+                character->setInvincible(true);
+                cout << "Boss life: " << character->getLife() << endl;
+            }
+            break;
+        }
+        case ID::ID::Projectile:
+            if (!isInvincible) {
                 speed.y = -sqrt(1.2f * GRAVITY * JUMP_SIZE);
                 onFloor = false;
                 takeDamage = true;
                 life -= 1;
-
+                setInvincible(true);
                 break;
-            default:
-                break;
-        }
-
-        if (life <= 0) {
-            life = 0;
-            isAlive = false;
-        } else {
-            setInvincible(true);
-        }
+            }
+        default:
+            break;
     }
 }
 
@@ -94,6 +105,7 @@ void Player::updateAnimation() {
                     std::chrono::steady_clock::now() - attackStartTime;
                 if (elapsedTime >= attackDuration) {
                     isAttacking = false;
+                    size = Vector2f(PLAYER_SIZE_X, PLAYER_SIZE_Y);
                     isAttackingAnimationActive = false;
                 }
             }
@@ -176,11 +188,7 @@ void Player::updatePosition() {
     draw();
 }
 
-void Player::attack(const bool isAttacking) { this->isAttacking = isAttacking; }
-
-const bool Player::getIsInvincible() const { return isInvincible; }
-
-void Player::setInvincible(const bool isInvincible) {
-    invincibilityStartTime = std::chrono::steady_clock::now();
-    this->isInvincible = isInvincible;
+void Player::attack(const bool isAttacking) {
+    this->isAttacking = isAttacking;
+    size = Vector2f(PLAYER_ATTACK_SIZE_X * 1.2f , PLAYER_SIZE_Y);
 }

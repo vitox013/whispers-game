@@ -9,8 +9,8 @@
 #define BAT_LIFE 1
 #define BAT_DAMAGE 1
 
-#define SHOOT_RAY_X 400.0f
-#define SHOOT_RAY_Y 400.0f
+#define SHOOT_RAY_X 700.0f
+#define SHOOT_RAY_Y 720.0f
 
 namespace Whispers::Entity::Character::Enemy
 {
@@ -25,6 +25,7 @@ namespace Whispers::Entity::Character::Enemy
         Bat(const sf::Vector2f pos, Player *player, List::EntityList * projelist);
         ~Bat();
         void update();
+        void moveEnemy();
         void CreatePojectile(Vector2f target);
     };
 } // namespace Whispers::Entity::Character::Enemy

@@ -9,5 +9,6 @@ class Midnight : public Level {
     ~Midnight();
     void createBackground();
     void createMap();
+    void randomCreateEntities();
 };
 }

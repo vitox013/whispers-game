@@ -2,6 +2,9 @@
 
 #include <fstream>
 #include <time.h>
+#include <chrono>
+#include <random>
+#include <vector>
 #include "..\Background\Background.h"
 #include "..\Builder\EntityBuilder.h"
 #include "..\Ente.h"
@@ -39,8 +42,10 @@ namespace Whispers
             void draw();
             Entity::Character::Player *getPlayer();
             void ChangeObserverState();
-            void randomCreateEntities();
+            virtual void randomCreateEntities() = 0;
+            void createSkeletons(Vector2f pos);
             bool getIsRunning();
+            void removeCharacters();
         };
     }
 

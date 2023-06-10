@@ -4,6 +4,7 @@
 #include "..\Entity\Character\Enemy\Boss.h"
 #include "..\Entity\Character\Enemy\Enemy.h"
 #include "..\Entity\Character\Enemy\Skeleton.h"
+#include "..\Entity\Character\Enemy\Ghost.h"
 #include "..\Entity\Character\Player\Player.h"
 #include "..\Entity\Obstacle\Ground.h"
 #include "..\Entity\Obstacle\Platform.h"
