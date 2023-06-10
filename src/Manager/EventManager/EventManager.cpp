@@ -4,6 +4,7 @@ using namespace Whispers::Manager;
 using namespace Whispers::Entity::Character;
 
 EventManager *EventManager::pEvent = nullptr;
+Whispers::List::ObserverList *EventManager::pObsList = nullptr;
 
 EventManager::EventManager()
     : pGraphic(pGraphic->getGraphicManager()),

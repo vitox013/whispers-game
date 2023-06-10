@@ -4,18 +4,26 @@
 using namespace Whispers::Observer;
 
 LevelObserver::LevelObserver(Level::Level *level)
-    :Observer(), level(level)
+    : Observer(), level(level)
 {
 }
 
 LevelObserver::~LevelObserver()
 {
+    
 }
 void LevelObserver::PressedKey(const sf::Keyboard::Key key)
 {
-    //push pause state when it's done
+    // push pause state when it's done
 }
 void LevelObserver::ReleasedKey(const sf::Keyboard::Key key)
 {
-
+    switch (key)
+    {
+    case (sf::Keyboard::Escape):
+    {
+        pStateMa->pushState(ID::ID::Pause_menu_state);
+    }
+    break;
+    }
 }
