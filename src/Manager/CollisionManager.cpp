@@ -5,8 +5,24 @@ using namespace Manager;
 CollisionManager::CollisionManager(List::EntityList *charsList,
                                    List::EntityList *obsList,
                                    List::EntityList *ProjeList)
-    : CharList(charsList), ObjList(obsList), ProjList(ProjeList) {}
-CollisionManager::~CollisionManager() {}
+    : CharList(charsList), ObjList(obsList), ProjList(ProjeList),
+    pGraphic(pGraphic->getGraphicManager()) {}
+CollisionManager::~CollisionManager() 
+{
+    if (CharList)
+    {
+        delete CharList;
+    }
+    if (ObjList)
+    {
+        delete ObjList;
+    }
+    if (ProjList)
+    {
+        delete ProjList;
+    }
+    
+}
 
 const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
                                                Entity::Entity *ent2) {
@@ -27,15 +43,16 @@ const Vector2f CollisionManager::CollisionCalc(Entity::Entity *ent1,
                     (distanceCenter.y - rectangleSum.y));
 }
 bool CollisionManager::outofbounds(Entity::Entity *ent) {
-    /*if (ent->getPosition().x > Window->getSize().x || ent->getPosition().x <
-    0.0f || ent->getPosition().y > Window->getSize().y || ent->getPosition().y <
+    sf::Vector2f window = sf::Vector2f(pGraphic->getWindow()->getSize().x,pGraphic->getWindow()->getSize().y);
+    if (ent->getPosition().x > window.x || ent->getPosition().x <
+    0.0f || ent->getPosition().y > window.y || ent->getPosition().y <
     0.0f)
     {
         return true;
     }else
     {
         return false;
-    }*/
+    }
 }
 void CollisionManager::CollisionCheck() {
     Entity::Entity *ent1;
@@ -90,27 +107,27 @@ void CollisionManager::CollisionCheck() {
         }
     }
     // Colissão entre objetos e projeteis
-    // for (int i = 0; i < ProjList->getSize(); i++) {
-    //     ent1 = ProjList->operator[](i);
+     for (int i = 0; i < ProjList->getSize(); i++) {
+         ent1 = ProjList->operator[](i);
 
-    //     for (int j = 0; j < ObjList->getSize(); j++) {
-    //         ent2 = ObjList->operator[](j);
-    //         ds = CollisionCalc(ent1, ent2);
-    //         if (ds.x < 0.0f && ds.y < 0.0f) {
-    //             if (ent2->getId() == ID::ID::platform ) {
-    //                 ent1->collision(ent2, ds);
-    //                 ProjList->removeEntity(i);
-    //             }
-    //         }
-    //     }
-    // }
+         for (int j = 0; j < ObjList->getSize(); j++) {
+             ent2 = ObjList->operator[](j);
+             ds = CollisionCalc(ent1, ent2);
+             if (ds.x < 0.0f && ds.y < 0.0f) {
+                 if (ent2->getId() == ID::ID::platform ) {
+                     ent1->collision(ent2, ds);
+                     ProjList->removeEntity(i);
+                 }
+             }
+         }
+     }
     // Verifica se está fora da tela
-    /*for (int j = 0; j < ProjList->getSize(); j++)
+    for (int j = 0; j < ProjList->getSize(); j++)
     {
         ent1 = ProjList->operator[](j);
         if (outofbounds(ent1))
         {
-            //ProjList->removeEntity(j);
+            ProjList->removeEntity(j);
         }
-    }*/
+    }
 }

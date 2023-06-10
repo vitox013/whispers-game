@@ -16,7 +16,8 @@ Level::Level(const ID::ID level_id, const ID::ID background_id)
       background(background_id),
       pCollider(
           new Manager::CollisionManager(&charactersList, &obsList, &ProjList)),
-      entityBuilder()
+      entityBuilder(),
+      levelObserver(new Observer::LevelObserver(this))
 {
     if (!pCollider)
     {
@@ -32,9 +33,11 @@ Level::~Level()
         delete pCollider;
         pCollider = nullptr;
     }
-    charactersList.clearList();
-    obsList.clearList();
-    ProjList.clearList();
+    if (levelObserver)
+    {
+        delete (levelObserver);
+        levelObserver = nullptr;
+    }
 }
 
 void Level::createEntities(char c, const Vector2i position)
@@ -74,15 +77,18 @@ void Level::createEntities(char c, const Vector2i position)
 
 void Level::draw()
 {
-    obsList.execute();
-    charactersList.execute();
-    ProjList.execute();
+    background.execute();
+    obsList.DrawEntities();
+    charactersList.DrawEntities();
+    ProjList.DrawEntities();
 }
 
 void Level::execute()
 {
     background.execute();
-    draw();
+    obsList.execute();
+    charactersList.execute();
+    ProjList.execute();
     pCollider->CollisionCheck();
 }
 

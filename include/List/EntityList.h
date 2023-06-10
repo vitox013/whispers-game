@@ -18,5 +18,6 @@ class EntityList {
     Entity::Entity* operator[](int pos);
     void clearList();
     void execute();
+    void DrawEntities();
 };
 }  // namespace Whispers::List

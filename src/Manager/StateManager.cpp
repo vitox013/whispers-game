@@ -53,6 +53,7 @@ void StateManager::popState()
 {
     if (states.top() != nullptr)
     {
+        DeactivateObserver();
         delete states.top();
         states.top() = nullptr;
         states.pop();

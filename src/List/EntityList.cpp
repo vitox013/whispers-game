@@ -46,3 +46,20 @@ void List::EntityList::execute()
         }
     }
 }
+void List::EntityList::DrawEntities()
+{
+    int size = objEntityList.getSize();
+    Entity::Entity *pAux = nullptr;
+    for (int i = 0; i < size; i++)
+    {
+        pAux = objEntityList.operator[](i);
+        if (pAux == nullptr)
+        {
+            break;
+        }
+        else
+        {
+            pAux->draw();
+        }
+    }
+}

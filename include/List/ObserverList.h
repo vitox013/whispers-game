@@ -16,7 +16,7 @@ namespace Whispers::List
         void AddObserver(Observer::Observer *observer);
         void RemoveObserver(Observer::Observer *observer);
         void RemoveObserver(int pos);
-        int GetTam();
+        int GetSize();
         Observer::Observer *operator[](int pos);
         void NotifyKeyPressed(const sf::Keyboard::Key key);
         void NotifyKeyReleased(const sf::Keyboard::Key key);

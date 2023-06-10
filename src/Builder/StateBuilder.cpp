@@ -18,6 +18,10 @@ Whispers::State::State *StateBuilder::createState(const ID::ID id)
     {
         return CreateMainMenu();
     }
+    if (id == ID::ID::Pause_menu_state)
+    {
+        return CreatePauseMenu();
+    }
     
     return nullptr;
 }
@@ -44,7 +48,17 @@ Whispers::State::State *Whispers::Builder::StateBuilder::CreateMainMenu()
     State::State *state = static_cast<State::State *>(new State::StateMainMenu());
     if (!state)
     {
-        std::cout << "Error creating statePlay" << std::endl;
+        std::cout << "Error creating stateMainMenu" << std::endl;
+        exit(1);
+    }
+    return state;
+}
+Whispers::State::State *Whispers::Builder::StateBuilder::CreatePauseMenu()
+{
+    State::State *state = static_cast<State::State *>(new State::StatePause());
+    if (!state)
+    {
+        std::cout << "Error creating statePause" << std::endl;
         exit(1);
     }
     return state;

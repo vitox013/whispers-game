@@ -10,8 +10,9 @@ class CollisionManager {
     List::EntityList *CharList;
     List::EntityList *ObjList;
     List::EntityList *ProjList;
+    GraphicManager *pGraphic;
 
-   public:
+public:
     CollisionManager(List::EntityList *charsList, List::EntityList *ObjList,
                      List::EntityList *ProjeList);
     ~CollisionManager();

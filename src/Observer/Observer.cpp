@@ -2,8 +2,8 @@
 #include "..\include\Manager\StateManager.h"
 #include "..\include\Manager\EventManager\EventManager.h"
 using namespace Whispers::Observer;
-Whispers::Manager::EventManager* Observer::pEventMa = Whispers::Manager::EventManager::getEventManager();
-Whispers::Manager::StateManager* Observer::pStateMa = Whispers::Manager::StateManager::getStateManager();
+Whispers::Manager::EventManager *Observer::pEventMa = Whispers::Manager::EventManager::getEventManager();
+Whispers::Manager::StateManager *Observer::pStateMa = Whispers::Manager::StateManager::getStateManager();
 
 Observer::Observer()
     : active(true)
@@ -16,7 +16,14 @@ Observer::~Observer()
 }
 void Whispers::Observer::Observer::changeActiveState()
 {
-    active = !active;
+    if (active == true)
+    {
+        active = false;
+    }
+    else
+    {
+        active = true;
+    }
 }
 
 const bool Whispers::Observer::Observer::getActive() const

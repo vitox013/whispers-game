@@ -2,6 +2,7 @@
 
 using namespace Whispers::State;
 
+
 StatePlay::StatePlay(const ID::ID id, Level::Level* level)
     : State(id), level(level) {}
 
@@ -14,4 +15,8 @@ Player* StatePlay::getPlayer() { return level->getPlayer(); }
 void Whispers::State::StatePlay::ChangeObserverState()
 {
     level->ChangeObserverState();
+}
+Whispers::Level::Level *StatePlay::getLevel()
+{
+    return level;
 }

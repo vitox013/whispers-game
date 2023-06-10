@@ -13,7 +13,7 @@ namespace Whispers::Manager
         GraphicManager *pGraphic;
         StateManager *pState;
         static EventManager *pEvent;
-        List::ObserverList* pObsList;
+        static List::ObserverList* pObsList;
         EventManager();
 
     public:
@@ -22,7 +22,7 @@ namespace Whispers::Manager
         void AddObserver(Observer::Observer *pObserver);
         void RemoveObserver(Observer::Observer *pObserver);
         void RemoveObserver(int pos);
-        void handleKeyPress(); // Mudar para observer
+        void handleKeyPress();
         void execute();
     };
-} // namespace Whispers::Manager
+}

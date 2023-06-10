@@ -22,7 +22,7 @@ void Whispers::List::ObserverList::RemoveObserver(int pos)
 {
     eleobserverList.removeElement(pos);
 }
-int Whispers::List::ObserverList::GetTam()
+int Whispers::List::ObserverList::GetSize()
 {
     return eleobserverList.getSize();
 }
@@ -41,7 +41,7 @@ void Whispers::List::ObserverList::NotifyKeyPressed(const sf::Keyboard::Key key)
         }
         Observer = nullptr;
     }
-    
+    std::cout << eleobserverList.getSize() << std::endl;
 }
 void Whispers::List::ObserverList::NotifyKeyReleased(const sf::Keyboard::Key key)
 {
