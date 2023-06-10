@@ -15,7 +15,7 @@ void Ground::collision(Entity* other, Vector2f ds) {
 
     if (other->getId() == ID::ID::player || other->getId() == ID::ID::enemy ||
         other->getId() == ID::ID::skeleton || other->getId() == ID::ID::bat ||
-        other->getId() == ID::ID::boss) {
+        other->getId() == ID::ID::boss || other->getId() == ID::ID::ghost) {
         collideObstacle(ds, static_cast<Character::Character*>(other));
     }
 }

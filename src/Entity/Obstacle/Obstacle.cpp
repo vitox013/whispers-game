@@ -30,6 +30,10 @@ void Obstacle::collideObstacle(Vector2f ds, Character::Character* pChar) {
                     Character::Player* pPlayer =
                         static_cast<Character::Player*>(pChar);
                     pPlayer->canJump();
+                }else if (pChar->getId() == ID::ID::boss) {
+                    Character::Enemy::Boss* pBoss =
+                        static_cast<Character::Enemy::Boss*>(pChar);
+                    pBoss->canJump();
                 }
             } else {
                 pCharPos.y -= ds.y;

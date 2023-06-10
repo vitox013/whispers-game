@@ -47,6 +47,11 @@ Entity *EntityBuilder::createEntity(const ID::ID id, const Vector2f pos,
         entity = static_cast<Entity::Entity *>(new Skeleton(pos, pPlayer));
 
         break;
+    case ID::ID::ghost:
+        entity =
+            static_cast<Entity::Entity *>(new Ghost(pos, pPlayer));
+
+        break;
     case ID::ID::bat:
         entity =
             static_cast<Entity::Entity *>(new Bat(pos, pPlayer, projelist));
@@ -69,7 +74,7 @@ Entity *EntityBuilder::createEntity(const ID::ID id, const Vector2f pos,
     case ID::ID::platform:
         entity = static_cast<Entity::Entity *>(
             new Platform(pos, Vector2f(400.0f, 40.0f)));
-
+            cout << pos.x << " " << pos.y << endl;
         break;
     case ID::ID::trap:
         entity = static_cast<Entity::Entity *>(

@@ -9,5 +9,6 @@ class Graveyard : public Level {
     ~Graveyard();
     void createBackground();
     void createMap();
+    void randomCreateEntities();
 };
 }

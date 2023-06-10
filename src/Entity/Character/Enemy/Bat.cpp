@@ -3,8 +3,8 @@
 using namespace Whispers::Entity::Character::Enemy;
 
 Bat::Bat(const sf::Vector2f pos, Player *player, List::EntityList *projelist)
-    : Enemy(pos, sf::Vector2f(BAT_SIZE_X, BAT_SIZE_Y), BAT_LIFE, BAT_DAMAGE,
-            player, ID::ID::bat),
+    : Enemy(pos, sf::Vector2f(BAT_SIZE_X, BAT_SIZE_Y), BAT_LIFE, true,
+            BAT_DAMAGE, player, ID::ID::bat),
       projlist{projelist},
       cooldown{clock.getElapsedTime()} {
     init();
@@ -24,10 +24,29 @@ void Bat::CreatePojectile(Vector2f target) {
         new Projectile::Projectile(getPosition(), target, faceLeft);
     projlist->addEntity(static_cast<Entity *>(nProj));
 }
+
+void Bat::moveEnemy() {
+    Vector2f playerPos = player->getPosition();
+    Vector2f enemyPos = getPosition();
+
+    if (fabs(playerPos.x - enemyPos.x) <= 800 &&
+        fabs(playerPos.y - enemyPos.y) <= 800) {
+        if ((playerPos.x - enemyPos.x < 10.0f) &&
+            (playerPos.x - enemyPos.x > -10.0f)) {
+            stop();
+        } else if (playerPos.x - enemyPos.x > 0.0f) {
+            walk(false);
+        } else {
+            walk(true);
+        }
+    } else {
+        randomMovement();
+    }
+}
 void Bat::update() {
     moveEnemy();
     updatePosition();
-    if ((cooldown.asSeconds() * 100) > 10.0f) {
+    if ((cooldown.asSeconds() * 30) > 10.0f) {
         if (fabs(player->getPosition().x - getPosition().x) <= SHOOT_RAY_X &&
             fabs(player->getPosition().y - getPosition().y) <= SHOOT_RAY_Y) {
             CreatePojectile(player->getPosition());

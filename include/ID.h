@@ -18,6 +18,7 @@ enum class ID {
     play_graveyard,
     graveyard_background,
     skeleton,
+    ghost,
     bat,
     boss,
     wall,
