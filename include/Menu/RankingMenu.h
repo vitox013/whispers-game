@@ -1,25 +1,25 @@
 #pragma once
 #include "Menu.h"
 #include "..\Background\Background.h"
-#include "..\Observer\MainMenuObserver.h"
+#include "..\Observer\RankingMenuObserver.h"
 #define PATH_TEXTURE_MAIN_MENU "assets/background/midnight/midnight.png"
 #define BUTTON_SIZE_X 350.0f
 #define BUTTON_SIZE_Y 50.0f
 
 namespace Whispers::Menu
 {
-    class MainMenu :public Menu
+    class RankingMenu :public Menu
     {
     private:
         Background::Background background;
-        bool exit;
-        Observer::MainMenuObserver *mainmenuObserver;
+        bool Exit;
+        Observer::RankingMenuObserver *RankingMenuObserver;
         void CreateBackground();
         void CreateButtons();
 
     public:
-        MainMenu();
-        ~MainMenu();
+        RankingMenu();
+        ~RankingMenu();
         void SetExit(const bool exit = true);
         const bool GetExit() const;
         void ChangeObserverState();

@@ -30,7 +30,7 @@ void LevelObserver::ReleasedKey(const sf::Keyboard::Key key)
 void LevelObserver::SaveRank()
 {
     int score = level->GetEnemiesKilled();
-    std::ofstream rankFile("ranking/ranking.txt");
+    std::ofstream rankFile("ranking/ranking.txt", ios::app);
     if (!rankFile)
     {
         std::cout << "Error on opening map file" << std::endl;
@@ -39,12 +39,12 @@ void LevelObserver::SaveRank()
     else if (level->getId() == ID::ID::midnight_level)
     {
         std::cout << "Arquivo salvo" << std::endl;
-        rankFile << "Midnight," << score << "\n";
+        rankFile << score << "\n";
     }
     else if (level->getId() == ID::ID::graveyard_level)
     {
         std::cout << "Arquivo salvo" << std::endl;
-        rankFile << "Graveyard," << score << "\n";
+        rankFile << score << "\n";
     }
     rankFile.close();
 }
