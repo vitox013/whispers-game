@@ -2,16 +2,18 @@
 
 #include "..\Level\Midnight.h"
 #include "..\Level\Graveyard.h"
-namespace Whispers::Builder {
-class LevelBuilder {
-   public:
-    LevelBuilder();
-    ~LevelBuilder();
+namespace Whispers::Builder
+{
+    class LevelBuilder
+    {
+    public:
+        LevelBuilder();
+        ~LevelBuilder();
 
-    Level::Level* createLevel(const ID::ID id);
+        Level::Level *createLevel(const ID::ID id, bool multi);
 
-   private:
-    Level::Level* createMidnight();
-    Level::Level* createGraveyard();
-};
-}  // namespace Whispers::Builder
+    private:
+        Level::Level *createMidnight(bool multi);
+        Level::Level *createGraveyard(bool multi);
+    };
+}

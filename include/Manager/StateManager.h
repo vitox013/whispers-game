@@ -10,7 +10,7 @@ class StateManager {
    private:
     std::stack<State::State*> states;
     Builder::StateBuilder stateBuilder;
-
+    bool multiplayer;
     static StateManager* pStateManager;
     StateManager();
     void DeactivateObserver();
@@ -19,7 +19,7 @@ class StateManager {
 public:
     ~StateManager();
     static StateManager* getStateManager();
-    void pushState(const ID::ID id); //adicionar estado
+    void pushState(const ID::ID id, bool multi = false); //adicionar estado
     void popState(); //remover estado
     State::State* getCurrentState();
     void execute();

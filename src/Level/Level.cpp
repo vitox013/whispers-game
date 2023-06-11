@@ -16,7 +16,9 @@ Level::Level(const ID::ID level_id, const bool multiplayer,
           new Manager::CollisionManager(&charactersList, &obsList, &ProjList)),
       entityBuilder(),
       levelObserver(new Observer::LevelObserver(this)),
-      multiplayer(multiplayer) {
+      enemiesKilled(0),
+      multiplayer(multiplayer) 
+{
     if (!pCollider) {
         std::cout << "Error on creating CollisionManager" << std::endl;
         exit(1);
@@ -51,7 +53,7 @@ void Level::createEntities(char c, const Vector2i position) {
             charactersList.addEntity(
                 entityBuilder.createEntity(ID::ID::player, pos));
             if (multiplayer){
-                cout << "multiplayer criado" << endl;
+                //cout << "multiplayer criado" << endl;
                 charactersList.addEntity(
                     entityBuilder.createEntity(ID::ID::player2, pos));
             }
@@ -120,6 +122,13 @@ void Level::Level::removeCharacters() {
         character = static_cast<Character *>(charactersList.operator[](i));
         if (character->getLife() <= 0 && character->getId() != ID::ID::player && character->getId() != ID::ID::player2) {
             charactersList.removeEntity(character);
+            enemiesKilled++;
+            std::cout << "score atual: " << enemiesKilled << std::endl;
         }
     }
+}
+
+int Level::Level::GetEnemiesKilled()
+{
+    return enemiesKilled;
 }

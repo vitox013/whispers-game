@@ -21,11 +21,11 @@ void MainMenuObserver::PressedKey(const sf::Keyboard::Key key)
     case sf::Keyboard::Enter:
         switch (mainmenu->GetIDSelectedButton())
         {
-        case (ID::ID::play_midnight):
-            pStateMa->pushState(ID::ID::play_midnight);
+        case (ID::ID::SinglePlayer_Menu):
+            pStateMa->pushState(ID::ID::Level_Select_Menu, false);
             break;
-        case (ID::ID::play_graveyard):
-            pStateMa->pushState(ID::ID::play_graveyard);
+        case (ID::ID::Multiplayer_Menu):
+            pStateMa->pushState(ID::ID::Level_Select_Menu, true);
             break;
         case (ID::ID::exit_button):
             pStateMa->popState();
@@ -69,11 +69,11 @@ void Whispers::Observer::MainMenuObserver::ReleaseMouseButton(const sf::Mouse::B
         case sf::Mouse::Left:
             switch (mainmenu->GetIDSelectedButton())
             {
-            case (ID::ID::play_midnight):
-                pStateMa->pushState(ID::ID::play_midnight);
+            case (ID::ID::SinglePlayer_Menu):
+                pStateMa->pushState(ID::ID::Level_Select_Menu, false);
                 break;
-            case (ID::ID::play_graveyard):
-                pStateMa->pushState(ID::ID::play_graveyard);
+            case (ID::ID::Multiplayer_Menu):
+                pStateMa->pushState(ID::ID::Level_Select_Menu, true);
                 break;
             case (ID::ID::exit_button):
                 pStateMa->popState();
@@ -88,3 +88,4 @@ void Whispers::Observer::MainMenuObserver::ReleaseMouseButton(const sf::Mouse::B
         }
     }
 }
+void MainMenuObserver::SaveRank() {}

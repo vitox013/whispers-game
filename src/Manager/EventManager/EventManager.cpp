@@ -58,14 +58,16 @@ void Whispers::Manager::EventManager::RemoveObserver(int pos)
     pObsList->RemoveObserver(pos);
 }
 
-void EventManager::handleKeyPress() {
+void EventManager::handleKeyPress()
+{
     if (pState->getCurrentState()->getId() == ID::ID::play_midnight ||
-        pState->getCurrentState()->getId() == ID::ID::play_graveyard) {
+        pState->getCurrentState()->getId() == ID::ID::play_graveyard)
+    {
         State::StatePlay *pStatePlay =
             dynamic_cast<State::StatePlay *>(pState->getCurrentState());
         Entity::Character::Player *pPlayer = pStatePlay->getPlayer();
         Entity::Character::Player *pPlayer2 = pStatePlay->getPlayer2();
-        cout << "Player2 existe: " << pStatePlay->getPlayer2() << endl;
+        //cout << "Player2 existe: " << pStatePlay->getPlayer2() << endl;
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             pPlayer->walk(true);
         } else if (Keyboard::isKeyPressed(Keyboard::D)) {
@@ -79,9 +81,23 @@ void EventManager::handleKeyPress() {
         if (Keyboard::isKeyPressed(Keyboard::LShift)) {
             pPlayer->attack(true);
         }
+        if (pPlayer->getPosition().x > 6400.0f && pState->getCurrentState()->getId() == ID::ID::play_midnight)
+        {
+            pObsList->NotifyEndLevel();
+            pState->popState();
+            pState->pushState(ID::ID::play_graveyard);
+        }
+        // if (Keyboard::isKeyPressed(Keyboard::Escape))
+        //{
+        // pState->popState();
+        //}
+        // if (Keyboard::isKeyPressed(Keyboard::R))
+        //{
+        // pState->pushState(ID::ID::play_midnight);
+        //}
         // Segundo Jogador
         if (pPlayer2 != nullptr) {
-            cout << "Player 2 movimentado" << endl;
+            //cout << "Player 2 movimentado" << endl;
             if (Keyboard::isKeyPressed(Keyboard::Left)) {
                 pPlayer2->walk(true);
             } else if (Keyboard::isKeyPressed(Keyboard::Right)) {

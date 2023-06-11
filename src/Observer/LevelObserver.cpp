@@ -10,20 +10,41 @@ LevelObserver::LevelObserver(Level::Level *level)
 
 LevelObserver::~LevelObserver()
 {
-    
 }
 void LevelObserver::PressedKey(const sf::Keyboard::Key key)
 {
-    // push pause state when it's done
-}
-void LevelObserver::ReleasedKey(const sf::Keyboard::Key key)
-{
     switch (key)
     {
-    case (sf::Keyboard::Escape):
+    case sf::Keyboard::Escape:
     {
         pStateMa->pushState(ID::ID::Pause_menu_state);
     }
     break;
     }
+}
+void LevelObserver::ReleasedKey(const sf::Keyboard::Key key)
+{
+    
+}
+
+void LevelObserver::SaveRank()
+{
+    int score = level->GetEnemiesKilled();
+    std::ofstream rankFile("ranking/ranking.txt");
+    if (!rankFile)
+    {
+        std::cout << "Error on opening map file" << std::endl;
+        exit(1);
+    }
+    else if (level->getId() == ID::ID::midnight_level)
+    {
+        std::cout << "Arquivo salvo" << std::endl;
+        rankFile << "Midnight," << score << "\n";
+    }
+    else if (level->getId() == ID::ID::graveyard_level)
+    {
+        std::cout << "Arquivo salvo" << std::endl;
+        rankFile << "Graveyard," << score << "\n";
+    }
+    rankFile.close();
 }

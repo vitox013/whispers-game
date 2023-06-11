@@ -15,6 +15,7 @@ namespace Whispers::Observer
         ~LevelObserver();
         void PressedKey(const sf::Keyboard::Key key);
         void ReleasedKey(const sf::Keyboard::Key key);
+        void SaveRank();
     };
 
 }

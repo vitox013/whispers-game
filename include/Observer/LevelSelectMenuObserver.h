@@ -6,18 +6,18 @@ namespace Whispers
 {
     namespace Menu
     {
-        class MainMenu;
+        class LevelSelectMenu;
     }
     namespace Observer
     {
-        class MainMenuObserver : public Observer
+        class LevelSelectMenuObserver : public Observer
         {
         private:
-            Menu::MainMenu *mainmenu;
+            Menu::LevelSelectMenu *levelSelectMenu;
 
         public:
-            MainMenuObserver(Menu::MainMenu *mainmenu);
-            ~MainMenuObserver();
+            LevelSelectMenuObserver(Menu::LevelSelectMenu *mainmenu);
+            ~LevelSelectMenuObserver();
             void PressedKey(const sf::Keyboard::Key key);
             void ReleasedKey(const sf::Keyboard::Key key);
             void MoveMouse(const sf::Vector2f Mousepos);

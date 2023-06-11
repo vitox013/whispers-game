@@ -14,8 +14,5 @@ namespace Whispers::State
         ~StateMainMenu();
         void ChangeObserverState();
         void execute();
-    };
-    
-
-    
+    };  
 }

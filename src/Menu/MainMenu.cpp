@@ -34,9 +34,10 @@ void Whispers::Menu::MainMenu::CreateBackground()
 void Whispers::Menu::MainMenu::CreateButtons()
 {
     const float posbuttonX = windowsize.x / 2.0f - buttonsize.x / 2.0f;
-    AddButton("Jogar Midnight", sf::Vector2f(posbuttonX, windowsize.y / 2.0f), ID::ID::play_midnight, sf::Color::White);
-    AddButton("Jogar Graveyard", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 2.0f), ID::ID::play_graveyard, sf::Color::White);
-    AddButton("Exit", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 4.0f), ID::ID::exit_button, sf::Color::White);
+    AddButton("Um Jogador", sf::Vector2f(posbuttonX, windowsize.y / 2.0f), ID::ID::SinglePlayer_Menu, sf::Color::White);
+    AddButton("Dois Jogadores", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 2.0f), ID::ID::Multiplayer_Menu, sf::Color::White);
+    AddButton("Ranking", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 4.0f), ID::ID::Ranking_Menu, sf::Color::White);
+    AddButton("Exit", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 6.0f), ID::ID::exit_button, sf::Color::White);
     it = buttonlist.begin();
     (*it)->SetSelected(true);
 }

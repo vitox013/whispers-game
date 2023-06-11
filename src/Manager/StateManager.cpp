@@ -4,7 +4,7 @@ using namespace Whispers::Manager;
 
 StateManager *StateManager::pStateManager = nullptr;
 
-StateManager::StateManager() : states(), stateBuilder()
+StateManager::StateManager() : states(), stateBuilder(), multiplayer(false)
 {
 }
 
@@ -33,9 +33,9 @@ StateManager *StateManager::getStateManager()
     return pStateManager;
 }
 
-void StateManager::pushState(const ID::ID id)
+void StateManager::pushState(const ID::ID id, bool multi)
 {
-    State::State *State = stateBuilder.createState(id);
+    State::State *State = stateBuilder.createState(id, multi);
     if (!State)
     {
         std::cout << "State not found" << std::endl;

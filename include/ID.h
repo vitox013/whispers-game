@@ -38,6 +38,10 @@ enum class ID {
     ground_gv,
     platform_gv,
     wall_gv,
+    SinglePlayer_Menu,
+    Multiplayer_Menu,
+    Ranking_Menu,
+    Level_Select_Menu
 };
 
 }
