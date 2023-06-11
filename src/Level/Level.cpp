@@ -14,7 +14,9 @@ Level::Level(const ID::ID level_id, const ID::ID background_id)
       pCollider(
           new Manager::CollisionManager(&charactersList, &obsList, &ProjList)),
       entityBuilder(),
-      levelObserver(new Observer::LevelObserver(this)) {
+      levelObserver(new Observer::LevelObserver(this)),
+      enemiesKilled(0) 
+{
     if (!pCollider) {
         std::cout << "Error on creating CollisionManager" << std::endl;
         exit(1);
@@ -102,7 +104,19 @@ void Level::Level::removeCharacters() {
     for (int i = 0; i < charactersList.getSize(); i++) {
         character = static_cast<Character *>(charactersList.operator[](i));
         if (character->getLife() <= 0 && character->getId() != ID::ID::player) {
+            if (character->getId() == ID::ID::boss)
+            {
+                //levelObserver->;
+            }
+            
             charactersList.removeEntity(character);
+            enemiesKilled++;
+            std::cout << "score atual: " << enemiesKilled << std::endl;
         }
     }
+}
+
+int Level::Level::GetEnemiesKilled()
+{
+    return enemiesKilled;
 }

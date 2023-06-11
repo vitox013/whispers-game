@@ -41,7 +41,6 @@ void Whispers::List::ObserverList::NotifyKeyPressed(const sf::Keyboard::Key key)
         }
         Observer = nullptr;
     }
-    std::cout << eleobserverList.getSize() << std::endl;
 }
 void Whispers::List::ObserverList::NotifyKeyReleased(const sf::Keyboard::Key key)
 {
@@ -76,6 +75,19 @@ void Whispers::List::ObserverList::NotifyMouseReleased(const sf::Mouse::Button m
         if (Observer->getActive() == true)
         {
             Observer->ReleaseMouseButton(mousebtn);
+        }
+        Observer = nullptr;
+    }
+}
+
+void Whispers::List::ObserverList::NotifyEndLevel()
+{
+    for (int i = 0; i < eleobserverList.getSize(); i++)
+    {
+        Whispers::Observer::Observer *Observer = eleobserverList.operator[](i);
+        if (Observer->getActive() == true)
+        {
+            Observer->SaveRank();
         }
         Observer = nullptr;
     }

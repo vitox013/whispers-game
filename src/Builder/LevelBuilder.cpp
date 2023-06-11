@@ -7,7 +7,7 @@ LevelBuilder::LevelBuilder() {}
 
 LevelBuilder::~LevelBuilder() {}
 
-Level* LevelBuilder::createLevel(const ID::ID id) {
+Level* LevelBuilder::createLevel(const ID::ID id, bool multi) {
     Level::Level* level = nullptr;
 
     // Verificar o ID do level e criar o level correspondente

@@ -72,6 +72,7 @@ void Whispers::Observer::PauseMenuObserver::ReleaseMouseButton(const sf::Mouse::
             case ID::ID::exit_button:
                 pStateMa->popState();
                 pStateMa->popState();
+                pStateMa->popState();
             default:
                 break;
             }
@@ -82,3 +83,4 @@ void Whispers::Observer::PauseMenuObserver::ReleaseMouseButton(const sf::Mouse::
         }
     }
 }
+void PauseMenuObserver::SaveRank() {}

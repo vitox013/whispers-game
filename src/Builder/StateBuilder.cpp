@@ -6,13 +6,13 @@ StateBuilder::StateBuilder() {}
 
 StateBuilder::~StateBuilder() {}
 
-Whispers::State::State *StateBuilder::createState(const ID::ID id)
+Whispers::State::State *StateBuilder::createState(const ID::ID id, bool multi)
 {
     if (id == ID::ID::play_midnight)
     {
-        return createStatePlay(id);
+        return createStatePlay(id, multi);
     } else if (id == ID::ID::play_graveyard) {
-        return createStatePlay(id);
+        return createStatePlay(id, multi);
     }
     if (id == ID::ID::Main_Menu_state)
     {
@@ -22,15 +22,19 @@ Whispers::State::State *StateBuilder::createState(const ID::ID id)
     {
         return CreatePauseMenu();
     }
+    if (id == ID::ID::Level_Select_Menu)
+    {
+        return CreateLevelSelectMenu(multi);
+    }
     
     return nullptr;
 }
 
-Whispers::State::State *StateBuilder::createStatePlay(const ID::ID id)
+Whispers::State::State *StateBuilder::createStatePlay(const ID::ID id, bool multi)
 {
     Level::Level *level = nullptr;
     LevelBuilder levelBuilder;
-    level = levelBuilder.createLevel(id);
+    level = levelBuilder.createLevel(id, multi);
 
     Whispers::State::StatePlay *statePlay =
         new Whispers::State::StatePlay(id, level);
@@ -46,6 +50,16 @@ Whispers::State::State *StateBuilder::createStatePlay(const ID::ID id)
 Whispers::State::State *Whispers::Builder::StateBuilder::CreateMainMenu()
 {
     State::State *state = static_cast<State::State *>(new State::StateMainMenu());
+    if (!state)
+    {
+        std::cout << "Error creating stateMainMenu" << std::endl;
+        exit(1);
+    }
+    return state;
+}
+Whispers::State::State *Whispers::Builder::StateBuilder::CreateLevelSelectMenu(bool multi)
+{
+    State::State *state = static_cast<State::State *>(new State::StateLevelSelectMenu(multi));
     if (!state)
     {
         std::cout << "Error creating stateMainMenu" << std::endl;

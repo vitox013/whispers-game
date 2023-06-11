@@ -58,11 +58,11 @@ void Whispers::Manager::EventManager::RemoveObserver(int pos)
     pObsList->RemoveObserver(pos);
 }
 
-void EventManager::handleKeyPress() 
+void EventManager::handleKeyPress()
 {
     if (pState->getCurrentState()->getId() == ID::ID::play_midnight ||
-        pState->getCurrentState()->getId() == ID::ID::play_graveyard) 
-        {
+        pState->getCurrentState()->getId() == ID::ID::play_graveyard)
+    {
         State::StatePlay *pStatePlay =
             dynamic_cast<State::StatePlay *>(pState->getCurrentState());
         Entity::Character::Player *pPlayer = pStatePlay->getPlayer();
@@ -86,13 +86,19 @@ void EventManager::handleKeyPress()
         {
             pPlayer->attack(true);
         }
-        //if (Keyboard::isKeyPressed(Keyboard::Escape))
+        if (pPlayer->getPosition().x > 6400.0f && pState->getCurrentState()->getId() == ID::ID::play_midnight)
+        {
+            pObsList->NotifyEndLevel();
+            pState->popState();
+            pState->pushState(ID::ID::play_graveyard);
+        }
+        // if (Keyboard::isKeyPressed(Keyboard::Escape))
         //{
-            //pState->popState();
+        // pState->popState();
         //}
-        //if (Keyboard::isKeyPressed(Keyboard::R))
+        // if (Keyboard::isKeyPressed(Keyboard::R))
         //{
-            //pState->pushState(ID::ID::play_midnight);
+        // pState->pushState(ID::ID::play_midnight);
         //}
     }
 }

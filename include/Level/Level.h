@@ -23,6 +23,7 @@ namespace Whispers
         {
         private:
             Observer::LevelObserver *levelObserver;
+            int enemiesKilled;
 
         protected:
             List::EntityList charactersList;
@@ -46,6 +47,7 @@ namespace Whispers
             void createSkeletons(Vector2f pos);
             bool getIsRunning();
             void removeCharacters();
+            int GetEnemiesKilled();
         };
     }
 
