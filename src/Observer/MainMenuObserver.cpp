@@ -27,6 +27,9 @@ void MainMenuObserver::PressedKey(const sf::Keyboard::Key key)
         case (ID::ID::Multiplayer_Menu):
             pStateMa->pushState(ID::ID::Level_Select_Menu, true);
             break;
+        case (ID::ID::Ranking_Menu):
+            pStateMa->pushState(ID::ID::Ranking_Menu, true);
+            break;
         case (ID::ID::exit_button):
             pStateMa->popState();
             break;

@@ -41,7 +41,7 @@ enum class ID {
     SinglePlayer_Menu,
     Multiplayer_Menu,
     Ranking_Menu,
-    Level_Select_Menu
+    Level_Select_Menu,
 };
 
 }

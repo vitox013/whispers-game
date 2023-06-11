@@ -5,6 +5,7 @@
 #include "..\State\StateMainMenu.h"
 #include "..\State\StatePause.h"
 #include "..\State\StateLevelSelectMenu.h"
+#include "..\State\StateRankingMenu.h"
 #include ".\LevelBuilder.h"
 
 namespace Whispers::Builder
@@ -15,6 +16,7 @@ namespace Whispers::Builder
         Whispers::State::State *createStatePlay(const ID::ID id, bool multi);
         State::State *CreateMainMenu();
         State::State *CreatePauseMenu();
+        State::State *CreateRankingMenu();
         State::State *CreateLevelSelectMenu(bool multi);
 
     public:

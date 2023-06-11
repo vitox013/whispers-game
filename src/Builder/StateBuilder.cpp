@@ -26,6 +26,10 @@ Whispers::State::State *StateBuilder::createState(const ID::ID id, bool multi)
     {
         return CreateLevelSelectMenu(multi);
     }
+    if (id == ID::ID::Ranking_Menu)
+    {
+        return CreateRankingMenu();
+    }
     
     return nullptr;
 }
@@ -70,6 +74,16 @@ Whispers::State::State *Whispers::Builder::StateBuilder::CreateLevelSelectMenu(b
 Whispers::State::State *Whispers::Builder::StateBuilder::CreatePauseMenu()
 {
     State::State *state = static_cast<State::State *>(new State::StatePause());
+    if (!state)
+    {
+        std::cout << "Error creating statePause" << std::endl;
+        exit(1);
+    }
+    return state;
+}
+Whispers::State::State *Whispers::Builder::StateBuilder::CreateRankingMenu()
+{
+    State::State *state = static_cast<State::State *>(new State::StateRankingMenu());
     if (!state)
     {
         std::cout << "Error creating statePause" << std::endl;
