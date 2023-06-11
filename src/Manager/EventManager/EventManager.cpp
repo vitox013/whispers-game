@@ -87,6 +87,16 @@ void EventManager::handleKeyPress()
             pState->popState();
             pState->pushState(ID::ID::play_graveyard);
         }
+        if (pPlayer->getPosition().x > 6400.0f && pState->getCurrentState()->getId() == ID::ID::play_graveyard)
+        {
+            pObsList->NotifyEndLevel();
+            pState->popState();
+        }
+        if (pPlayer->getIsAlive() == false)
+        {
+            pState->popState();
+        }
+        
         // if (Keyboard::isKeyPressed(Keyboard::Escape))
         //{
         // pState->popState();
