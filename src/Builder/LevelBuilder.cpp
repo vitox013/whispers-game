@@ -29,7 +29,7 @@ Level* LevelBuilder::createLevel(const ID::ID id, bool multi) {
 }
 
 Level* LevelBuilder::createMidnight() {
-    Level::Level* midnight = static_cast<Level::Level*>(new Midnight());
+    Level::Level* midnight = static_cast<Level::Level*>(new Midnight(true));
     if (!midnight) {
         std::cout << "Error creating midnight" << std::endl;
         exit(1);
@@ -38,7 +38,7 @@ Level* LevelBuilder::createMidnight() {
 }
 
 Level* LevelBuilder::createGraveyard() {
-    Level::Level* graveyard = static_cast<Level::Level*>(new Graveyard());
+    Level::Level* graveyard = static_cast<Level::Level*>(new Graveyard(false));
     if (!graveyard) {
         std::cout << "Error creating graveyard" << std::endl;
         exit(1);

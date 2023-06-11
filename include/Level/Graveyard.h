@@ -4,8 +4,10 @@
 
 namespace Whispers::Level {
 class Graveyard : public Level {
+    private:
+    bool multiplayer;
    public:
-    Graveyard();
+    Graveyard(const bool multiplayer);
     ~Graveyard();
     void createBackground();
     void createMap();

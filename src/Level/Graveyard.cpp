@@ -2,8 +2,8 @@
 
 using namespace Whispers::Level;
 
-Graveyard::Graveyard()
-    : Level(ID::ID::graveyard_level, ID::ID::graveyard_background) {}
+Graveyard::Graveyard(const bool multiplayer)
+    : Level(ID::ID::graveyard_level, multiplayer, ID::ID::graveyard_background) {}
 
 Graveyard::~Graveyard() {}
 

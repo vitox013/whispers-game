@@ -26,7 +26,7 @@ void Obstacle::collideObstacle(Vector2f ds, Character::Character* pChar) {
         } else {
             if (pCharPos.y < position.y) {
                 pCharPos.y += ds.y;
-                if (pChar->getId() == ID::ID::player) {
+                if (pChar->getId() == ID::ID::player || pChar->getId() == ID::ID::player2) {
                     Character::Player* pPlayer =
                         static_cast<Character::Player*>(pChar);
                     pPlayer->canJump();

@@ -4,11 +4,14 @@
 
 namespace Whispers::Level {
 class Midnight : public Level {
+   private:
+    bool multiplayer;
+
    public:
-    Midnight();
+    Midnight(const bool multiplayer);
     ~Midnight();
     void createBackground();
     void createMap();
     void randomCreateEntities();
 };
-}
+}  // namespace Whispers::Level

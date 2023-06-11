@@ -66,24 +66,19 @@ void EventManager::handleKeyPress()
         State::StatePlay *pStatePlay =
             dynamic_cast<State::StatePlay *>(pState->getCurrentState());
         Entity::Character::Player *pPlayer = pStatePlay->getPlayer();
-        if (Keyboard::isKeyPressed(Keyboard::A))
-        {
+        Entity::Character::Player *pPlayer2 = pStatePlay->getPlayer2();
+        cout << "Player2 existe: " << pStatePlay->getPlayer2() << endl;
+        if (Keyboard::isKeyPressed(Keyboard::A)) {
             pPlayer->walk(true);
-        }
-        else if (Keyboard::isKeyPressed(Keyboard::D))
-        {
+        } else if (Keyboard::isKeyPressed(Keyboard::D)) {
             pPlayer->walk(false);
-        }
-        else
-        {
+        } else {
             pPlayer->stop();
         }
-        if (Keyboard::isKeyPressed(Keyboard::Space))
-        {
+        if (Keyboard::isKeyPressed(Keyboard::Space)) {
             pPlayer->jump();
         }
-        if (Keyboard::isKeyPressed(Keyboard::LShift))
-        {
+        if (Keyboard::isKeyPressed(Keyboard::LShift)) {
             pPlayer->attack(true);
         }
         if (pPlayer->getPosition().x > 6400.0f && pState->getCurrentState()->getId() == ID::ID::play_midnight)
@@ -100,6 +95,23 @@ void EventManager::handleKeyPress()
         //{
         // pState->pushState(ID::ID::play_midnight);
         //}
+        // Segundo Jogador
+        if (pPlayer2 != nullptr) {
+            cout << "Player 2 movimentado" << endl;
+            if (Keyboard::isKeyPressed(Keyboard::Left)) {
+                pPlayer2->walk(true);
+            } else if (Keyboard::isKeyPressed(Keyboard::Right)) {
+                pPlayer2->walk(false);
+            } else {
+                pPlayer2->stop();
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Up)) {
+                pPlayer2->jump();
+            }
+            if (Keyboard::isKeyPressed(Keyboard::RShift)) {
+                pPlayer2->attack(true);
+            }
+        }
     }
 }
 
