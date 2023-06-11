@@ -67,7 +67,7 @@ void EventManager::handleKeyPress()
             dynamic_cast<State::StatePlay *>(pState->getCurrentState());
         Entity::Character::Player *pPlayer = pStatePlay->getPlayer();
         Entity::Character::Player *pPlayer2 = pStatePlay->getPlayer2();
-        cout << "Player2 existe: " << pStatePlay->getPlayer2() << endl;
+        //cout << "Player2 existe: " << pStatePlay->getPlayer2() << endl;
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             pPlayer->walk(true);
         } else if (Keyboard::isKeyPressed(Keyboard::D)) {
@@ -97,7 +97,7 @@ void EventManager::handleKeyPress()
         //}
         // Segundo Jogador
         if (pPlayer2 != nullptr) {
-            cout << "Player 2 movimentado" << endl;
+            //cout << "Player 2 movimentado" << endl;
             if (Keyboard::isKeyPressed(Keyboard::Left)) {
                 pPlayer2->walk(true);
             } else if (Keyboard::isKeyPressed(Keyboard::Right)) {

@@ -13,7 +13,7 @@ namespace Whispers::Builder
         Level::Level *createLevel(const ID::ID id, bool multi);
 
     private:
-        Level::Level *createMidnight();
-        Level::Level *createGraveyard();
+        Level::Level *createMidnight(bool multi);
+        Level::Level *createGraveyard(bool multi);
     };
 }

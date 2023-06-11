@@ -53,7 +53,7 @@ void Level::createEntities(char c, const Vector2i position) {
             charactersList.addEntity(
                 entityBuilder.createEntity(ID::ID::player, pos));
             if (multiplayer){
-                cout << "multiplayer criado" << endl;
+                //cout << "multiplayer criado" << endl;
                 charactersList.addEntity(
                     entityBuilder.createEntity(ID::ID::player2, pos));
             }

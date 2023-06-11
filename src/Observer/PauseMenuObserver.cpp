@@ -73,6 +73,7 @@ void Whispers::Observer::PauseMenuObserver::ReleaseMouseButton(const sf::Mouse::
                 pStateMa->popState();
                 pStateMa->popState();
                 pStateMa->popState();
+                pStateMa->popState();
             default:
                 break;
             }
