@@ -12,6 +12,8 @@ void StatePlay::execute() { level->execute(); }
 
 Player* StatePlay::getPlayer() { return level->getPlayer(); }
 
+Player* StatePlay::getPlayer2() { return level->getPlayer2(); }
+
 void Whispers::State::StatePlay::ChangeObserverState()
 {
     level->ChangeObserverState();

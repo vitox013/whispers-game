@@ -2,31 +2,50 @@
 
 using namespace Whispers::Entity::Character;
 
-Player::Player(const Vector2f pos, const Vector2f size)
+Player::Player(const Vector2f pos, const bool isPlayer1, const Vector2f size)
     : Character(pos, size, PLAYER_SPEED, PLAYER_LIFE, false, PLAYER_DAMAGE,
-                ID::ID::player),
-      onFloor(false) {
+                isPlayer1 ? ID::ID::player : ID::ID::player2),
+      onFloor(false),
+      player1(isPlayer1) {
     init();
 }
 
 Player::~Player() {}
 
 void Player::Player::init() {
-    animation.addAnimation("assets/character/player/idle.png", "idle", 8, 0.15f,
-                           Vector2f(6, 6));
-    animation.addAnimation("assets/character/player/walk.png", "walk", 8, 0.1f,
-                           Vector2f(6, 6));
-    animation.addAnimation("assets/character/player/jump.png", "jump", 2, 0.15f,
-                           Vector2f(6, 6));
-    animation.addAnimation("assets/character/player/fall.png", "fall", 2, 0.15f,
-                           Vector2f(6, 6));
-    animation.addAnimation("assets/character/player/attack.png", "attack", 4,
-                           0.1f, Vector2f(6, 6));
-    animation.addAnimation("assets/character/player/hurt.png", "hurt", 4, 0.2f,
-                           Vector2f(6, 6));
-    animation.addAnimation("assets/character/player/death.png", "death", 6,
-                           0.2f, Vector2f(6, 6));
-    shape.setOrigin(Vector2f(size.x / 2.5f, size.y / 2.5f));
+    if (player1) {
+        animation.addAnimation("assets/character/player/idle.png", "idle", 8,
+                               0.15f, Vector2f(6, 6));
+        animation.addAnimation("assets/character/player/walk.png", "walk", 8,
+                               0.1f, Vector2f(6, 6));
+        animation.addAnimation("assets/character/player/jump.png", "jump", 2,
+                               0.15f, Vector2f(6, 6));
+        animation.addAnimation("assets/character/player/fall.png", "fall", 2,
+                               0.15f, Vector2f(6, 6));
+        animation.addAnimation("assets/character/player/attack.png", "attack",
+                               4, 0.1f, Vector2f(6, 6));
+        animation.addAnimation("assets/character/player/hurt.png", "hurt", 4,
+                               0.2f, Vector2f(6, 6));
+        animation.addAnimation("assets/character/player/death.png", "death", 6,
+                               0.2f, Vector2f(6, 6));
+        shape.setOrigin(Vector2f(size.x / 2.5f, size.y / 2.5f));
+    } else {
+        animation.addAnimation("assets/character/player2/idle.png", "idle", 3,
+                               0.15f, Vector2f(2.2, 2.1));
+        animation.addAnimation("assets/character/player2/walk.png", "walk", 6,
+                               0.1f, Vector2f(2.2, 2.1));
+        animation.addAnimation("assets/character/player2/jump.png", "jump", 4,
+                               0.15f, Vector2f(2.2, 2.1));
+        animation.addAnimation("assets/character/player2/fall.png", "fall", 2,
+                               0.15f, Vector2f(2.2, 2.1));
+        animation.addAnimation("assets/character/player2/attack.png", "attack",
+                               6, 0.1f, Vector2f(2.2, 2.1));
+        animation.addAnimation("assets/character/player2/hurt.png", "hurt", 3,
+                               0.2f, Vector2f(2.2, 2.1));
+        animation.addAnimation("assets/character/player2/death.png", "death", 7,
+                               0.2f, Vector2f(2.2, 2.1));
+        shape.setOrigin(Vector2f(size.x / 2.5f, size.y / 3.1f));
+    }
 }
 
 void Player::update() {
@@ -36,7 +55,9 @@ void Player::update() {
         life = 0;
         isAlive = false;
     }
-    pGraphic->updateCamera(position);
+    if (player1) {
+        pGraphic->updateCamera(position);
+    }
 }
 
 void Player::jump() {
@@ -58,7 +79,6 @@ void Player::collision(Entity *other, Vector2f ds) {
                 character->setTakeDamage(true);
                 character->setLife(character->getLife() - damage);
                 character->setInvincible(true);
-                cout << "Skeleton life: " << character->getLife() << endl;
             }
 
             break;
@@ -67,15 +87,13 @@ void Player::collision(Entity *other, Vector2f ds) {
                 character->setTakeDamage(true);
                 character->setLife(character->getLife() - damage);
                 character->setInvincible(true);
-                cout << "Ghost life: " << character->getLife() << endl;
             }
             break;
-        case ID::ID::boss:{
+        case ID::ID::boss: {
             if (isAttacking && character->getIsInvincible() == false) {
                 character->setTakeDamage(true);
                 character->setLife(character->getLife() - damage);
                 character->setInvincible(true);
-                cout << "Boss life: " << character->getLife() << endl;
             }
             break;
         }
@@ -190,5 +208,5 @@ void Player::updatePosition() {
 
 void Player::attack(const bool isAttacking) {
     this->isAttacking = isAttacking;
-    size = Vector2f(PLAYER_ATTACK_SIZE_X * 1.2f , PLAYER_SIZE_Y);
+    size = Vector2f(PLAYER_ATTACK_SIZE_X * 1.2f, PLAYER_SIZE_Y);
 }

@@ -12,7 +12,7 @@ void Wall::collision(Entity* other, Vector2f ds) {
     Vector2f otherPos = other->getPosition();
     Vector2f otherSize = other->getSize();
 
-    if (other->getId() == ID::ID::player || other->getId() == ID::ID::enemy ||
+    if (other->getId() == ID::ID::player || other->getId() == ID::ID::player2 || other->getId() == ID::ID::enemy ||
         other->getId() == ID::ID::skeleton || other->getId() == ID::ID::bat ||
         other->getId() == ID::ID::boss) {
         collideObstacle(ds, static_cast<Character::Character*>(other));

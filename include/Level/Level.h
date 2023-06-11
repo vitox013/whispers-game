@@ -31,9 +31,10 @@ namespace Whispers
             Background::Background background;
             Manager::CollisionManager *pCollider;
             Builder::EntityBuilder entityBuilder;
+            bool multiplayer;
 
         public:
-            Level(ID::ID level_id, const ID::ID background_id);
+            Level(ID::ID level_id, const bool multiplayer, const ID::ID background_id);
             ~Level();
             virtual void createBackground() = 0;
             virtual void createMap() = 0;
@@ -41,6 +42,7 @@ namespace Whispers
             void execute();
             void draw();
             Entity::Character::Player *getPlayer();
+            Entity::Character::Player *getPlayer2();
             void ChangeObserverState();
             virtual void randomCreateEntities() = 0;
             void createSkeletons(Vector2f pos);

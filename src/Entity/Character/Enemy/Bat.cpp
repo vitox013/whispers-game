@@ -53,7 +53,7 @@ void Bat::update() {
             cooldown = clock.restart();
         }
     } else {
-        cout << cooldown.asSeconds() * 100 << endl;
+        // cout << cooldown.asSeconds() * 100 << endl;
         cooldown += clock.getElapsedTime();
     }
     dtAux += clock.getElapsedTime().asSeconds() * 100;

@@ -7,9 +7,9 @@ using namespace Whispers::Entity::Character::Enemy;
 using namespace Whispers::Entity::Obstacle;
 using namespace Whispers::Entity;
 
-EntityBuilder::EntityBuilder(Player *pPlayer) : pPlayer(pPlayer) {}
+EntityBuilder::EntityBuilder(Player *pPlayer, Player* pP2) : pPlayer(pPlayer), pPlayer2(pP2) {}
 
-EntityBuilder::EntityBuilder() : pPlayer(nullptr) {}
+EntityBuilder::EntityBuilder() : pPlayer(nullptr), pPlayer2(nullptr) {}
 
 EntityBuilder::~EntityBuilder() {}
 
@@ -18,6 +18,9 @@ void EntityBuilder::verifyPlayer()
     if (pPlayer == nullptr)
     {
         throw std::runtime_error("Player is null");
+    }
+    if (pPlayer2 == nullptr){
+        throw std::runtime_error("Player2 is null");
     }
 }
 
@@ -31,7 +34,7 @@ Entity *EntityBuilder::createEntity(const ID::ID id, const Vector2f pos,
     {
     case ID::ID::player:
     {
-        Player *player = new Player(pos, Vector2f(50.0f, 70.0f));
+        Player *player = new Player(pos, true, Vector2f(50.0f, 70.0f));
         if (player == nullptr)
         {
             throw std::runtime_error("Player is null");
@@ -39,6 +42,20 @@ Entity *EntityBuilder::createEntity(const ID::ID id, const Vector2f pos,
         if (pPlayer == nullptr)
         {
             pPlayer = player;
+        }
+        entity = static_cast<Entity::Entity *>(player);
+    }
+    break;
+    case ID::ID::player2:
+    {
+        Player *player = new Player(pos, false, Vector2f(50.0f, 70.0f));
+        if (player == nullptr)
+        {
+            throw std::runtime_error("Player is null");
+        }
+        if (pPlayer2 == nullptr)
+        {
+            pPlayer2 = player;
         }
         entity = static_cast<Entity::Entity *>(player);
     }
@@ -74,7 +91,6 @@ Entity *EntityBuilder::createEntity(const ID::ID id, const Vector2f pos,
     case ID::ID::platform:
         entity = static_cast<Entity::Entity *>(
             new Platform(pos, Vector2f(400.0f, 40.0f)));
-            cout << pos.x << " " << pos.y << endl;
         break;
     case ID::ID::trap:
         entity = static_cast<Entity::Entity *>(

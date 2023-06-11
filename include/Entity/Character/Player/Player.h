@@ -18,7 +18,7 @@ class Player : public Character {
    private:
     void init();
     bool onFloor;
-    
+    bool player1;
     std::chrono::steady_clock::time_point deathStartTime;
     
 
@@ -29,7 +29,7 @@ class Player : public Character {
     const std::chrono::milliseconds invincibilityDuration{3000};
 
    public:
-    Player(const sf::Vector2f pos, const sf::Vector2f size);
+    Player(const sf::Vector2f pos, const bool isPlayer1,const sf::Vector2f size);
     ~Player();
     void update();
     void jump();

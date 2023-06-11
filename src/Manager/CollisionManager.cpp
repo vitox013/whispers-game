@@ -98,7 +98,7 @@ void Manager::CollisionManager::CollisionCheck() {
             ent2 = ProjList->operator[](j);
             ds = CollisionCalc(ent1, ent2);
             if (ds.x < 0.0f && ds.y < 0.0f) {
-                if (ent1->getId() == ID::ID::player) {
+                if (ent1->getId() == ID::ID::player || ent1->getId() == ID::ID::player2) {
                     ent1->collision(ent2, ds);
                     ProjList->removeEntity(j);
                 }

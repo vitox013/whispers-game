@@ -19,10 +19,11 @@ namespace Whispers::Builder {
 class EntityBuilder {
    private:
     Player* pPlayer;
+    Player* pPlayer2;
     void verifyPlayer();
 
    public:
-    EntityBuilder(Player* pPlayer);
+    EntityBuilder(Player* pPlayer, Player* pPlayer2);
     EntityBuilder();
     ~EntityBuilder();
     Entity::Entity* createEntity(const ID::ID id, const Vector2f pos,

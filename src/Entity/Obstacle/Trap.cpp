@@ -8,7 +8,7 @@ Trap::Trap(Vector2f pos, Vector2f size)
 Trap::~Trap() {}
 
 void Trap::collision(Entity* entity, Vector2f ds) {
-    if (entity->getId() == ID::ID::player) {
+    if (entity->getId() == ID::ID::player || entity->getId() == ID::ID::player2) {
         collideObstacle(ds, static_cast<Character::Character*>(entity));
     }
 }

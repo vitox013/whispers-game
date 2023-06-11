@@ -17,6 +17,7 @@ class StatePlay : public State {
     ~StatePlay();
     void execute();
     Entity::Character::Player* getPlayer();
+    Entity::Character::Player* getPlayer2();
     Level::Level *getLevel();
     void ChangeObserverState();
 };

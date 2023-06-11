@@ -2,8 +2,8 @@
 
 using namespace Whispers::Level;
 
-Midnight::Midnight()
-    : Level(ID::ID::midnight_level, ID::ID::midnight_background) {}
+Midnight::Midnight(const bool multiplayer)
+    : Level(ID::ID::midnight_level, multiplayer, ID::ID::midnight_background) {}
 
 Midnight::~Midnight() {}
 

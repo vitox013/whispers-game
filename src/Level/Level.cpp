@@ -6,7 +6,8 @@ using namespace Whispers::Level;
 using namespace Whispers::Entity::Obstacle;
 using namespace Whispers::Entity::Character;
 
-Level::Level(const ID::ID level_id, const ID::ID background_id)
+Level::Level(const ID::ID level_id, const bool multiplayer,
+             const ID::ID background_id)
     : Ente(level_id),
       charactersList(),
       obsList(),
@@ -14,7 +15,8 @@ Level::Level(const ID::ID level_id, const ID::ID background_id)
       pCollider(
           new Manager::CollisionManager(&charactersList, &obsList, &ProjList)),
       entityBuilder(),
-      levelObserver(new Observer::LevelObserver(this)) {
+      levelObserver(new Observer::LevelObserver(this)),
+      multiplayer(multiplayer) {
     if (!pCollider) {
         std::cout << "Error on creating CollisionManager" << std::endl;
         exit(1);
@@ -48,6 +50,12 @@ void Level::createEntities(char c, const Vector2i position) {
         case 'p':
             charactersList.addEntity(
                 entityBuilder.createEntity(ID::ID::player, pos));
+            if (multiplayer){
+                cout << "multiplayer criado" << endl;
+                charactersList.addEntity(
+                    entityBuilder.createEntity(ID::ID::player2, pos));
+            }
+                
             break;
         case 'b':
             charactersList.addEntity(
@@ -93,6 +101,15 @@ Player *Level::getPlayer() {
     return nullptr;
 }
 
+Player *Level::getPlayer2() {
+    for (int i = 0; i < charactersList.getSize(); i++) {
+        if (charactersList.operator[](i)->getId() == ID::ID::player2) {
+            return static_cast<Player *>(charactersList.operator[](i));
+        }
+    }
+    return nullptr;
+}
+
 void Level::ChangeObserverState() { levelObserver->changeActiveState(); }
 
 bool Whispers::Level::Level::getIsRunning() { return false; }
@@ -101,7 +118,7 @@ void Level::Level::removeCharacters() {
     Character *character = nullptr;
     for (int i = 0; i < charactersList.getSize(); i++) {
         character = static_cast<Character *>(charactersList.operator[](i));
-        if (character->getLife() <= 0 && character->getId() != ID::ID::player) {
+        if (character->getLife() <= 0 && character->getId() != ID::ID::player && character->getId() != ID::ID::player2) {
             charactersList.removeEntity(character);
         }
     }

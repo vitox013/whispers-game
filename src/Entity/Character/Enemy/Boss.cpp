@@ -35,18 +35,15 @@ void Boss::canJump() { onFloor = true; }
 void Boss::collision(Entity* other, sf::Vector2f ds) {
     Character* character = static_cast<Character*>(other);
 
-    switch (other->getId()) {
-        case ID::ID::player:
-            attack(true);
-            if (isAttacking && character->getIsInvincible() == false &&
-                !takeDamage) {
-                character->setTakeDamage(true);
-                character->setLife(character->getLife() - damage);
-                character->setInvincible(true);
-            }
-            break;
-        default:
-            break;
+    switch (other->getId() == ID::ID::player ||
+            other->getId() == ID::ID::player2) {
+        attack(true);
+        if (isAttacking && character->getIsInvincible() == false &&
+            !takeDamage) {
+            character->setTakeDamage(true);
+            character->setLife(character->getLife() - damage);
+            character->setInvincible(true);
+        }
     }
 }
 

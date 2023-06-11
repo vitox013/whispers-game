@@ -57,7 +57,7 @@ void Ghost::moveEnemy() {
 bool Ghost::getInvisible() const { return invisible; }
 
 void Ghost::collision(Entity *other, Vector2f ds) {
-    if (other->getId() == ID::ID::player) {
+    if (other->getId() == ID::ID::player || other->getId() == ID::ID::player2) {
         if (player->getIsInvincible() == false &&
             player->getIsAttacking() == false) {
             Player *player = static_cast<Player *>(other);
