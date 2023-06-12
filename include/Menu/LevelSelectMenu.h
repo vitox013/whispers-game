@@ -12,7 +12,6 @@ namespace Whispers::Menu
     {
     private:
         Background::Background background;
-        bool exit;
         bool multi;
         Observer::LevelSelectMenuObserver *LevelSelectMenuObserver;
         void CreateBackground();
@@ -21,8 +20,6 @@ namespace Whispers::Menu
     public:
         LevelSelectMenu(bool multi);
         ~LevelSelectMenu();
-        void SetExit(const bool exit = true);
-        const bool GetExit() const;
         void ChangeObserverState();
         void Execute();
         bool GetMulti();

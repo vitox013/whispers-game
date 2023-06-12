@@ -4,7 +4,6 @@ using namespace Whispers::Menu;
 
 RankingMenu::RankingMenu()
     : Menu(ID::ID::Main_Menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Ranking", 180),
-      Exit(false),
       RankingMenuObserver(new Observer::RankingMenuObserver(this)),
       background(ID::ID::midnight_background)
 {
@@ -61,14 +60,6 @@ void RankingMenu::CreateButtons()
     AddButton("Exit", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * (2 * (float)size)), ID::ID::exit_button, sf::Color::White);
     it = buttonlist.begin();
     (*it)->SetSelected(true);
-}
-void RankingMenu::SetExit(const bool exit)
-{
-    this->Exit = exit;
-}
-const bool RankingMenu::GetExit() const
-{
-    return Exit;
 }
 
 void RankingMenu::ChangeObserverState()

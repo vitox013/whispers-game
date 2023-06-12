@@ -12,7 +12,6 @@ namespace Whispers::Menu
     {
     private:
         Background::Background background;
-        bool exit;
         Observer::MainMenuObserver *mainmenuObserver;
         void CreateBackground();
         void CreateButtons();
@@ -20,8 +19,6 @@ namespace Whispers::Menu
     public:
         MainMenu();
         ~MainMenu();
-        void SetExit(const bool exit = true);
-        const bool GetExit() const;
         void ChangeObserverState();
         void Execute();
     };

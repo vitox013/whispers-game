@@ -4,7 +4,6 @@ using namespace Whispers::Menu;
 
 MainMenu::MainMenu()
     : Menu(ID::ID::Main_Menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Whispers", 180),
-      exit(false),
       mainmenuObserver(new Observer::MainMenuObserver(this)),
       background(ID::ID::midnight_background)
 {
@@ -40,14 +39,6 @@ void Whispers::Menu::MainMenu::CreateButtons()
     AddButton("Exit", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 6.0f), ID::ID::exit_button, sf::Color::White);
     it = buttonlist.begin();
     (*it)->SetSelected(true);
-}
-void Whispers::Menu::MainMenu::SetExit(const bool exit)
-{
-    this->exit = exit;
-}
-const bool Whispers::Menu::MainMenu::GetExit() const
-{
-    return exit;
 }
 
 void Whispers::Menu::MainMenu::ChangeObserverState()

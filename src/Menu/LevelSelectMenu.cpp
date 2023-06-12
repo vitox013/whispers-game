@@ -4,7 +4,6 @@ using namespace Whispers::Menu;
 
 LevelSelectMenu::LevelSelectMenu(bool multi)
     : Menu(ID::ID::Level_Select_Menu, sf::Vector2f(BUTTON_SIZE_X, BUTTON_SIZE_Y), "Whispers", 180),
-      exit(false),
       LevelSelectMenuObserver(new Observer::LevelSelectMenuObserver(this)),
       background(ID::ID::midnight_background),
       multi(multi)
@@ -41,14 +40,6 @@ void Whispers::Menu::LevelSelectMenu::CreateButtons()
     AddButton("Exit", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 4.0f), ID::ID::exit_button, sf::Color::White);
     it = buttonlist.begin();
     (*it)->SetSelected(true);
-}
-void Whispers::Menu::LevelSelectMenu::SetExit(const bool exit)
-{
-    this->exit = exit;
-}
-const bool Whispers::Menu::LevelSelectMenu::GetExit() const
-{
-    return exit;
 }
 
 void Whispers::Menu::LevelSelectMenu::ChangeObserverState()
