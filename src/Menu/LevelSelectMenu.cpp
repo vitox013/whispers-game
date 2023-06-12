@@ -35,6 +35,7 @@ void Whispers::Menu::LevelSelectMenu::CreateBackground()
 void Whispers::Menu::LevelSelectMenu::CreateButtons()
 {
     const float posbuttonX = windowsize.x / 2.0f - buttonsize.x / 2.0f;
+    AddButton(" ", sf::Vector2f(posbuttonX, windowsize.y / 2.0f), ID::ID::empty, sf::Color::Transparent);
     AddButton("Jogar Midnight", sf::Vector2f(posbuttonX, windowsize.y / 2.0f), ID::ID::play_midnight, sf::Color::White);
     AddButton("Jogar Graveyard", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 2.0f), ID::ID::play_graveyard, sf::Color::White);
     AddButton("Exit", sf::Vector2f(posbuttonX, windowsize.y / 2.0f + buttonsize.y * 4.0f), ID::ID::exit_button, sf::Color::White);
