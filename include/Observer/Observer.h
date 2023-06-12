@@ -28,8 +28,6 @@ namespace Whispers
             void RemoveObserver();
             virtual void PressedKey(const sf::Keyboard::Key key) = 0;
             virtual void ReleasedKey(const sf::Keyboard::Key key) = 0;
-            virtual void MoveMouse(const sf::Vector2f Mousepos);
-            virtual void ReleaseMouseButton(const sf::Mouse::Button mousebtn);
             virtual void SaveRank() = 0;
         };
     }

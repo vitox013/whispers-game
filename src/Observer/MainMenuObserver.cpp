@@ -58,37 +58,4 @@ void Whispers::Observer::MainMenuObserver::ReleasedKey(const sf::Keyboard::Key k
     }
 }
 
-void Whispers::Observer::MainMenuObserver::MoveMouse(const sf::Vector2f Mousepos)
-{
-    mainmenu->MouseEvent(Mousepos);
-}
-
-void Whispers::Observer::MainMenuObserver::ReleaseMouseButton(const sf::Mouse::Button mousebtn)
-{
-    if (mainmenu->GetMouseSelection())
-    {
-        switch (mousebtn)
-        {
-        case sf::Mouse::Left:
-            switch (mainmenu->GetIDSelectedButton())
-            {
-            case (ID::ID::SinglePlayer_Menu):
-                pStateMa->pushState(ID::ID::Level_Select_Menu, false);
-                break;
-            case (ID::ID::Multiplayer_Menu):
-                pStateMa->pushState(ID::ID::Level_Select_Menu, true);
-                break;
-            case (ID::ID::exit_button):
-                pStateMa->popState();
-                break;
-            default:
-                break;
-            }
-            break;
-
-        default:
-            break;
-        }
-    }
-}
 void MainMenuObserver::SaveRank() {}

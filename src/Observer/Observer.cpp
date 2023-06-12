@@ -35,11 +35,3 @@ void Whispers::Observer::Observer::RemoveObserver()
 {
     pEventMa->RemoveObserver(this);
 }
-
-void Whispers::Observer::Observer::MoveMouse(const sf::Vector2f Mousepos)
-{
-}
-
-void Whispers::Observer::Observer::ReleaseMouseButton(const sf::Mouse::Button mousebtn)
-{
-}

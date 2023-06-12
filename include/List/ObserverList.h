@@ -20,8 +20,6 @@ namespace Whispers::List
         Observer::Observer *operator[](int pos);
         void NotifyKeyPressed(const sf::Keyboard::Key key);
         void NotifyKeyReleased(const sf::Keyboard::Key key);
-        void NotifyMouseMove(const sf::Event::MouseMoveEvent mouse);
-        void NotifyMouseReleased(const sf::Mouse::Button mousebtn);
         void NotifyEndLevel();
     };
 }

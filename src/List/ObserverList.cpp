@@ -54,31 +54,6 @@ void Whispers::List::ObserverList::NotifyKeyReleased(const sf::Keyboard::Key key
         Observer = nullptr;
     }
 }
-void Whispers::List::ObserverList::NotifyMouseMove(const sf::Event::MouseMoveEvent mouse)
-{
-    sf::Vector2f posMouse = sf::Vector2f((float)mouse.x, (float)mouse.y);
-    for (int i = 0; i < eleobserverList.getSize(); i++)
-    {
-        Whispers::Observer::Observer *Observer = eleobserverList.operator[](i);
-        if (Observer->getActive() == true)
-        {
-            Observer->MoveMouse(posMouse);
-        }
-        Observer = nullptr;
-    }
-}
-void Whispers::List::ObserverList::NotifyMouseReleased(const sf::Mouse::Button mousebtn)
-{
-    for (int i = 0; i < eleobserverList.getSize(); i++)
-    {
-        Whispers::Observer::Observer *Observer = eleobserverList.operator[](i);
-        if (Observer->getActive() == true)
-        {
-            Observer->ReleaseMouseButton(mousebtn);
-        }
-        Observer = nullptr;
-    }
-}
 
 void Whispers::List::ObserverList::NotifyEndLevel()
 {

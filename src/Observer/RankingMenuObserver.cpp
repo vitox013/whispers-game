@@ -48,32 +48,4 @@ void RankingMenuObserver::ReleasedKey(const sf::Keyboard::Key key)
         break;
     }
 }
-
-void RankingMenuObserver::MoveMouse(const sf::Vector2f Mousepos)
-{
-    rankingMenu->MouseEvent(Mousepos);
-}
-
-void RankingMenuObserver::ReleaseMouseButton(const sf::Mouse::Button mousebtn)
-{
-    if (rankingMenu->GetMouseSelection())
-    {
-        switch (mousebtn)
-        {
-        case sf::Mouse::Left:
-            switch (rankingMenu->GetIDSelectedButton())
-            {
-            case (ID::ID::exit_button):
-                pStateMa->popState();
-                break;
-            default:
-                break;
-            }
-            break;
-
-        default:
-            break;
-        }
-    }
-}
 void RankingMenuObserver::SaveRank() {}

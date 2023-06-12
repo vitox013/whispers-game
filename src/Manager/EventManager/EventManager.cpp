@@ -139,10 +139,6 @@ void EventManager::execute()
         {
             pObsList->NotifyKeyReleased(event.key.code);
         }
-        else if (event.type == sf::Event::MouseButtonReleased)
-        {
-            pObsList->NotifyMouseReleased(event.mouseButton.button);
-        }
         else if (event.type == sf::Event::Closed)
         {
             pGraphic->closeWindow();

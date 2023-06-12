@@ -55,37 +55,4 @@ void LevelSelectMenuObserver::ReleasedKey(const sf::Keyboard::Key key)
     }
 }
 
-void LevelSelectMenuObserver::MoveMouse(const sf::Vector2f Mousepos)
-{
-    levelSelectMenu->MouseEvent(Mousepos);
-}
-
-void LevelSelectMenuObserver::ReleaseMouseButton(const sf::Mouse::Button mousebtn)
-{
-    if (levelSelectMenu->GetMouseSelection())
-    {
-        switch (mousebtn)
-        {
-        case sf::Mouse::Left:
-            switch (levelSelectMenu->GetIDSelectedButton())
-            {
-            case (ID::ID::play_midnight):
-                pStateMa->pushState(ID::ID::play_midnight, levelSelectMenu->GetMulti());
-                break;
-            case (ID::ID::play_graveyard):
-                pStateMa->pushState(ID::ID::play_graveyard, levelSelectMenu->GetMulti());
-                break;
-            case (ID::ID::exit_button):
-                pStateMa->popState();
-                break;
-            default:
-                break;
-            }
-            break;
-
-        default:
-            break;
-        }
-    }
-}
 void LevelSelectMenuObserver::SaveRank() {}
