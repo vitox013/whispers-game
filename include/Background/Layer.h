@@ -9,7 +9,6 @@ class Layer {
     Texture texture;
     RectangleShape back;
 
-    void changeTexture();
 
    public:
     Layer(Vector2f windowSize, Texture texture);
