@@ -29,7 +29,7 @@ $(PROJECT): $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	@ mkdir -p $(dir $@)
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -mwindows -o $@
 
 $(BIN_DIR) $(OBJ_DIR):
 	@ mkdir -p $@
