@@ -1,8 +1,0 @@
-# Executables
-*.exe
-*.o
-*.app
-obj
-main
-.vscode
-Whispers
