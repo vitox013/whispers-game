@@ -1,8 +1,8 @@
 #pragma once
-#include "..\..\Entity\Character\Player\Player.h"
-#include "..\GraphicManager\GraphicManager.h"
-#include "..\StateManager.h"
-#include "..\..\List\ObserverList.h"
+#include "../../Entity/Character/Player/Player.h"
+#include "../GraphicManager/GraphicManager.h"
+#include "../StateManager.h"
+#include "../../List/ObserverList.h"
 #include "stdafx.h"
 
 namespace Whispers::Manager

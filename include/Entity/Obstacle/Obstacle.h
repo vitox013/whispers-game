@@ -1,9 +1,9 @@
 #pragma once
-#include "..\..\stdafx.h"
-// #include "..\Character\Enemy\Enemy.h"
-#include "..\Character\Player\Player.h"
-#include "..\Character\Enemy\Boss.h"
-#include "..\Entity.h"
+#include "../../stdafx.h"
+// #include "../Character/Enemy/Enemy.h"
+#include "../Character/Player/Player.h"
+#include "../Character/Enemy/Boss.h"
+#include "../Entity.h"
 
 namespace Whispers::Entity::Obstacle {
 class Obstacle : public Entity {

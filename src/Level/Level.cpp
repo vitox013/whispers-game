@@ -1,6 +1,6 @@
-#include "..\..\include\Level\Level.h"
+#include "../../include/Level/Level.h"
 
-#include "..\..\include\Observer\LevelObserver.h"
+#include "../../include/Observer/LevelObserver.h"
 
 using namespace Whispers::Level;
 using namespace Whispers::Entity::Obstacle;

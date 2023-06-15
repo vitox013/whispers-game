@@ -1,4 +1,4 @@
-#include "..\..\include\Manager\StateManager.h"
+#include "../../include/Manager/StateManager.h"
 
 using namespace Whispers::Manager;
 

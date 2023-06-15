@@ -1,6 +1,6 @@
 #pragma once
 
-#include ".\Level.h"
+#include "./Level.h"
 
 namespace Whispers::Level {
 class Graveyard : public Level {

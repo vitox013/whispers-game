@@ -1,4 +1,4 @@
-#include "..\include\Animation\Animation.h"
+#include "../include/Animation/Animation.h"
 
 using namespace Whispers::Animation;
 

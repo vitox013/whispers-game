@@ -1,5 +1,5 @@
-#include "..\include\Observer\LevelObserver.h"
-#include "..\include\Manager\StateManager.h"
+#include "../include/Observer/LevelObserver.h"
+#include "../include/Manager/StateManager.h"
 
 using namespace Whispers::Observer;
 
@@ -39,12 +39,12 @@ void LevelObserver::SaveRank()
     else if (level->getId() == ID::ID::midnight_level)
     {
         std::cout << "Arquivo salvo" << std::endl;
-        rankFile << score << "\n";
+        rankFile << score << "/n";
     }
     else if (level->getId() == ID::ID::graveyard_level)
     {
         std::cout << "Arquivo salvo" << std::endl;
-        rankFile << score << "\n";
+        rankFile << score << "/n";
     }
     rankFile.close();
 }

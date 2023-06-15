@@ -1,5 +1,5 @@
-#include "..\..\include\State\StatePause.h"
-#include "..\..\include\Manager\StateManager.h"
+#include "../../include/State/StatePause.h"
+#include "../../include/Manager/StateManager.h"
 
 using namespace Whispers::State;
 using namespace Whispers;

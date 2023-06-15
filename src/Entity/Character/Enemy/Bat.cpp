@@ -1,4 +1,4 @@
-#include "..\..\..\..\include\Entity\Character\Enemy\Bat.h"
+#include "../../../../include/Entity/Character/Enemy/Bat.h"
 
 using namespace Whispers::Entity::Character::Enemy;
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "..\Ente.h"
-#include "..\ID.h"
-#include ".\Layer.h"
+#include "../Ente.h"
+#include "../ID.h"
+#include "./Layer.h"
 
 namespace Whispers::Background {
 class Background : public Ente {

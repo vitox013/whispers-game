@@ -1,9 +1,9 @@
 #pragma once
 
-#include ".\Level\Midnight.h"
-#include ".\Manager\EventManager\EventManager.h"
-#include ".\Manager\GraphicManager\GraphicManager.h"
-#include ".\Manager\StateManager.h"
+#include "./Level/Midnight.h"
+#include "./Manager/EventManager/EventManager.h"
+#include "./Manager/GraphicManager/GraphicManager.h"
+#include "./Manager/StateManager.h"
 #include "stdafx.h"
 
 namespace Whispers {

@@ -1,5 +1,5 @@
 #pragma once
-#include "..\..\..\include\Entity\Projectile\Projectile.h"
+#include "../../../include/Entity/Projectile/Projectile.h"
 
 using namespace Whispers::Entity::Projectile;
 

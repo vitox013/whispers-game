@@ -1,4 +1,4 @@
-#include "..\..\..\include\Entity\Character\Character.h"
+#include "../../../include/Entity/Character/Character.h"
 
 using namespace Whispers::Entity;
 

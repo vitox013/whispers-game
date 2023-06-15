@@ -1,4 +1,4 @@
-#include "..\..\..\include\Manager\GraphicManager\GraphicManager.h"
+#include "../../../include/Manager/GraphicManager/GraphicManager.h"
 
 using namespace Whispers;
 using namespace Manager;

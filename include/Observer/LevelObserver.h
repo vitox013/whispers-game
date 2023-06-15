@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Observer.h"
-#include "..\Level\Level.h"
+#include "../Level/Level.h"
 
 namespace Whispers::Observer
 {

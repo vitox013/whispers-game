@@ -1,8 +1,8 @@
 #pragma once
 
-#include ".\Enemy.h"
-#include "..\..\Projectile\Projectile.h"
-#include "..\..\..\List\EntityList.h"
+#include "./Enemy.h"
+#include "../../Projectile/Projectile.h"
+#include "../../../List/EntityList.h"
 
 #define BAT_SIZE_X 50.0f
 #define BAT_SIZE_Y 70.0f

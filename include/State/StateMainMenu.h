@@ -1,5 +1,5 @@
 #pragma once
-#include "..\Menu\MainMenu.h"
+#include "../Menu/MainMenu.h"
 #include "State.h"
 
 namespace Whispers::State

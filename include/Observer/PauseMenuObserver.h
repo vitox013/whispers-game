@@ -1,6 +1,6 @@
 #pragma once
 #include "Observer.h"
-#include "..\Menu\PauseMenu.h"
+#include "../Menu/PauseMenu.h"
 
 namespace Whispers::Observer
 {

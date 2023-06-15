@@ -1,4 +1,4 @@
-#include "..\..\include\Entity\Entity.h"
+#include "../../include/Entity/Entity.h"
 
 using namespace Whispers;
 

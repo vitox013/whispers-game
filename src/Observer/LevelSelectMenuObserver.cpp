@@ -1,6 +1,6 @@
-#include "..\include\Observer\LevelSelectMenuObserver.h"
-#include "..\..\include\Manager\StateManager.h"
-#include "..\..\include\Menu\LevelSelectMenu.h"
+#include "../include/Observer/LevelSelectMenuObserver.h"
+#include "../../include/Manager/StateManager.h"
+#include "../../include/Menu/LevelSelectMenu.h"
 
 using namespace Whispers::Observer;
 using namespace Whispers::Menu;

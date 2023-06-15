@@ -1,4 +1,4 @@
-#include "..\include\Menu\Menu.h"
+#include "../include/Menu/Menu.h"
 
 using namespace Whispers::Menu;
 

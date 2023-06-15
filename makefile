@@ -16,7 +16,7 @@ CC := g++
 # Flags
 CPPFLAGS := -Iinclude -O2 -g
 CFLAGS   := -Wall
-LDFLAGS  := -LSFML\lib -Ldll
+LDFLAGS  := -LSFML/lib
 LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 .PHONY: all clean build
@@ -47,7 +47,7 @@ rebuild: clean all
 run: $(PROJECT)
 ifeq ($(OS),Windows_NT)
 	@ echo "Opening executable..."
-	@ .\Whispers.exe
+	@ ./Whispers.exe
 else ifeq ($(shell uname),Darwin)
 	@ echo "Opening executable..."
 	@ open $(PROJECT)

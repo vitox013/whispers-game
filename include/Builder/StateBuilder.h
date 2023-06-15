@@ -1,12 +1,12 @@
 #pragma once
 
-#include "..\State\State.h"
-#include "..\State\StatePlay.h"
-#include "..\State\StateMainMenu.h"
-#include "..\State\StatePause.h"
-#include "..\State\StateLevelSelectMenu.h"
-#include "..\State\StateRankingMenu.h"
-#include ".\LevelBuilder.h"
+#include "../State/State.h"
+#include "../State/StatePlay.h"
+#include "../State/StateMainMenu.h"
+#include "../State/StatePause.h"
+#include "../State/StateLevelSelectMenu.h"
+#include "../State/StateRankingMenu.h"
+#include "./LevelBuilder.h"
 
 namespace Whispers::Builder
 {

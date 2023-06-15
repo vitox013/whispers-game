@@ -1,7 +1,7 @@
 #pragma once
-#include "..\..\stdafx.h"
-#include "..\Character\Character.h"
-#include ".\Obstacle.h"
+#include "../../stdafx.h"
+#include "../Character/Character.h"
+#include "./Obstacle.h"
 
 #define PLATFORM_TEXTURE_PATH "assets/obstacle/platform.png"
 

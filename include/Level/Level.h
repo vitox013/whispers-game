@@ -5,11 +5,11 @@
 #include <chrono>
 #include <random>
 #include <vector>
-#include "..\Background\Background.h"
-#include "..\Builder\EntityBuilder.h"
-#include "..\Ente.h"
-#include "..\List\EntityList.h"
-#include "..\Manager\CollisionManager.h"
+#include "../Background/Background.h"
+#include "../Builder/EntityBuilder.h"
+#include "../Ente.h"
+#include "../List/EntityList.h"
+#include "../Manager/CollisionManager.h"
 // using namespace Whispers::Entity::Character;
 namespace Whispers
 {

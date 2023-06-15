@@ -2,8 +2,8 @@
 
 #include <stack>
 
-#include "..\Builder\StateBuilder.h"
-#include ".\GraphicManager\GraphicManager.h"
+#include "../Builder/StateBuilder.h"
+#include "./GraphicManager/GraphicManager.h"
 
 namespace Whispers::Manager {
 class StateManager {

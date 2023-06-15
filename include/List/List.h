@@ -1,6 +1,6 @@
 #pragma once
 
-#include ".\Element.h"
+#include "./Element.h"
 
 namespace Whispers::List
 {

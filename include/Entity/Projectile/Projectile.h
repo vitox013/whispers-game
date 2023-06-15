@@ -1,7 +1,7 @@
 #pragma once
-#include "..\..\stdafx.h"
-#include "..\Entity.h"
-#include "..\..\Animation\Animation.h"
+#include "../../stdafx.h"
+#include "../Entity.h"
+#include "../../Animation/Animation.h"
 #define PROJECTILE_SPEED 1.5f
 #define PROJECTILE_SIZE_X 10.0f
 #define PROJECTILE_SIZE_Y 10.0f

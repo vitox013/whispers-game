@@ -1,4 +1,4 @@
-#include "..\..\include\Background\Layer.h"
+#include "../../include/Background/Layer.h"
 
 using namespace Whispers::Background;
 

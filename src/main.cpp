@@ -1,4 +1,4 @@
-#include "..\include\Principal.h"
+#include "../include/Principal.h"
 #include "stdafx.h"
 
 using namespace Whispers;

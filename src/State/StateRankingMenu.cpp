@@ -1,4 +1,4 @@
-#include "..\..\include\State\StateRankingMenu.h"
+#include "../../include/State/StateRankingMenu.h"
 
 using namespace Whispers::State;
 

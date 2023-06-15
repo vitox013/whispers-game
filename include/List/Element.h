@@ -1,5 +1,5 @@
 #pragma once
-#include ".\stdafx.h"
+#include "./stdafx.h"
 namespace Whispers::List {
 template <class TE>
 class Element {

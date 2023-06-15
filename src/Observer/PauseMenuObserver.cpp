@@ -1,5 +1,5 @@
-#include "..\include\Observer\PauseMenuObserver.h"
-#include "..\..\include\Manager\StateManager.h"
+#include "../include/Observer/PauseMenuObserver.h"
+#include "../../include/Manager/StateManager.h"
 
 using namespace Whispers::Observer;
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\..\Ente.h"
+#include "../../Ente.h"
 #include "AnimatedText.h"
 
 #define FONT_PATH "fonts/Pixeboy.ttf"

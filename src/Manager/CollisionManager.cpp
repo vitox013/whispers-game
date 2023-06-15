@@ -1,4 +1,4 @@
-#include "..\..\include\Manager\CollisionManager.h"
+#include "../../include/Manager/CollisionManager.h"
 using namespace Whispers;
 
 

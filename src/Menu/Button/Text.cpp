@@ -1,4 +1,4 @@
-#include "..\..\..\include\Menu\Button\Text.h"
+#include "../../../include/Menu/Button/Text.h"
 
 using namespace Whispers::Menu::Button;
 

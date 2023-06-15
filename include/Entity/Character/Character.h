@@ -1,9 +1,9 @@
 #pragma once
 #include <chrono>
 
-#include "..\..\Animation\Animation.h"
-#include "..\..\stdafx.h"
-#include "..\Entity.h"
+#include "../../Animation/Animation.h"
+#include "../../stdafx.h"
+#include "../Entity.h"
 
 #define GRAVITY 4.2f
 namespace Whispers::Entity::Character {

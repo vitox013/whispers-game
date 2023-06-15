@@ -1,4 +1,4 @@
-#include "..\..\include\Animation\Image.h"
+#include "../../include/Animation/Image.h"
 
 using namespace Whispers;
 

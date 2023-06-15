@@ -1,6 +1,6 @@
 #pragma once
 
-#include ".\Enemy.h"
+#include "./Enemy.h"
 
 #define GHOST_SIZE_X 50.0f
 #define GHOST_SIZE_Y 70.0f

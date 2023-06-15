@@ -3,7 +3,7 @@
 #include <chrono>
 #include <random>
 
-#include ".\Enemy.h"
+#include "./Enemy.h"
 #define SKELETON_SIZE_X 50.0f
 #define SKELETON_SIZE_Y 70.0f
 #define SKELETON_LIFE 3

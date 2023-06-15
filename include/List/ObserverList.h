@@ -1,7 +1,7 @@
 #pragma once
 
 #include "List.h"
-#include "..\Observer\Observer.h"
+#include "../Observer/Observer.h"
 
 namespace Whispers::List
 {

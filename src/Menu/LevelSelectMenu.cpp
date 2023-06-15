@@ -1,4 +1,4 @@
-#include "..\include\Menu\LevelSelectMenu.h"
+#include "../include/Menu/LevelSelectMenu.h"
 
 using namespace Whispers::Menu;
 

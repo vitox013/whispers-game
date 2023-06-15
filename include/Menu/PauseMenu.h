@@ -1,6 +1,6 @@
 #pragma once
 #include "Menu.h"
-#include "..\Level\Level.h"
+#include "../Level/Level.h"
 
 namespace Whispers
 {

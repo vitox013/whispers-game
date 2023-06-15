@@ -1,7 +1,7 @@
 #pragma once
-#include "..\..\stdafx.h"
-#include "..\Character\Character.h"
-#include ".\Obstacle.h"
+#include "../../stdafx.h"
+#include "../Character/Character.h"
+#include "./Obstacle.h"
 
 #define WALL_TEXTURE_MIDNIGHT "assets/obstacle/midnight/wall.png"
 #define WALL_TEXTURE_GRAVEYARD "assets/obstacle/graveyard/wall.png"

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\Entity\Entity.h"
-#include ".\List.h"
+#include "../Entity/Entity.h"
+#include "./List.h"
 
 namespace Whispers::List {
 class EntityList {

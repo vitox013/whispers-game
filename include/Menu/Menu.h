@@ -1,7 +1,7 @@
 #pragma once
-#include "..\Ente.h"
-#include "Button\Button.h"
-#include "Button\Text.h"
+#include "../Ente.h"
+#include "Button/Button.h"
+#include "Button/Text.h"
 #include <list>
 #define FONT_PATH "fonts/Pixeboy.ttf"
 

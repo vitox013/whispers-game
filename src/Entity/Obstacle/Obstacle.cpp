@@ -1,4 +1,4 @@
-#include "..\..\..\include\Entity\Obstacle\Obstacle.h"
+#include "../../../include/Entity/Obstacle/Obstacle.h"
 
 using namespace Whispers::Entity::Obstacle;
 

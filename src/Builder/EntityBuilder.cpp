@@ -1,4 +1,4 @@
-#include "..\..\include\Builder\EntityBuilder.h"
+#include "../../include/Builder/EntityBuilder.h"
 
 using namespace Whispers::Builder;
 

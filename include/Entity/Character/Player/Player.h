@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "..\..\..\stdafx.h"
-#include "..\Character.h"
+#include "../../../stdafx.h"
+#include "../Character.h"
 
 #define PLAYER_SPEED 200.0f
 #define JUMP_SIZE 0.4f

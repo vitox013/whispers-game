@@ -1,6 +1,6 @@
-#include "..\..\include\Observer\Observer.h"
-#include "..\include\Manager\StateManager.h"
-#include "..\include\Manager\EventManager\EventManager.h"
+#include "../../include/Observer/Observer.h"
+#include "../include/Manager/StateManager.h"
+#include "../include/Manager/EventManager/EventManager.h"
 using namespace Whispers::Observer;
 Whispers::Manager::EventManager *Observer::pEventMa = Whispers::Manager::EventManager::getEventManager();
 Whispers::Manager::StateManager *Observer::pStateMa = Whispers::Manager::StateManager::getStateManager();

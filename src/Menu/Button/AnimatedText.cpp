@@ -1,4 +1,4 @@
-#include "..\..\..\include\Menu\Button\AnimatedText.h"
+#include "../../../include/Menu/Button/AnimatedText.h"
 
 
 using namespace Whispers::Menu::Button;

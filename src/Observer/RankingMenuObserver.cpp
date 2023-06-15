@@ -1,6 +1,6 @@
-#include "..\include\Observer\RankingMenuObserver.h"
-#include "..\..\include\Manager\StateManager.h"
-#include "..\..\include\Menu\RankingMenu.h"
+#include "../include/Observer/RankingMenuObserver.h"
+#include "../../include/Manager/StateManager.h"
+#include "../../include/Menu/RankingMenu.h"
 
 using namespace Whispers::Observer;
 using namespace Whispers::Menu;

@@ -2,7 +2,7 @@
 
 #include <map>
 
-#include ".\Image.h"
+#include "./Image.h"
 
 namespace Whispers::Animation {
 class Animation {

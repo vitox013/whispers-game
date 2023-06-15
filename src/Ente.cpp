@@ -1,5 +1,5 @@
 #pragma once
-#include "..\include\Ente.h"
+#include "../include/Ente.h"
 
 using namespace Whispers;
 

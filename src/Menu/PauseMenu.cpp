@@ -1,5 +1,5 @@
-#include "..\include\Menu\PauseMenu.h"
-#include "..\include\Observer\PauseMenuObserver.h"
+#include "../include/Menu/PauseMenu.h"
+#include "../include/Observer/PauseMenuObserver.h"
 
 using namespace Whispers::Menu;
 

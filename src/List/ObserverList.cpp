@@ -1,5 +1,5 @@
 #pragma once
-#include "..\..\include\List\ObserverList.h"
+#include "../../include/List/ObserverList.h"
 using namespace Whispers::List;
 ObserverList::ObserverList()
     : eleobserverList()

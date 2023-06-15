@@ -1,4 +1,4 @@
-#include "..\include\Menu\RankingMenu.h"
+#include "../include/Menu/RankingMenu.h"
 #include <fstream>
 using namespace Whispers::Menu;
 

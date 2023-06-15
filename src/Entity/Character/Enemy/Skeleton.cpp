@@ -1,4 +1,4 @@
-#include "..\..\..\..\include\Entity\Character\Enemy\Skeleton.h"
+#include "../../../../include/Entity/Character/Enemy/Skeleton.h"
 
 using namespace Whispers::Entity::Character::Enemy;
 

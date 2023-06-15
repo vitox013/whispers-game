@@ -1,4 +1,4 @@
-#include "..\..\include\Level\Midnight.h"
+#include "../../include/Level/Midnight.h"
 
 using namespace Whispers::Level;
 

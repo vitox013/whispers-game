@@ -1,6 +1,6 @@
 #pragma once
 #include "Observer.h"
-#include "..\Menu\Button\Button.h"
+#include "../Menu/Button/Button.h"
 
 namespace Whispers
 {

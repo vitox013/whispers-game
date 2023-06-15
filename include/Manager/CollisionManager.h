@@ -1,7 +1,7 @@
 #pragma once
-#include "..\List\EntityList.h"
-#include ".\Ente.h"
-#include "GraphicManager\GraphicManager.h"
+#include "../List/EntityList.h"
+#include "./Ente.h"
+#include "GraphicManager/GraphicManager.h"
 
 
 namespace Whispers {

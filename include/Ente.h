@@ -1,7 +1,7 @@
 #pragma once
-#include ".\ID.h"
-#include ".\Manager\GraphicManager\GraphicManager.h"
-#include ".\stdafx.h"
+#include "./ID.h"
+#include "./Manager/GraphicManager/GraphicManager.h"
+#include "./stdafx.h"
 namespace Whispers {
 class Ente {
    protected:

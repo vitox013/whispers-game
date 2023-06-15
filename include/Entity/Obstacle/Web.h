@@ -1,6 +1,6 @@
 #pragma once
 
-#include ".\Obstacle.h"
+#include "./Obstacle.h"
 
 #define WEB_TEXTURE_PATH "assets/obstacle/web.png"
 

@@ -1,7 +1,7 @@
 #pragma once
-#include "..\..\..\stdafx.h"
-#include "..\Character.h"
-#include "..\Player\Player.h"
+#include "../../../stdafx.h"
+#include "../Character.h"
+#include "../Player/Player.h"
 
 #define CHASE_RAY_X 400.0f
 #define CHASE_RAY_Y 400.0f

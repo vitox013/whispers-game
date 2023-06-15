@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\Level\Midnight.h"
-#include "..\Level\Graveyard.h"
+#include "../Level/Midnight.h"
+#include "../Level/Graveyard.h"
 namespace Whispers::Builder
 {
     class LevelBuilder

@@ -1,4 +1,4 @@
-#include "..\..\..\include\Manager\EventManager\EventManager.h"
+#include "../../../include/Manager/EventManager/EventManager.h"
 
 using namespace Whispers::Manager;
 using namespace Whispers::Entity::Character;

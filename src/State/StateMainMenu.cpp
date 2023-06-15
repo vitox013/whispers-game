@@ -1,4 +1,4 @@
-#include "..\..\include\State\StateMainMenu.h"
+#include "../../include/State/StateMainMenu.h"
 
 using namespace Whispers::State;
 

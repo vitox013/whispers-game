@@ -1,6 +1,6 @@
-#include "..\include\Observer\MainMenuObserver.h"
-#include "..\..\include\Manager\StateManager.h"
-#include "..\..\include\Menu\MainMenu.h"
+#include "../include/Observer/MainMenuObserver.h"
+#include "../../include/Manager/StateManager.h"
+#include "../../include/Menu/MainMenu.h"
 
 using namespace Whispers::Observer;
 using namespace Whispers::Menu;

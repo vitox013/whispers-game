@@ -1,7 +1,7 @@
 #pragma once
 #include "Menu.h"
-#include "..\Background\Background.h"
-#include "..\Observer\LevelSelectMenuObserver.h"
+#include "../Background/Background.h"
+#include "../Observer/LevelSelectMenuObserver.h"
 #define PATH_TEXTURE_MAIN_MENU "assets/background/midnight/midnight.png"
 #define BUTTON_SIZE_X 350.0f
 #define BUTTON_SIZE_Y 50.0f

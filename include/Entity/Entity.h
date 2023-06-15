@@ -1,6 +1,6 @@
 #pragma once
-#include "..\Ente.h"
-#include "..\stdafx.h"
+#include "../Ente.h"
+#include "../stdafx.h"
 namespace Whispers::Entity {
 class Entity : public Ente {
    protected:

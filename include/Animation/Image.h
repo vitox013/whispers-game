@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\Manager\GraphicManager\GraphicManager.h"
-#include "..\stdafx.h"
+#include "../Manager/GraphicManager/GraphicManager.h"
+#include "../stdafx.h"
 
 namespace Whispers::Animation {
 class Image {

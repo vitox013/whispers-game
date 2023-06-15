@@ -1,5 +1,5 @@
 #pragma once
-#include "..\Menu\RankingMenu.h"
+#include "../Menu/RankingMenu.h"
 #include "State.h"
 
 namespace Whispers::State
