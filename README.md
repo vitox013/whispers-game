@@ -9,7 +9,7 @@ Disponivel para Windows e Linux. Para Linux será necessário ter alguns pré-re
 
 ### Windows
 
-Basta realizar o [Download]() ou na aba [Releases]() do GitHub e executar o arquivo chamado Whispers.exe.
+Basta realizar o [Download](https://github.com/vitox013/whispers-game/archive/refs/tags/v1.0.zip) ou na aba [Releases](https://github.com/vitox013/whispers-game/releases) do GitHub e executar o arquivo chamado Whispers.exe.
 
 ### Linux
 
