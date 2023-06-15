@@ -24,12 +24,12 @@ LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 all: build $(PROJECT)
 
 $(PROJECT): $(OBJ)
-	@ $(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
+	@ $(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@ -mwindows
 	@ echo '============================ Finished building ============================'
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	@ mkdir -p $(dir $@)
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -mwindows -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 $(BIN_DIR) $(OBJ_DIR):
 	@ mkdir -p $@
