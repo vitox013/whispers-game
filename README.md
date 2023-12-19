@@ -3,6 +3,13 @@
 
 Jogo criado em C++ usando a biblioteca SFML para a matéria [Técnicas de Programação](https://pessoal.dainf.ct.utfpr.edu.br/jeansimao/Fundamentos2/Fundamentos2.htm)
 
+## Vídeo de Gameplay 
+![2023-12-19 14-44-45](https://github.com/vitox013/whispers-game/assets/85710199/c9785d4a-5bde-4705-89f8-b62a38f20c4f)
+
+Caso queira visualizar na velocidade real é só clicar no ícone abaixo:<br> 
+[![Youtube Badge](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/LYoZqjBg4_w)
+
+
 ## Plataformas
 
 Disponivel para Windows e Linux. Para Linux será necessário ter alguns pré-requisitos e compilar o código - será explicado nos próximos tópicos.
